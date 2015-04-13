@@ -50,13 +50,13 @@
 	"name" : "Bedrock",
 	"delay in seconds" : "10",
 	"command list" : [
-		"execute @a[score_lookup_min=1] ~ ~2 ~ detect ~ ~ ~ minecraft:bedrock 0 fill ~ ~ ~ ~ ~ ~ minecraft:obsidian",
 		"execute @a[score_lookup_min=1] ~ ~2 ~ detect ~ ~ ~ minecraft:bedrock 0 summon Silverfish ~ ~-2 ~ {ActiveEffects:[0:{Id:5,Duration:10000,Ambient:1}]}",
 		"execute @a[score_lookup_min=1] ~ ~2 ~ detect ~ ~ ~ minecraft:bedrock 0 particle explode ~ ~-2 ~ 2 2 2 0 200",
+		"execute @a[score_lookup_min=1] ~ ~2 ~ detect ~ ~ ~ minecraft:bedrock 0 fill ~ ~ ~ ~ ~ ~ minecraft:obsidian",
 		
-		"execute @a[score_lookdown_min=1] ~ ~-1 ~ detect ~ ~ ~ minecraft:bedrock 0 fill ~ ~ ~ ~ ~ ~ minecraft:obsidian",
 		"execute @a[score_lookdown_min=1] ~ ~-1 ~ detect ~ ~ ~ minecraft:bedrock 0 summon Silverfish ~ ~1 ~ {ActiveEffects:[0:{Id:5,Duration:10000,Ambient:1}]}",
-		"execute @a[score_lookdown_min=1] ~ ~-1 ~ detect ~ ~ ~ minecraft:bedrock 0 particle explode ~ ~1 ~ 2 2 2 0 200"
+		"execute @a[score_lookdown_min=1] ~ ~-1 ~ detect ~ ~ ~ minecraft:bedrock 0 particle explode ~ ~1 ~ 2 2 2 0 200",
+		"execute @a[score_lookdown_min=1] ~ ~-1 ~ detect ~ ~ ~ minecraft:bedrock 0 fill ~ ~ ~ ~ ~ ~ minecraft:obsidian"
 	]
 
 }
