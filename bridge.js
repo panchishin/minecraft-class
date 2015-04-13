@@ -41,6 +41,6 @@ var mainLoop = function() {
 	setTimeout( mainLoop , 1000 );
 }
 
-mainLoop();
+setTimeout( mainLoop , 30000 );
 
 
