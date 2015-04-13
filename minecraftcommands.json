@@ -1,0 +1,65 @@
+[
+
+{ 
+	"name" : "Initial setup",
+	"delay in seconds" : "10000000",
+	"command list" : [
+		"scoreboard objectives add lookdown dummy",
+		"scoreboard objectives add lookup dummy",
+		"scoreboard objectives add onquartz dummy",
+		"scoreboard objectives add apparate dummy"
+	]
+},
+
+
+{ 
+	"name" : "Set scoreboard selectors",
+	"delay in seconds" : "10",
+	"command list" : [
+		"scoreboard players set @a lookdown 0 ",
+		"scoreboard players set @a[rxm=80,rx=100] lookdown 1 ",
+		"scoreboard players set @a lookup 0 ",
+		"scoreboard players set @a[rxm=260,rx=280] lookup 1 ",
+		"scoreboard players set @a onquartz 0 ",
+		"execute @a ~ ~-1 ~ detect ~ ~ ~ minecraft:quartz_block 0 scoreboard players set @a[r=1] onquartz 1"
+	]
+},
+
+
+{ 
+	"name" : "Teleport",
+	"delay in seconds" : "10",
+	"command list" : [
+		"scoreboard players set @a apparate 0 ",
+		"scoreboard players set @a[score_lookdown_min=1,score_onquartz_min=1] apparate 1 {SelectedItem:{id:minecraft:compass} } ",
+
+		"title @a[score_apparate_min=1] title \"Teleport attempt...\"",
+		"effect @a[score_apparate_min=1] minecraft:poison 1 5",
+		"effect @a[score_apparate_min=1] minecraft:hunger 1 10",
+		"spreadplayers ~-20000 ~ 0.0 50.0 false @a[score_apparate_min=1,ry=120,rym=60]",
+		"spreadplayers ~ ~-20000 0.0 50.0 false @a[score_apparate_min=1,ry=210,rym=150]",
+		"spreadplayers ~20000 ~ 0.0 50.0 false @a[score_apparate_min=1,ry=300,rym=240]",
+		"spreadplayers ~ ~20000 0.0 50.0 false @a[score_apparate_min=1,ry=30,rym=330]",
+		"execute @a[score_apparate_min=1] ~ ~5 ~ summon Witch ~ ~ ~ {riding:{id:Bat,ActiveEffects:[0:{Id:14,Duration:10000,Ambient:1}] }}", 
+		"execute @a[score_apparate_min=1] ~ ~ ~ particle explode ~ ~ ~ 2 2 2 0 200"
+	]
+},
+
+
+{ 
+	"name" : "Bedrock",
+	"delay in seconds" : "10",
+	"command list" : [
+		"execute @a[score_lookup_min=1] ~ ~2 ~ detect ~ ~ ~ minecraft:bedrock 0 fill ~ ~ ~ ~ ~ ~ minecraft:obsidian",
+		"execute @a[score_lookup_min=1] ~ ~2 ~ detect ~ ~ ~ minecraft:bedrock 0 summon Silverfish ~ ~-2 ~ {ActiveEffects:[0:{Id:5,Duration:10000,Ambient:1}]}",
+		"execute @a[score_lookup_min=1] ~ ~2 ~ detect ~ ~ ~ minecraft:bedrock 0 particle explode ~ ~-2 ~ 2 2 2 0 200",
+		
+		"execute @a[score_lookdown_min=1] ~ ~-1 ~ detect ~ ~ ~ minecraft:bedrock 0 fill ~ ~ ~ ~ ~ ~ minecraft:obsidian",
+		"execute @a[score_lookdown_min=1] ~ ~-1 ~ detect ~ ~ ~ minecraft:bedrock 0 summon Silverfish ~ ~1 ~ {ActiveEffects:[0:{Id:5,Duration:10000,Ambient:1}]}",
+		"execute @a[score_lookdown_min=1] ~ ~-1 ~ detect ~ ~ ~ minecraft:bedrock 0 particle explode ~ ~1 ~ 2 2 2 0 200"
+	]
+
+}
+
+
+]
