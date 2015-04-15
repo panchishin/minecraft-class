@@ -5,12 +5,10 @@ var write = function(data) {
 
 
 var nextExecute = {}
-
-var time = function(){
-    return Math.floor( new Date().getTime() / 1000 ) 
-}
-
 var executeCommand = function(command) {
+	var time = function(){
+	    return Math.floor( new Date().getTime() / 1000 ) 
+	}
 	var name = command["name"]
 	var delay = +command["delay in seconds"]
 	var list = command["command list"]
@@ -27,12 +25,12 @@ var executeCommand = function(command) {
 }
 
 var updateCommands = function(commandFile) {
-require("fs").readFile(commandFile, function(error,data) {
-	var commands = JSON.parse(data)
-	for( var index in commands ) {
-		executeCommand(commands[index])
-	}
-})
+	require("fs").readFile(commandFile, function(error,data) {
+		var commands = JSON.parse(data)
+		for( var index in commands ) {
+			executeCommand(commands[index])
+		}
+	})
 }
 
 var mainLoop = function() {
