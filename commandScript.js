@@ -9,6 +9,11 @@ var executeCommand = function(command,user,out,nextExecute,action) {
 	var delay = +command["delay in seconds"]
 	var list = command["command list"]
 	var selector = command["selector"]
+	var responseDelay = command["response delay"]
+	var delayHandler = responseDelay ?
+		function( handler ) { setTimeout( function() { handler() } , responseDelay * 1000 ) } :
+		function( handler ) { handler() }
+	
 
 	if ( selector && action && !action.match(selector) ) { return }
 
@@ -16,9 +21,11 @@ var executeCommand = function(command,user,out,nextExecute,action) {
 
 	nextExecute[name + " - " + user] = time() + delay
 
-	for( var index in list ) {
-		out.write( list[index].replace("USER_NAME",user) + "\n" )
-	}
+	delayHandler( function() {
+		for( var index in list ) {
+			out.write( list[index].replace("USER_NAME",user) + "\n" )
+		}
+	})
 }
 
 var commandFileCache = {};
