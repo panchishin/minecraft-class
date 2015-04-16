@@ -3,42 +3,12 @@ var write = function(data) {
 	process.stdout.write(data + "\n")
 }
 
-
-var nextExecute = {}
-var executeCommand = function(command) {
-	var time = function(){
-	    return Math.floor( new Date().getTime() / 1000 ) 
-	}
-	var name = command["name"]
-	var delay = +command["delay in seconds"]
-	var list = command["command list"]
-
-	if ( nextExecute[name] > time() ) {
-		return;
-	}
-
-	nextExecute[name] = time() + delay
-
-	for( var index in list ) {
-		write( list[index] )
-	}
-}
-
-var updateCommands = function(commandFile) {
-	require("fs").readFile(commandFile, function(error,data) {
-		var commands = JSON.parse(data)
-		for( var index in commands ) {
-			executeCommand(commands[index])
-		}
-	})
-}
-
-var mainLoop = function() {
-	updateCommands("minecraftcommands.json")
+var periodicLoop = function() {
+	require("./commandScript.js")("periodic.json", "", process.stdout)
 	setTimeout( mainLoop , 1000 );
 }
 
-setTimeout( mainLoop , 30000 );
+setTimeout( periodicLoop , 30 * 1000 );
 
 
 
