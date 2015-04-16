@@ -36,11 +36,12 @@
 		"title @a[score_apparate_min=1] title \"Teleport attempt...\"",
 		"effect @a[score_apparate_min=1] minecraft:poison 1 5",
 		"effect @a[score_apparate_min=1] minecraft:hunger 1 10",
-		"spreadplayers ~-20000 ~ 0.0 50.0 false @a[score_apparate_min=1,ry=120,rym=60]",
-		"spreadplayers ~ ~-20000 0.0 50.0 false @a[score_apparate_min=1,ry=210,rym=150]",
-		"spreadplayers ~20000 ~ 0.0 50.0 false @a[score_apparate_min=1,ry=300,rym=240]",
-		"spreadplayers ~ ~20000 0.0 50.0 false @a[score_apparate_min=1,ry=30,rym=330]",
-		"execute @a[score_apparate_min=1] ~ ~5 ~ summon Witch ~ ~ ~ {riding:{id:Bat,ActiveEffects:[0:{Id:14,Duration:10000,Ambient:1}] }}", 
+		"tp @a[score_apparate_min=1,ry=120,rym=60] ~-20000 ~5 ~",
+		"tp @a[score_apparate_min=1,ry=210,rym=150] ~ ~5 ~-20000",
+		"tp @a[score_apparate_min=1,ry=300,rym=240] ~20000 ~5 ~",
+		"tp @a[score_apparate_min=1,ry=30,rym=330] ~ ~5 ~20000",
+		"execute @a[score_apparate_min=1] ~ ~ ~ fill ~1 ~ ~1 ~-1 ~1 ~-1 minecraft:air",
+		"execute @a[score_apparate_min=1] ~ ~5 ~ summon Witch ~ ~5 ~ {riding:{id:Bat,ActiveEffects:[0:{Id:14,Duration:10000,Ambient:1}] }}", 
 		"execute @a[score_apparate_min=1] ~ ~ ~ particle explode ~ ~ ~ 2 2 2 0 200"
 	]
 },
