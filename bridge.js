@@ -5,13 +5,6 @@ var periodicLoop = function() {
 
 setTimeout( periodicLoop , 30 * 1000 );
 
-
-
-var write = function(data) {
-	process.stdout.write(data + "\n")
-}
-
-
 var onlyInfoNoChat = require('through').through(
 	function write( buffer ) {
 		if ( buffer.toString().match(/^\[..:..:..\] \[Server thread\/INFO\]: ([^<].*)$/) ) {
@@ -50,8 +43,6 @@ var welcomeAndDeath = require('through').through(
 		}
 	}
 )
-
-delay = function(handler) { handler() }
 
 process.stdin
 	.pipe( require('split')() )
