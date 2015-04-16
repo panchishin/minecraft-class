@@ -5,7 +5,7 @@ var write = function(data) {
 
 var periodicLoop = function() {
 	require("./commandScript.js")("periodic.json", "", process.stdout)
-	setTimeout( mainLoop , 1000 );
+	setTimeout( periodicLoop , 1000 );
 }
 
 setTimeout( periodicLoop , 30 * 1000 );
