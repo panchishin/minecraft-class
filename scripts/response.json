@@ -1,0 +1,27 @@
+[
+
+{ 
+	"name" : "Joined the game",
+	"delay in seconds" : "864000",
+	"response delay" : "10",
+	"selector" : "^joined the game",
+	"command list" : [
+		"title USER_NAME title \"Welcome\""
+	]
+},
+
+
+{ 
+	"name" : "Death",
+	"delay in seconds" : "5",
+	"response delay" : "5",
+	"selector" : "^(fell from|tried to|was )",
+	"command list" : [
+		"title USER_NAME title \"You foolishly died\"",
+                "effect USER_NAME minecraft:weakness 2 1200",
+                "effect USER_NAME minecraft:hunger 1 5",
+                "effect USER_NAME minecraft:nausea 1 5"
+	]
+}
+
+]

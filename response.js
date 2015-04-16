@@ -1,6 +1,6 @@
-//	require("./commandScript.js")("periodic.json", "", process.stdout)
-
 var response = function(inStream,outStream,configFile,delayOverride) {
+
+var commandScript = require("./commandScript.js")
 
 var onlyInfoNoChat = require('through').through(
 	function write( buffer ) {
@@ -22,20 +22,7 @@ var welcomeAndDeath = require('through').through(
 			} , 5000 )
 		}
 
-		if ( action.match(/^joined the game/) ) {
-			delay( function() {
-				outStream.write("title " + user + " title \"Welcome\"\n")
-			} )
-		}
-		
-		if ( action.match(/^(fell from|tried to|was )/) ) {
-			delay( function() {
-				outStream.write("title " + user + " title \"You foolishly died\"\n")
-				outStream.write("effect " + user + " minecraft:weakness 2 1200\n")
-				outStream.write("effect " + user + " minecraft:hunger 1 5\n")
-				outStream.write("effect " + user + " minecraft:nausea 1 5\n")
-			} )
-		}
+		commandScript("response.json",user,process.stdout,action)
 	}
 )
 
