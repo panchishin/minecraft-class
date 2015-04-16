@@ -17,12 +17,6 @@ var welcomeAndDeath = require('through').through(
 		var action = input.replace(/^[^ ]* /,"")
 		if (!( user && user.length > 1 && action && action.length > 1 )) { return }
 
-		var delay = delayOverride ? delayOverride : function( handler ) {
-			setTimeout( function() {
-				handler()
-			} , 5000 )
-		}
-
 		commandScript("response.json",user,process.stdout,action)
 	}
 )
