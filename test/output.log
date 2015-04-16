@@ -1,0 +1,111 @@
+title user_A_name title "Welcome"
+title user_B_name title "Welcome"
+title user_C_name title "Welcome"
+title user_C_name title "Welcome"
+title user_A_name title "Welcome"
+title user_D_name title "Welcome"
+title user_B_name title "Welcome"
+title user_D_name title "You foolishly died"
+effect user_D_name minecraft:weakness 2 1200
+effect user_D_name minecraft:hunger 1 5
+effect user_D_name minecraft:nausea 1 5
+title user_C_name title "Welcome"
+title user_A_name title "Welcome"
+title user_A_name title "Welcome"
+title user_C_name title "Welcome"
+title user_A_name title "Welcome"
+title user_C_name title "Welcome"
+title user_E_name title "Welcome"
+title user_B_name title "Welcome"
+title user_D_name title "Welcome"
+title user_E_name title "Welcome"
+title user_B_name title "Welcome"
+title user_D_name title "Welcome"
+title user_D_name title "Welcome"
+title user_B_name title "Welcome"
+title user_C_name title "Welcome"
+title user_D_name title "Welcome"
+title user_B_name title "You foolishly died"
+effect user_B_name minecraft:weakness 2 1200
+effect user_B_name minecraft:hunger 1 5
+effect user_B_name minecraft:nausea 1 5
+title user_B_name title "You foolishly died"
+effect user_B_name minecraft:weakness 2 1200
+effect user_B_name minecraft:hunger 1 5
+effect user_B_name minecraft:nausea 1 5
+title user_C_name title "You foolishly died"
+effect user_C_name minecraft:weakness 2 1200
+effect user_C_name minecraft:hunger 1 5
+effect user_C_name minecraft:nausea 1 5
+title user_C_name title "Welcome"
+title user_B_name title "You foolishly died"
+effect user_B_name minecraft:weakness 2 1200
+effect user_B_name minecraft:hunger 1 5
+effect user_B_name minecraft:nausea 1 5
+title user_A_name title "Welcome"
+title user_B_name title "Welcome"
+title user_B_name title "Welcome"
+title user_B_name title "Welcome"
+title user_A_name title "Welcome"
+title user_A_name title "Welcome"
+title user_C_name title "Welcome"
+title user_C_name title "Welcome"
+title user_C_name title "Welcome"
+title user_A_name title "Welcome"
+title user_A_name title "Welcome"
+title user_A_name title "Welcome"
+title user_A_name title "Welcome"
+title user_A_name title "Welcome"
+title user_A_name title "Welcome"
+title user_A_name title "Welcome"
+title user_C_name title "Welcome"
+title user_A_name title "Welcome"
+title user_C_name title "Welcome"
+title user_C_name title "Welcome"
+title user_C_name title "Welcome"
+title user_D_name title "Welcome"
+title user_A_name title "Welcome"
+title user_D_name title "Welcome"
+title user_B_name title "Welcome"
+title user_C_name title "Welcome"
+title user_A_name title "Welcome"
+title user_C_name title "You foolishly died"
+effect user_C_name minecraft:weakness 2 1200
+effect user_C_name minecraft:hunger 1 5
+effect user_C_name minecraft:nausea 1 5
+title user_B_name title "Welcome"
+title user_C_name title "You foolishly died"
+effect user_C_name minecraft:weakness 2 1200
+effect user_C_name minecraft:hunger 1 5
+effect user_C_name minecraft:nausea 1 5
+title user_A_name title "Welcome"
+title user_C_name title "Welcome"
+title user_C_name title "Welcome"
+title user_C_name title "You foolishly died"
+effect user_C_name minecraft:weakness 2 1200
+effect user_C_name minecraft:hunger 1 5
+effect user_C_name minecraft:nausea 1 5
+title user_C_name title "You foolishly died"
+effect user_C_name minecraft:weakness 2 1200
+effect user_C_name minecraft:hunger 1 5
+effect user_C_name minecraft:nausea 1 5
+title user_D_name title "Welcome"
+title user_B_name title "Welcome"
+title user_B_name title "Welcome"
+title user_A_name title "Welcome"
+title user_E_name title "Welcome"
+title user_A_name title "Welcome"
+title user_C_name title "Welcome"
+title user_E_name title "Welcome"
+title user_E_name title "Welcome"
+title user_D_name title "Welcome"
+title user_B_name title "Welcome"
+title user_A_name title "Welcome"
+title user_B_name title "Welcome"
+title user_C_name title "Welcome"
+title user_E_name title "Welcome"
+title user_C_name title "Welcome"
+title user_B_name title "Welcome"
+title user_D_name title "Welcome"
+title user_B_name title "Welcome"
+title user_D_name title "Welcome"

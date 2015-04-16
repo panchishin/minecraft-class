@@ -1,8 +1,3 @@
-
-var write = function(data) {
-	process.stdout.write(data + "\n")
-}
-
 var periodicLoop = function() {
 	require("./commandScript.js")("periodic.json", "", process.stdout)
 	setTimeout( periodicLoop , 1000 );
@@ -11,6 +6,10 @@ var periodicLoop = function() {
 setTimeout( periodicLoop , 30 * 1000 );
 
 
+
+var write = function(data) {
+	process.stdout.write(data + "\n")
+}
 
 
 var onlyInfoNoChat = require('through').through(
@@ -29,6 +28,12 @@ var welcomeAndDeath = require('through').through(
 
 		var queue = this.queue
 
+		var delay = function( handler ) {
+			setTimeout( function() {
+				handler()
+			} , 5000 )
+		}
+
 		if ( action.match(/joined the game/) ) {
 			delay( function() {
 				queue("title " + user + " title \"Welcome\"\n")
@@ -46,11 +51,7 @@ var welcomeAndDeath = require('through').through(
 	}
 )
 
-var delay = function( handler ) {
-	setTimeout( function() {
-		handler()
-	} , 5000 )
-}
+delay = function(handler) { handler() }
 
 process.stdin
 	.pipe( require('split')() )
