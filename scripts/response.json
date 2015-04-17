@@ -18,9 +18,9 @@
 	"selector" : "^(fell from|tried to|was )",
 	"command list" : [
 		"title USER_NAME title \"You foolishly died\"",
-                "effect USER_NAME minecraft:weakness 2 1200",
-                "effect USER_NAME minecraft:hunger 1 5",
-                "effect USER_NAME minecraft:nausea 1 5"
+                "effect USER_NAME minecraft:weakness 1200 2",
+                "effect USER_NAME minecraft:hunger 5 1",
+                "effect USER_NAME minecraft:nausea 5 1"
 	]
 }
 
