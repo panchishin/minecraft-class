@@ -15,9 +15,9 @@ var executeCommand = function(command,user,out,nextExecute,action) {
 		function( handler ) { handler() }
 	
 
-	if ( selector && action && !action.match(selector) ) { return }
+	if ( selector && action && !action.match(selector) ) { return false }
 
-	if ( nextExecute[name + " - " + user] > time() ) { return }
+	if ( nextExecute[name + " - " + user] > time() ) { return false }
 
 	nextExecute[name + " - " + user] = time() + delay
 
@@ -26,13 +26,14 @@ var executeCommand = function(command,user,out,nextExecute,action) {
 			out.write( list[index].replace("USER_NAME",user) + "\n" )
 		}
 	})
+	return true;
 }
 
 var commandFileCache = {};
 var getFile = function(commandFile,defaultValue) {
 	if ( !commandFileCache[commandFile] ) {
 		commandFileCache[commandFile] = {
-			content : undefined,
+			content : defaultValue,
 			time : 0,
 			lastWrite : 0
 		}
@@ -50,20 +51,22 @@ var getFile = function(commandFile,defaultValue) {
 }
 
 var writeFile = function(commandFile,content) {
-	if ( commandFileCache[commandFile].lastWrite < time() ) {
-		commandFileCache[commandFile].lastWrite = time() + 10
+//	if ( commandFileCache[commandFile].lastWrite < time() ) {
+//		commandFileCache[commandFile].lastWrite = time() + 10
 		require("fs").writeFile( commandFile , JSON.stringify(content) )
-	}
+//	}
 }
 
 var updateCommands = function(commandFile, user, out, action) {
-	var nextExecute = getFile(HISTORY_FILE_NAME + commandFile, {} );
+
+	var nextExecute = getFile(HISTORY_FILE_NAME + commandFile,{})
 	out = ( out ? out : process.stdout )
 	var commands = getFile(SCRIPT_FILE_NAME + commandFile,[])
+	var updated = false
 	for( var index in commands ) {
-		executeCommand(commands[index], (user?user:""), out, nextExecute, action)
+		updated = executeCommand(commands[index], (user?user:""), out, nextExecute, action) || updated
 	}
-	writeFile(HISTORY_FILE_NAME + commandFile , nextExecute )
+	if (updated) { writeFile(HISTORY_FILE_NAME + commandFile , nextExecute ) }
 }
 
 
