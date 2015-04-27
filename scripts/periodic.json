@@ -11,6 +11,29 @@
 	]
 },
 
+{ 
+	"name" : "Initial setup 2",
+	"delay in seconds" : "10000000",
+	"command list" : [
+		"scoreboard teams add Wizard",
+		"scoreboard objectives add generalcounter dummy",
+		"scoreboard objectives add Health health",
+		"gamerule naturalRegeneration false"
+	]
+},
+
+{ 
+	"name" : "Update bonuses",
+	"delay in seconds" : "60",
+	"command list" : [
+                "effect @a[team=Wizard] minecraft:weakness 120 0",
+                "effect @a[team=Wizard] minecraft:jump_boost 120 1",
+		"effect @a[l=1] minecraft:weakness 120 1",
+		"effect @a[score_Health_max=19] minecraft:hunger 10 10",
+		"effect @a[score_Health_max=19] minecraft:regeneration 2 1"
+	]
+},
+
 
 { 
 	"name" : "Set scoreboard selectors",
