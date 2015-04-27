@@ -6,6 +6,8 @@ var onlyInfoNoChat = require('through').through(
 	function write( buffer ) {
 		if ( buffer.toString().match(/^\[..:..:..\] \[Server thread\/INFO\]: ([^<].*)$/) ) {
 			this.queue( buffer.toString().replace(/^.*INFO.: /,"") + "\n" )
+		} else if ( buffer.toString().match(/^\[..:..:..\] \[Server thread\/INFO\]: <[^>]+> .*$/) ) {
+			this.queue( buffer.toString().replace(/^.*INFO.: </,"").replace(/> /," say ") + "\n" )
 		}
 	}
 )

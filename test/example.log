@@ -113,7 +113,7 @@
 [18:49:44] [User Authenticator #15/INFO]: UUID of player user_B_name is c9b58ccf-0baf-411b-a7eb-efda6529ee40
 [18:49:44] [Server thread/INFO]: user_B_name[/24.235.195.107:50788] logged in with entity id 15528 at (333.723916821849, 65.0, -1910.8398058662142)
 [18:49:44] [Server thread/INFO]: user_B_name joined the game
-[18:49:53] [Server thread/INFO]: <user_C_name> anton whrere u at
+[18:49:53] [Server thread/INFO]: <user_C_name> magic
 [18:50:03] [Server thread/INFO]: <user_A_name> guys, i fished a saddle
 [18:50:15] [Server thread/INFO]: user_B_name lost connection: TextComponent{text='Disconnected', siblings=[], style=Style{hasParent=false, color=null, bold=null, italic=null, underlined=null, obfuscated=null, clickEvent=null, hoverEvent=null, insertion=null}}
 [18:50:15] [Server thread/INFO]: user_B_name left the game

@@ -10,6 +10,17 @@
 	]
 },
 
+{ 
+	"name" : "Say magic",
+	"delay in seconds" : "0",
+	"response delay" : "0",
+	"selector" : "^say [Mm]agic",
+	"command list" : [
+		"title USER_NAME title \"Magic\""
+	]
+},
+
+
 
 { 
 	"name" : "Death",
