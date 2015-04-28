@@ -1,0 +1,54 @@
+
+
+{ 
+	"name" : "info druid",
+	"delay in seconds" : "1",
+	"response delay" : "1",
+	"selector" : "^say info druid",
+	"command list" : [
+		"tell USER_NAME Become a druid by holding a golden apple,",
+		"tell USER_NAME stand on a block of diamond,",
+		"tell USER_NAME pray by looking up,",
+		"tell USER_NAME have 30 levels.",
+		"tell USER_NAME and say 'become druid'",
+		"tell USER_NAME Druids heal others who are close.",
+		"tell USER_NAME Beware the lightening which grants you power!",
+		"tell USER_NAME You can summon bonemeal (say 'grow') every 10 minutes."
+	]
+},
+
+{
+        "name" : "Become druid",
+        "delay in seconds" : "10",
+	"response delay" : "1",
+	"selector" : "^say become druid",
+        "command list" : [
+                "scoreboard players set USER_NAME generalcounter 0 ",
+                "execute USER_NAME ~ ~-1 ~ detect ~ ~ ~ minecraft:diamond_block 0 scoreboard players set USER_NAME generalcounter 1",
+                "scoreboard players set USER_NAME lookup 0 ",
+                "scoreboard players set @a[name=USER_NAME,rxm=260,rx=280] lookup 1 ",
+                "scoreboard players set @a[name=USER_NAME,score_lookup_min=1,score_generalcounter_min=1,lm=30] generalcounter 2 {SelectedItem:{id:minecraft:golden_apple} } ",
+
+                "title @a[name=USER_NAME,score_generalcounter_min=2] title \"Becoming a Druid...\"",
+                "effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:poison 30 1 true",
+                "effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:hunger 30 5 true",
+                "execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ summon LightningBolt",
+		"scoreboard teams join Druid @a[name=USER_NAME,score_generalcounter_min=2]",
+
+                "execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-1 ~  ~ ~-1 ~ obsidian",
+                "execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ particle explode ~ ~ ~ 2 2 2 0 200"
+        ]
+},
+
+{ 
+	"name" : "Say grow",
+	"delay in seconds" : "600",
+	"response delay" : "1",
+	"selector" : "^say grow",
+	"command list" : [
+		"title @a[name=USER_NAME,team=!Druid] title \"Become a Druid first\"",
+                "effect @a[name=USER_NAME,team=Druid] minecraft:hunger 10 2 true",
+                "give @a[name=USER_NAME,team=Druid] minecraft:dye 64 15"
+	]
+}
+
