@@ -72,6 +72,12 @@
 	]
 },
 
+
+
+
+
+
+
 { 
 	"name" : "info wizard",
 	"delay in seconds" : "1",
@@ -88,6 +94,29 @@
 		"tell USER_NAME You can create Fireballs (say 'fireball') regularly.",
 		"tell USER_NAME You can gain Jump Boost (say 'jump') every 2 minutes."
 	]
+},
+
+{
+        "name" : "Become Wizard",
+        "delay in seconds" : "10",
+	"response delay" : "1",
+	"selector" : "^say become wizard",
+        "command list" : [
+                "scoreboard players set USER_NAME generalcounter 0 ",
+                "execute USER_NAME ~ ~-1 ~ detect ~ ~ ~ minecraft:diamond_block 0 scoreboard players set USER_NAME generalcounter 1",
+                "scoreboard players set USER_NAME lookup 0 ",
+                "scoreboard players set @a[name=USER_NAME,rxm=260,rx=280] lookup 1 ",
+                "scoreboard players set @a[name=USER_NAME,score_lookup_min=1,score_generalcounter_min=1,lm=30] generalcounter 2 {SelectedItem:{id:minecraft:blaze_rod} } ",
+
+                "title @a[name=USER_NAME,score_generalcounter_min=2] title \"Becoming a Wizard...\"",
+                "effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:poison 30 1 true",
+                "effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:hunger 30 5 true",
+                "execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ summon LightningBolt",
+		"scoreboard teams join Wizard @a[name=USER_NAME,score_generalcounter_min=2]",
+
+                "execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-1 ~  ~ ~-1 ~ obsidian",
+                "execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ particle explode ~ ~ ~ 2 2 2 0 200"
+        ]
 },
 
 { 
@@ -112,31 +141,8 @@
                 "effect @a[name=USER_NAME,team=Wizard] minecraft:hunger 20 2 true",
                 "effect @a[name=USER_NAME,team=Wizard] minecraft:jump_boost 10 10 true"
 	]
-},
-
-
-{
-        "name" : "Become Wizard",
-        "delay in seconds" : "10",
-	"response delay" : "1",
-	"selector" : "^say become wizard",
-        "command list" : [
-                "scoreboard players set USER_NAME generalcounter 0 ",
-                "execute USER_NAME ~ ~-1 ~ detect ~ ~ ~ minecraft:diamond_block 0 scoreboard players set USER_NAME generalcounter 1",
-                "scoreboard players set USER_NAME lookup 0 ",
-                "scoreboard players set @a[name=USER_NAME,rxm=260,rx=280] lookup 1 ",
-                "scoreboard players set @a[name=USER_NAME,score_lookup_min=1,score_generalcounter_min=1,lm=30] generalcounter 2 {SelectedItem:{id:minecraft:blaze_rod} } ",
-
-                "title @a[name=USER_NAME,score_generalcounter_min=2] title \"Becoming a Wizard...\"",
-                "effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:poison 30 1 true",
-                "effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:hunger 30 5 true",
-                "execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ summon LightningBolt",
-		"scoreboard teams join Wizard @a[name=USER_NAME,score_generalcounter_min=2]",
-
-                "execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-1 ~  ~ ~-1 ~ obsidian",
-                "execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ particle explode ~ ~ ~ 2 2 2 0 200"
-        ]
 }
+
 
 
 
