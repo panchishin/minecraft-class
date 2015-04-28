@@ -11,12 +11,14 @@
 },
 
 { 
-	"name" : "Help reminder",
-	"delay in seconds" : "4000",
-	"response delay" : "10",
-	"selector" : "^joined the game",
+	"name" : "Say fireball",
+	"delay in seconds" : "10",
+	"response delay" : "1",
+	"selector" : "^say fireball",
 	"command list" : [
-		"title USER_NAME title \"type 'info' for help\""
+		"title @a[name=USER_NAME,team=!Wizard] title \"Become a wizard first\"",
+                "effect @a[name=USER_NAME,team=Wizard] minecraft:hunger 20 1",
+		"execute @a[name=USER_NAME,team=Wizard] ~ ~ ~ summon Fireball ~ ~1 ~ {direction:[0.0,0.0,0.0]}"
 	]
 },
 
