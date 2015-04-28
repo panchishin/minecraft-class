@@ -39,7 +39,9 @@
 	"command list" : [
 		"tell USER_NAME You can do some amazing things now.",
 		"tell USER_NAME For example you can teleport long distances and become a wizard",
-		"tell USER_NAME Type 'info teleport', 'info bedrock', or 'info wizard' for more info."
+		"tell USER_NAME Type 'info teleport', 'info bedrock',",
+		"tell USER_NAME 'info wizard', 'info warrior', 'info druid',",
+		"tell USER_NAME or 'info fisherman' for more info."
 	]
 },
 
@@ -244,6 +246,60 @@
 		"title @a[name=USER_NAME,team=!Druid] title \"Become a Druid first\"",
                 "effect @a[name=USER_NAME,team=Druid] minecraft:hunger 10 2 true",
                 "give @a[name=USER_NAME,team=Druid] minecraft:dye 64 15"
+	]
+},
+
+{ 
+	"name" : "info fisherman",
+	"delay in seconds" : "1",
+	"response delay" : "1",
+	"selector" : "^say info fisherman",
+	"command list" : [
+		"tell USER_NAME Become a fisherman by holding a fishing rod,",
+		"tell USER_NAME stand on a block of diamond,",
+		"tell USER_NAME pray by looking up,",
+		"tell USER_NAME have 20 levels.",
+		"tell USER_NAME and say 'become fisherman'",
+		"tell USER_NAME Fishermen get a good fishing rod.",
+		"tell USER_NAME Beware the lightening which grants you power!",
+		"tell USER_NAME You can summon a boat (say 'boat')."
+	]
+},
+
+{
+        "name" : "Become fisherman",
+        "delay in seconds" : "10",
+	"response delay" : "1",
+	"selector" : "^say become fisherman",
+        "command list" : [
+                "scoreboard players set USER_NAME generalcounter 0 ",
+                "execute USER_NAME ~ ~-1 ~ detect ~ ~ ~ minecraft:diamond_block 0 scoreboard players set USER_NAME generalcounter 1",
+                "scoreboard players set USER_NAME lookup 0 ",
+                "scoreboard players set @a[name=USER_NAME,rxm=260,rx=280] lookup 1 ",
+                "scoreboard players set @a[name=USER_NAME,score_lookup_min=1,score_generalcounter_min=1,lm=30] generalcounter 2 {SelectedItem:{id:minecraft:fishing_rod} } ",
+
+                "title @a[name=USER_NAME,score_generalcounter_min=2] title \"Becoming a Fisherman...\"",
+                "effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:poison 30 1 true",
+                "effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:hunger 30 5 true",
+                "execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ summon LightningBolt",
+		"scoreboard teams join Fisherman @a[name=USER_NAME,score_generalcounter_min=2]",
+                
+		"give @a[name=USER_NAME,score_generalcounter_min=2] minecraft:fishing_rod 1 0 {ench:[{id:61,lvl:6},{id:34,lvl:6}]}",
+
+                "execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-1 ~  ~ ~-1 ~ obsidian",
+                "execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ particle explode ~ ~ ~ 2 2 2 0 200"
+        ]
+},
+
+{ 
+	"name" : "Say boat",
+	"delay in seconds" : "30",
+	"response delay" : "1",
+	"selector" : "^say boat",
+	"command list" : [
+		"title @a[name=USER_NAME,team=!Fisherman] title \"Become a Fisherman first\"",
+                "effect @a[name=USER_NAME,team=Fisherman] minecraft:hunger 10 2 true",
+                "execute @a[name=USER_NAME,team=Fisherman] ~ ~ ~ summon boat"
 	]
 }
 
