@@ -7,7 +7,7 @@
 		"scoreboard objectives add lookdown dummy",
 		"scoreboard objectives add lookup dummy",
 		"scoreboard objectives add onquartz dummy",
-		"scoreboard objectives add apparate dummy"
+		"scoreboard objectives add apparate dummy",
 		"scoreboard teams add Wizard",
 		"scoreboard objectives add generalcounter dummy",
 		"scoreboard objectives add Health health",

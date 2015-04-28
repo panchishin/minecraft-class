@@ -11,6 +11,19 @@
 },
 
 { 
+	"name" : "Say fireball",
+	"delay in seconds" : "10",
+	"response delay" : "1",
+	"selector" : "^say fireball",
+	"command list" : [
+		"title @a[name=USER_NAME,team=!Wizard] title \"Become a wizard first\"",
+                "effect @a[name=USER_NAME,team=Wizard] minecraft:hunger 20 1",
+		"execute @a[name=USER_NAME,team=Wizard] ~ ~ ~ summon Fireball ~ ~1 ~ {direction:[0.0,0.0,0.0]}"
+	]
+},
+
+
+{ 
 	"name" : "Say magic",
 	"delay in seconds" : "10",
 	"response delay" : "2",
@@ -43,7 +56,7 @@
 	"selector" : "^say become wizard",
         "command list" : [
                 "scoreboard players set USER_NAME generalcounter 0 ",
-                "execute USER_NAME ~ ~-1 ~ detect ~ ~ ~ minecraft:diamond_block 0 scoreboard players set USER_NAME generalcounter 1"
+                "execute USER_NAME ~ ~-1 ~ detect ~ ~ ~ minecraft:diamond_block 0 scoreboard players set USER_NAME generalcounter 1",
                 "scoreboard players set USER_NAME lookup 0 ",
                 "scoreboard players set @a[name=USER_NAME,rxm=260,rx=280] lookup 1 ",
                 "scoreboard players set @a[name=USER_NAME,score_lookup_min=1,score_generalcounter_min=1,lm=30] generalcounter 2 {SelectedItem:{id:minecraft:blaze_rod} } ",
