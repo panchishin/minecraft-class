@@ -1,7 +1,7 @@
 [
 
 { 
-	"name" : "Initial setup",
+	"name" : "Setup 2",
 	"delay in seconds" : "10000000",
 	"command list" : [
 		"scoreboard objectives add lookdown dummy",
@@ -9,6 +9,13 @@
 		"scoreboard objectives add onquartz dummy",
 		"scoreboard objectives add apparate dummy",
 		"scoreboard teams add Wizard",
+		"scoreboard teams add Warrior",
+		"scoreboard teams add Druid",
+		"scoreboard teams add Fisherman",
+		"scoreboard teams add Thief",
+		"scoreboard teams add Archor",
+		"scoreboard teams add Miner",
+		"scoreboard teams add Transmuter",
 		"scoreboard objectives add generalcounter dummy",
 		"scoreboard objectives add Health health",
 		"gamerule naturalRegeneration false"
@@ -21,12 +28,43 @@
 	"command list" : [
                 "effect @a[team=Wizard] minecraft:fire_resistance 120 1 true",
                 "effect @a[team=Wizard] minecraft:weakness 120 0 true",
-		"effect @a[l=1] minecraft:weakness 120 1",
-		"effect @a[score_Health_max=19] minecraft:hunger 10 10",
-		"effect @a[score_Health_max=19] minecraft:regeneration 2 1"
+                "effect @a[team=Warrior] minecraft:health_boost 120 4 true",
+                "effect @a[team=Warrior] minecraft:strength 120 0 true",
+                "effect @a[team=Warrior] minecraft:regeneration 2 1 true",
+                "execute @a[team=Druid] ~ ~ ~ effect @a[r=5,c=3] minecraft:saturation 2 1 true",
+                "execute @a[team=Druid] ~ ~ ~ effect @a[r=5,c=3,score_Health_max=10] minecraft:regeneration 2 1 true",
+                "effect @a[team=Fisherman] minecraft:weakness 120 0 true",
+                "effect @a[team=Fisherman,score_Health_max=19] minecraft:regeneration 2 5 true",
+                "effect @a[team=Thief] minecraft:speed 120 1 true",
+                "effect @a[team=Miner] minecraft:night_vision 120 0 true",
+                "effect @a[team=Miner] minecraft:speed 120 1 true",
+		"effect @a[l=1] minecraft:weakness 120 0 true",
+		"effect @a[score_Health_max=19] minecraft:hunger 10 10 true",
+		"effect @a[score_Health_max=19] minecraft:regeneration 2 1 true"
 	]
 },
 
+{ 
+	"name" : "Angry pigman",
+	"delay in seconds" : "30",
+	"command list" : [
+                "execute @a ~ ~ ~ entitydata @e[type=PigZombie,r=5] { Anger:30 }"
+	]
+},
+
+{ 
+	"name" : "Dangerous long living mobs",
+	"delay in seconds" : "300",
+	"command list" : [
+                "execute @a ~ ~ ~ execute @e[type=Zombie,c=1,r=15] ~ ~ ~ summon PrimedTnt",
+                "execute @a ~ ~ ~ execute @e[type=Skeleton,c=1,r=15] ~ ~ ~ summon PrimedTnt",
+                "execute @a ~ ~ ~ execute @e[type=Chicken,c=1,r=5] ~ ~ ~ summon Creeper",
+                "execute @a ~ ~ ~ execute @e[type=Cow,c=1,r=5] ~ ~ ~ summon Creeper",
+                "execute @a ~ ~ ~ execute @e[type=Sheep,c=1,r=5] ~ ~ ~ summon Creeper",
+                "execute @a ~ ~ ~ execute @e[type=Pig,c=1,r=5] ~ ~ ~ summon PigZombie",
+                "execute @a ~ ~ ~ execute @e[type=Blaze,c=1,r=15] ~ ~ ~ summon PrimedTnt"
+	]
+},
 
 { 
 	"name" : "Set scoreboard selectors",
