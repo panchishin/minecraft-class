@@ -2,11 +2,91 @@
 
 { 
 	"name" : "Welcome",
-	"delay in seconds" : "86400",
+	"delay in seconds" : "4000",
 	"response delay" : "5",
 	"selector" : "^joined the game",
 	"command list" : [
 		"title USER_NAME title \"Welcome\""
+	]
+},
+
+{ 
+	"name" : "Death Message",
+	"delay in seconds" : "5",
+	"response delay" : "5",
+	"selector" : "^(fell from|tried to|was )",
+	"command list" : [
+		"title USER_NAME title \"Death comes with a price\""
+	]
+},
+
+{ 
+	"name" : "Restart",
+	"delay in seconds" : "1",
+	"response delay" : "5",
+	"selector" : "^(joined the game|fell from|tried to|was )",
+	"command list" : [
+                "effect USER_NAME minecraft:weakness 30 1 true",
+                "effect USER_NAME minecraft:hunger 120 1 true"
+	]
+},
+
+{ 
+	"name" : "Help reminder",
+	"delay in seconds" : "1000",
+	"response delay" : "1",
+	"selector" : "^(joined the game|say help)",
+	"command list" : [
+		"tell USER_NAME You can do some amazing things now.",
+		"tell USER_NAME For example you can teleport long distances and become a wizard",
+		"tell USER_NAME Type 'info teleport', 'info bedrock', or 'info wizard' for more info."
+	]
+},
+
+{ 
+	"name" : "info bedrock",
+	"delay in seconds" : "1",
+	"response delay" : "1",
+	"selector" : "^say info bedrock",
+	"command list" : [
+		"tell USER_NAME stand directly on or below bedrock,",
+		"tell USER_NAME look at it directly,",
+		"tell USER_NAME wait a few seconds,",
+		"tell USER_NAME and it will turn to obsidian.",
+		"tell USER_NAME Beware the guardians of bedrock!"
+	]
+},
+
+{ 
+	"name" : "info teleport",
+	"delay in seconds" : "1",
+	"response delay" : "1",
+	"selector" : "^say info teleport",
+	"command list" : [
+		"tell USER_NAME Hold a compass,",
+		"tell USER_NAME stand on a block of quartz,",
+		"tell USER_NAME face exactly north, south, east, or west,",
+		"tell USER_NAME pray by looking down,",
+		"tell USER_NAME and wait.",
+		"tell USER_NAME Beware of the witch who punishes teleporters!"
+	]
+},
+
+{ 
+	"name" : "info wizard",
+	"delay in seconds" : "1",
+	"response delay" : "1",
+	"selector" : "^say info wizard",
+	"command list" : [
+		"tell USER_NAME Become a wizard by holding a blaze rod,",
+		"tell USER_NAME stand on a block of diamond,",
+		"tell USER_NAME pray by looking up,",
+		"tell USER_NAME have 30 levels.",
+		"tell USER_NAME and say 'become wizard'",
+		"tell USER_NAME Wizards are weak but fire resistant.",
+		"tell USER_NAME Beware the lightening which grants you power!",
+		"tell USER_NAME You can create Fireballs (say 'fireball') regularly.",
+		"tell USER_NAME You can gain Jump Boost (say 'jump') every 2 minutes."
 	]
 },
 
@@ -17,34 +97,20 @@
 	"selector" : "^say fireball",
 	"command list" : [
 		"title @a[name=USER_NAME,team=!Wizard] title \"Become a wizard first\"",
-                "effect @a[name=USER_NAME,team=Wizard] minecraft:hunger 20 1",
+                "effect @a[name=USER_NAME,team=Wizard] minecraft:hunger 2 20 true",
 		"execute @a[name=USER_NAME,team=Wizard] ~ ~ ~ summon Fireball ~ ~1 ~ {direction:[0.0,0.0,0.0]}"
 	]
 },
 
-
 { 
-	"name" : "Say magic",
-	"delay in seconds" : "10",
-	"response delay" : "2",
-	"selector" : "^say magic",
+	"name" : "Say jump",
+	"delay in seconds" : "120",
+	"response delay" : "1",
+	"selector" : "^say jump",
 	"command list" : [
-		"title USER_NAME title \"Magic\""
-	]
-},
-
-
-
-{ 
-	"name" : "Death",
-	"delay in seconds" : "5",
-	"response delay" : "5",
-	"selector" : "^(fell from|tried to|was )",
-	"command list" : [
-		"title USER_NAME title \"You foolishly died\"",
-                "effect USER_NAME minecraft:weakness 1200 1 true",
-                "effect USER_NAME minecraft:hunger 10 1 true",
-                "effect USER_NAME minecraft:nausea 10 1 true"
+		"title @a[name=USER_NAME,team=!Wizard] title \"Become a wizard first\"",
+                "effect @a[name=USER_NAME,team=Wizard] minecraft:hunger 20 2 true",
+                "effect @a[name=USER_NAME,team=Wizard] minecraft:jump_boost 10 10 true"
 	]
 },
 
@@ -63,12 +129,10 @@
 
                 "title @a[name=USER_NAME,score_generalcounter_min=2] title \"Becoming a Wizard...\"",
                 "effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:poison 30 1 true",
-                "effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:hunger 30 1 true",
+                "effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:hunger 30 5 true",
                 "execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ summon LightningBolt",
 		"scoreboard teams join Wizard @a[name=USER_NAME,score_generalcounter_min=2]",
 
-                "effect @a[team=Wizard] minecraft:weakness 3600 0 true",
-                "effect @a[team=Wizard] minecraft:fire_resistance 3600 1 true",
                 "execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-1 ~  ~ ~-1 ~ obsidian",
                 "execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ particle explode ~ ~ ~ 2 2 2 0 200"
         ]
