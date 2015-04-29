@@ -26,22 +26,18 @@
 	"response delay" : "5",
 	"selector" : "^(joined the game|fell from|tried to|was )",
 	"command list" : [
-                "effect USER_NAME minecraft:weakness 30 1 true",
-                "effect USER_NAME minecraft:hunger 120 1 true"
+                "effect USER_NAME minecraft:weakness 60 1 true",
+                "effect USER_NAME minecraft:hunger 30 1 true"
 	]
 },
 
 { 
 	"name" : "Help reminder",
-	"delay in seconds" : "1000",
+	"delay in seconds" : "1",
 	"response delay" : "1",
 	"selector" : "^(joined the game|say help)",
 	"command list" : [
-		"tell USER_NAME You can do some amazing things now.",
-		"tell USER_NAME For example you can teleport long distances and become a wizard",
-		"tell USER_NAME Type 'info teleport', 'info bedrock',",
-		"tell USER_NAME 'info wizard', 'info warrior', 'info druid',",
-		"tell USER_NAME 'info fisherman', 'info archer', or 'info miner' for more info."
+		"tellraw USER_NAME { text : \"You can do some amazing things now. For example you can teleport long distances and become a wizard. Type 'info teleport', 'info bedrock','info wizard', 'info warrior', 'info druid','info fisherman', 'info archer', or 'info miner' for more info.\" } "
 	]
 },
 
@@ -51,11 +47,7 @@
 	"response delay" : "1",
 	"selector" : "^say info bedrock",
 	"command list" : [
-		"tell USER_NAME stand directly on or below bedrock,",
-		"tell USER_NAME look at it directly,",
-		"tell USER_NAME wait a few seconds,",
-		"tell USER_NAME and it will turn to obsidian.",
-		"tell USER_NAME Beware the guardians of bedrock!"
+		"tellraw USER_NAME { text : \"stand directly on or below bedrock, look at it directly, wait a few seconds, and it will turn to obsidian. Beware the guardians of bedrock!\" } "
 	]
 },
 
@@ -65,12 +57,7 @@
 	"response delay" : "1",
 	"selector" : "^say info teleport",
 	"command list" : [
-		"tell USER_NAME Hold a compass,",
-		"tell USER_NAME stand on a block of quartz,",
-		"tell USER_NAME face exactly north, south, east, or west,",
-		"tell USER_NAME pray by looking down,",
-		"tell USER_NAME and wait.",
-		"tell USER_NAME Beware of the witch who punishes teleporters!"
+		"tellraw USER_NAME { text : \"Hold a compass, stand on a block of quartz, face exactly north, south, east, or west, pray by looking down and wait. Beware of the witch who punishes teleporters!\" } "
 	]
 },
 
@@ -80,15 +67,7 @@
 	"response delay" : "1",
 	"selector" : "^say info wizard",
 	"command list" : [
-		"tell USER_NAME Become a wizard by holding a blaze rod,",
-		"tell USER_NAME stand on a block of diamond,",
-		"tell USER_NAME pray by looking up,",
-		"tell USER_NAME have 20 levels.",
-		"tell USER_NAME and say 'become wizard'",
-		"tell USER_NAME Wizards are weak but fire resistant.",
-		"tell USER_NAME Beware the lightening which grants you power!",
-		"tell USER_NAME You can create Fireballs (say 'fireball') regularly.",
-		"tell USER_NAME You can gain Jump Boost (say 'jump') every 2 minutes."
+		"tellraw USER_NAME { text : \"Become a wizard by holding a blaze rod, stand on a block of diamond, pray by looking up, have 20 levels, and say 'become wizard' Wizards are weak but fire resistant. Beware the lightening which grants you power! You can create Fireballs (say 'fireball') regularly. You can gain Jump Boost (say 'jump') every 2 minutes.\" } "
 	]
 },
 
@@ -146,14 +125,7 @@
 	"response delay" : "1",
 	"selector" : "^say info warrior",
 	"command list" : [
-		"tell USER_NAME Become a warrior by holding a diamond sword,",
-		"tell USER_NAME stand on a block of diamond,",
-		"tell USER_NAME pray by looking up,",
-		"tell USER_NAME have 20 levels.",
-		"tell USER_NAME and say 'become warrior'",
-		"tell USER_NAME Warriors are strong and can heal themselves.",
-		"tell USER_NAME Beware the lightening which grants you power!",
-		"tell USER_NAME You can heal (say 'heal') regularly."
+		"tellraw USER_NAME { text : \"Become a warrior by holding a diamond sword, stand on a block of diamond, pray by looking up, have 20 levels. and say 'become warrior' Warriors are strong and can heal themselves. Beware the lightening which grants you power! You can heal (say 'heal') regularly.\" } "
 	]
 },
 
@@ -199,14 +171,7 @@
 	"response delay" : "1",
 	"selector" : "^say info druid",
 	"command list" : [
-		"tell USER_NAME Become a druid by holding a golden apple,",
-		"tell USER_NAME stand on a block of diamond,",
-		"tell USER_NAME pray by looking up,",
-		"tell USER_NAME have 20 levels.",
-		"tell USER_NAME and say 'become druid'",
-		"tell USER_NAME Druids heal others who are close.",
-		"tell USER_NAME Beware the lightening which grants you power!",
-		"tell USER_NAME You can summon bonemeal (say 'grow') every 10 minutes."
+		"tellraw USER_NAME { text : \"Become a druid by holding a golden apple, stand on a block of diamond, pray by looking up, have 20 levels. and say 'become druid' Druids heal others who are close. Beware the lightening which grants you power! You can summon bonemeal (say 'grow') every 10 minutes.\" } "
 	]
 },
 
@@ -252,14 +217,7 @@
 	"response delay" : "1",
 	"selector" : "^say info fisherman",
 	"command list" : [
-		"tell USER_NAME Become a fisherman by holding a fishing rod,",
-		"tell USER_NAME stand on a block of diamond,",
-		"tell USER_NAME pray by looking up,",
-		"tell USER_NAME have 20 levels.",
-		"tell USER_NAME and say 'become fisherman'",
-		"tell USER_NAME Fishermen get a good fishing rod.",
-		"tell USER_NAME Beware the lightening which grants you power!",
-		"tell USER_NAME You can summon a boat (say 'boat')."
+		"tellraw USER_NAME { text : \"Become a fisherman by holding a fishing rod, stand on a block of diamond, pray by looking up, have 20 levels. and say 'become fisherman' Fishermen get a good fishing rod. Beware the lightening which grants you power! You can summon a boat (say 'boat').\" } "
 	]
 },
 
@@ -308,15 +266,7 @@
 	"response delay" : "1",
 	"selector" : "^say info archer",
 	"command list" : [
-		"tell USER_NAME Become a archer by holding a bow,",
-		"tell USER_NAME stand on a block of diamond,",
-		"tell USER_NAME pray by looking up,",
-		"tell USER_NAME have 20 levels.",
-		"tell USER_NAME and say 'become archer'",
-		"tell USER_NAME Archers are fast and can shoot without being seen.",
-		"tell USER_NAME Beware the lightening which grants you power!",
-		"tell USER_NAME You can turn invisible (say 'hide')",
-		"tell USER_NAME and summon arrows (say 'arrows')."
+		"tellraw USER_NAME { text : \"Become a archer by holding a bow, stand on a block of diamond, pray by looking up, have 20 levels. and say 'become archer' Archers are fast and can shoot without being seen. Beware the lightening which grants you power! You can turn invisible (say 'hide') and summon arrows (say 'arrows').\" } "
 	]
 },
 
@@ -376,13 +326,7 @@
 	"response delay" : "1",
 	"selector" : "^say info miner",
 	"command list" : [
-		"tell USER_NAME Become a miner by holding a diamond pickaxe,",
-		"tell USER_NAME stand on a block of diamond,",
-		"tell USER_NAME pray by looking up,",
-		"tell USER_NAME have 20 levels.",
-		"tell USER_NAME and say 'become miner'",
-		"tell USER_NAME Miners can mine quickly and see in the dark.",
-		"tell USER_NAME Beware the lightening which grants you power!"
+		"tellraw USER_NAME { text : \"Become a miner by holding a diamond pickaxe, stand on a block of diamond, pray by looking up, have 20 levels. and say 'become miner'. Miners can mine quickly and see in the dark. Beware the lightening which grants you power!\" } "
 	]
 },
 
