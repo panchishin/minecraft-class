@@ -31,6 +31,10 @@
 		"effect @a[team=Warrior] minecraft:regeneration 2 1 true",
 		"execute @a[team=Druid] ~ ~ ~ effect @a[r=5,c=3] minecraft:saturation 2 1 true",
 		"execute @a[team=Druid] ~ ~ ~ effect @a[r=5,c=3,score_Health_max=10] minecraft:regeneration 2 1 true",
+		"execute @a[team=Druid] ~ ~ ~ entitydata @e[type=Sheep,r=15,c=2] { Age : 0 , InLove : 100 }",
+		"execute @a[team=Druid] ~ ~ ~ entitydata @e[type=Pig,r=15,c=2] { Age : 0 , InLove : 100 }",
+		"execute @a[team=Druid] ~ ~ ~ entitydata @e[type=Cow,r=15,c=2] { Age : 0 , InLove : 100 }",
+		"execute @a[team=Druid] ~ ~ ~ entitydata @e[type=Chicken,r=15,c=2] { Age : 0 , InLove : 100 }",
 		"effect @a[team=Fisherman] minecraft:weakness 120 0 true",
 		"effect @a[team=Fisherman,score_Health_max=19] minecraft:regeneration 2 5 true",
 		"effect @a[team=Archer] minecraft:speed 120 1 true",
@@ -74,6 +78,7 @@
 	"name" : "Set scoreboard selectors",
 	"delay in seconds" : "10",
 	"command list" : [
+		"clear @a minecraft:tnt",
 		"scoreboard players set @a lookdown 0 ",
 		"scoreboard players set @a[rxm=80,rx=100] lookdown 1 ",
 		"scoreboard players set @a lookup 0 ",

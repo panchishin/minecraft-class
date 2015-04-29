@@ -171,7 +171,7 @@
 	"response delay" : "1",
 	"selector" : "^say info druid",
 	"command list" : [
-		"tellraw USER_NAME { text : \"Become a druid by holding a golden apple, stand on a block of diamond, pray by looking up, have 20 levels. and say 'become druid' Druids heal others who are close. Beware the lightening which grants you power! You can summon bonemeal (say 'grow') every 10 minutes.\" } "
+		"tellraw USER_NAME { text : \"Become a druid by holding a golden apple, stand on a block of diamond, pray by looking up, have 20 levels. and say 'become druid' Druids heal others who are close. Beware the lightening which grants you power! You can summon bonemeal (say 'grow') every 10 minutes and some animals breed just by you being around for a while.\" } "
 	]
 },
 
