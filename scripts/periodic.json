@@ -90,15 +90,13 @@
 	"command list" : [
 		"scoreboard players set @a apparate 0 ",
 		"scoreboard players set @a[score_lookdown_min=1,score_onquartz_min=1] apparate 1 {SelectedItem:{id:minecraft:compass} } ",
-
 		"title @a[score_apparate_min=1] title \"Teleport attempt...\"",
-		"effect @a[score_apparate_min=1] minecraft:poison 1 5",
-		"effect @a[score_apparate_min=1] minecraft:hunger 1 10",
-		"tp @a[score_apparate_min=1,ry=120,rym=60] ~-20000 ~5 ~",
-		"tp @a[score_apparate_min=1,ry=210,rym=150] ~ ~5 ~-20000",
-		"tp @a[score_apparate_min=1,ry=300,rym=240] ~20000 ~5 ~",
-		"tp @a[score_apparate_min=1,ry=30,rym=330] ~ ~5 ~20000",
-		"execute @a[score_apparate_min=1] ~ ~ ~ fill ~1 ~ ~1 ~-1 ~1 ~-1 minecraft:air",
+		"effect @a[score_apparate_min=1] minecraft:hunger 10 3",
+		"effect @a[score_apparate_min=1] minecraft:resistance 5 5",
+		"tp @a[score_apparate_min=1,ry=120,rym=60] ~-5000 ~100 ~",
+		"tp @a[score_apparate_min=1,ry=210,rym=150] ~ ~100 ~-5000",
+		"tp @a[score_apparate_min=1,ry=300,rym=240] ~5000 ~100 ~",
+		"tp @a[score_apparate_min=1,ry=30,rym=330] ~ ~100 ~5000",
 		"execute @a[score_apparate_min=1] ~ ~5 ~ summon Witch ~ ~5 ~ {riding:{id:Bat,ActiveEffects:[0:{Id:14,Duration:10000,Ambient:1}] }}", 
 		"execute @a[score_apparate_min=1] ~ ~ ~ particle explode ~ ~ ~ 2 2 2 0 200"
 	]
