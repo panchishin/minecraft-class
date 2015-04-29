@@ -44,7 +44,7 @@
 
 { 
 	"name" : "Angry pigman",
-	"delay in seconds" : "30",
+	"delay in seconds" : "60",
 	"command list" : [
                 "execute @a ~ ~ ~ entitydata @e[type=PigZombie,r=5] { Anger:30 }"
 	]
@@ -54,13 +54,19 @@
 	"name" : "Dangerous long living mobs",
 	"delay in seconds" : "300",
 	"command list" : [
-                "execute @a ~ ~ ~ execute @e[type=Zombie,c=1,r=15] ~ ~ ~ summon PrimedTnt",
-                "execute @a ~ ~ ~ execute @e[type=Skeleton,c=1,r=15] ~ ~ ~ summon PrimedTnt",
-                "execute @a ~ ~ ~ execute @e[type=Chicken,c=1,r=5] ~ ~ ~ summon Creeper",
-                "execute @a ~ ~ ~ execute @e[type=Cow,c=1,r=5] ~ ~ ~ summon Creeper",
-                "execute @a ~ ~ ~ execute @e[type=Sheep,c=1,r=5] ~ ~ ~ summon Creeper",
-                "execute @a ~ ~ ~ execute @e[type=Pig,c=1,r=5] ~ ~ ~ summon PigZombie",
-                "execute @a ~ ~ ~ execute @e[type=Blaze,c=1,r=15] ~ ~ ~ summon PrimedTnt"
+                "execute @a ~ ~ ~ execute @e[type=Zombie,c=1,r=10] ~ ~ ~ summon PrimedTnt",
+                "execute @a ~ ~ ~ execute @e[type=Skeleton,c=1,r=10] ~ ~ ~ summon PrimedTnt",
+                "execute @a ~ ~ ~ execute @e[type=Blaze,c=1,r=10] ~ ~ ~ summon PrimedTnt"
+	]
+},
+
+{ 
+	"name" : "Dangerous long living pets",
+	"delay in seconds" : "600",
+	"command list" : [
+                "execute @a ~ ~ ~ execute @e[type=Chicken,c=1,r=5] ~ ~ ~ summon Witch ~ ~15 ~ {riding:{id:Bat,ActiveEffects:[0:{Id:14,Duration:10000,Ambient:1}] }}",
+                "execute @a ~ ~ ~ execute @e[type=Cow,c=1,r=5] ~ ~ ~ summon Witch ~ ~5 ~ {riding:{id:Bat,ActiveEffects:[0:{Id:14,Duration:10000,Ambient:1}] }}",
+                "execute @a ~ ~ ~ execute @e[type=Sheep,c=1,r=5] ~ ~ ~ summon Witch ~ ~5 ~ {riding:{id:Bat,ActiveEffects:[0:{Id:14,Duration:10000,Ambient:1}] }}"
 	]
 },
 
