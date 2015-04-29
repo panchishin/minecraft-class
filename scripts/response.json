@@ -41,7 +41,7 @@
 		"tell USER_NAME For example you can teleport long distances and become a wizard",
 		"tell USER_NAME Type 'info teleport', 'info bedrock',",
 		"tell USER_NAME 'info wizard', 'info warrior', 'info druid',",
-		"tell USER_NAME or 'info fisherman' for more info."
+		"tell USER_NAME 'info fisherman', 'info archer', or 'info miner' for more info."
 	]
 },
 
@@ -74,12 +74,6 @@
 	]
 },
 
-
-
-
-
-
-
 { 
 	"name" : "info wizard",
 	"delay in seconds" : "1",
@@ -99,26 +93,26 @@
 },
 
 {
-        "name" : "Become Wizard",
-        "delay in seconds" : "10",
+	"name" : "Become Wizard",
+	"delay in seconds" : "10",
 	"response delay" : "1",
 	"selector" : "^say become wizard",
-        "command list" : [
-                "scoreboard players set USER_NAME generalcounter 0 ",
-                "execute USER_NAME ~ ~-1 ~ detect ~ ~ ~ minecraft:diamond_block 0 scoreboard players set USER_NAME generalcounter 1",
-                "scoreboard players set USER_NAME lookup 0 ",
-                "scoreboard players set @a[name=USER_NAME,rxm=260,rx=280] lookup 1 ",
-                "scoreboard players set @a[name=USER_NAME,score_lookup_min=1,score_generalcounter_min=1,lm=30] generalcounter 2 {SelectedItem:{id:minecraft:blaze_rod} } ",
+	"command list" : [
+		"scoreboard players set USER_NAME generalcounter 0 ",
+		"execute USER_NAME ~ ~-1 ~ detect ~ ~ ~ minecraft:diamond_block 0 scoreboard players set USER_NAME generalcounter 1",
+		"scoreboard players set USER_NAME lookup 0 ",
+		"scoreboard players set @a[name=USER_NAME,rxm=260,rx=280] lookup 1 ",
+		"scoreboard players set @a[name=USER_NAME,score_lookup_min=1,score_generalcounter_min=1,lm=30] generalcounter 2 {SelectedItem:{id:minecraft:blaze_rod} } ",
 
-                "title @a[name=USER_NAME,score_generalcounter_min=2] title \"Becoming a Wizard...\"",
-                "effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:poison 30 1 true",
-                "effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:hunger 30 5 true",
-                "execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ summon LightningBolt",
+		"title @a[name=USER_NAME,score_generalcounter_min=2] title \"Becoming a Wizard...\"",
+		"effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:poison 30 1 true",
+		"effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:hunger 30 5 true",
+		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ summon LightningBolt",
 		"scoreboard teams join Wizard @a[name=USER_NAME,score_generalcounter_min=2]",
 
-                "execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-1 ~  ~ ~-1 ~ obsidian",
-                "execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ particle explode ~ ~ ~ 2 2 2 0 200"
-        ]
+		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-1 ~  ~ ~-1 ~ obsidian",
+		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ particle explode ~ ~ ~ 2 2 2 0 200"
+	]
 },
 
 { 
@@ -128,7 +122,7 @@
 	"selector" : "^say fireball",
 	"command list" : [
 		"title @a[name=USER_NAME,team=!Wizard] title \"Become a wizard first\"",
-                "effect @a[name=USER_NAME,team=Wizard] minecraft:hunger 2 20 true",
+		"effect @a[name=USER_NAME,team=Wizard] minecraft:hunger 2 20 true",
 		"execute @a[name=USER_NAME,team=Wizard] ~ ~ ~ summon Fireball ~ ~1 ~ {direction:[0.0,0.0,0.0]}"
 	]
 },
@@ -140,8 +134,8 @@
 	"selector" : "^say jump",
 	"command list" : [
 		"title @a[name=USER_NAME,team=!Wizard] title \"Become a wizard first\"",
-                "effect @a[name=USER_NAME,team=Wizard] minecraft:hunger 20 2 true",
-                "effect @a[name=USER_NAME,team=Wizard] minecraft:jump_boost 10 10 true"
+		"effect @a[name=USER_NAME,team=Wizard] minecraft:hunger 20 2 true",
+		"effect @a[name=USER_NAME,team=Wizard] minecraft:jump_boost 10 10 true"
 	]
 },
 
@@ -163,26 +157,26 @@
 },
 
 {
-        "name" : "Become Warrior",
-        "delay in seconds" : "10",
+	"name" : "Become Warrior",
+	"delay in seconds" : "10",
 	"response delay" : "1",
 	"selector" : "^say become warrior",
-        "command list" : [
-                "scoreboard players set USER_NAME generalcounter 0 ",
-                "execute USER_NAME ~ ~-1 ~ detect ~ ~ ~ minecraft:diamond_block 0 scoreboard players set USER_NAME generalcounter 1",
-                "scoreboard players set USER_NAME lookup 0 ",
-                "scoreboard players set @a[name=USER_NAME,rxm=260,rx=280] lookup 1 ",
-                "scoreboard players set @a[name=USER_NAME,score_lookup_min=1,score_generalcounter_min=1,lm=30] generalcounter 2 {SelectedItem:{id:minecraft:diamond_sword} } ",
+	"command list" : [
+		"scoreboard players set USER_NAME generalcounter 0 ",
+		"execute USER_NAME ~ ~-1 ~ detect ~ ~ ~ minecraft:diamond_block 0 scoreboard players set USER_NAME generalcounter 1",
+		"scoreboard players set USER_NAME lookup 0 ",
+		"scoreboard players set @a[name=USER_NAME,rxm=260,rx=280] lookup 1 ",
+		"scoreboard players set @a[name=USER_NAME,score_lookup_min=1,score_generalcounter_min=1,lm=30] generalcounter 2 {SelectedItem:{id:minecraft:diamond_sword} } ",
 
-                "title @a[name=USER_NAME,score_generalcounter_min=2] title \"Becoming a Warrior...\"",
-                "effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:poison 30 1 true",
-                "effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:hunger 30 5 true",
-                "execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ summon LightningBolt",
+		"title @a[name=USER_NAME,score_generalcounter_min=2] title \"Becoming a Warrior...\"",
+		"effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:poison 30 1 true",
+		"effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:hunger 30 5 true",
+		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ summon LightningBolt",
 		"scoreboard teams join Warrior @a[name=USER_NAME,score_generalcounter_min=2]",
 
-                "execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-1 ~  ~ ~-1 ~ obsidian",
-                "execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ particle explode ~ ~ ~ 2 2 2 0 200"
-        ]
+		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-1 ~  ~ ~-1 ~ obsidian",
+		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ particle explode ~ ~ ~ 2 2 2 0 200"
+	]
 },
 
 { 
@@ -192,8 +186,8 @@
 	"selector" : "^say heal",
 	"command list" : [
 		"title @a[name=USER_NAME,team=!Warrior] title \"Become a warrior first\"",
-                "effect @a[name=USER_NAME,team=Warrior] minecraft:hunger 10 2 true",
-                "effect @a[name=USER_NAME,team=Warrior] minecraft:regenerate 5 0 true"
+    	"effect @a[name=USER_NAME,team=Warrior] minecraft:hunger 10 2 true",
+        "effect @a[name=USER_NAME,team=Warrior] minecraft:regenerate 5 0 true"
 	]
 },
 
@@ -215,26 +209,26 @@
 },
 
 {
-        "name" : "Become druid",
-        "delay in seconds" : "10",
+	"name" : "Become druid",
+	"delay in seconds" : "10",
 	"response delay" : "1",
 	"selector" : "^say become druid",
-        "command list" : [
-                "scoreboard players set USER_NAME generalcounter 0 ",
-                "execute USER_NAME ~ ~-1 ~ detect ~ ~ ~ minecraft:diamond_block 0 scoreboard players set USER_NAME generalcounter 1",
-                "scoreboard players set USER_NAME lookup 0 ",
-                "scoreboard players set @a[name=USER_NAME,rxm=260,rx=280] lookup 1 ",
-                "scoreboard players set @a[name=USER_NAME,score_lookup_min=1,score_generalcounter_min=1,lm=30] generalcounter 2 {SelectedItem:{id:minecraft:golden_apple} } ",
+	"command list" : [
+		"scoreboard players set USER_NAME generalcounter 0 ",
+		"execute USER_NAME ~ ~-1 ~ detect ~ ~ ~ minecraft:diamond_block 0 scoreboard players set USER_NAME generalcounter 1",
+		"scoreboard players set USER_NAME lookup 0 ",
+		"scoreboard players set @a[name=USER_NAME,rxm=260,rx=280] lookup 1 ",
+		"scoreboard players set @a[name=USER_NAME,score_lookup_min=1,score_generalcounter_min=1,lm=30] generalcounter 2 {SelectedItem:{id:minecraft:golden_apple} } ",
 
-                "title @a[name=USER_NAME,score_generalcounter_min=2] title \"Becoming a Druid...\"",
-                "effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:poison 30 1 true",
-                "effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:hunger 30 5 true",
-                "execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ summon LightningBolt",
+		"title @a[name=USER_NAME,score_generalcounter_min=2] title \"Becoming a Druid...\"",
+		"effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:poison 30 1 true",
+		"effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:hunger 30 5 true",
+		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ summon LightningBolt",
 		"scoreboard teams join Druid @a[name=USER_NAME,score_generalcounter_min=2]",
 
-                "execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-1 ~  ~ ~-1 ~ obsidian",
-                "execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ particle explode ~ ~ ~ 2 2 2 0 200"
-        ]
+		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-1 ~  ~ ~-1 ~ obsidian",
+		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ particle explode ~ ~ ~ 2 2 2 0 200"
+	]
 },
 
 { 
@@ -244,8 +238,8 @@
 	"selector" : "^say grow",
 	"command list" : [
 		"title @a[name=USER_NAME,team=!Druid] title \"Become a Druid first\"",
-                "effect @a[name=USER_NAME,team=Druid] minecraft:hunger 10 2 true",
-                "give @a[name=USER_NAME,team=Druid] minecraft:dye 64 15"
+		"effect @a[name=USER_NAME,team=Druid] minecraft:hunger 10 2 true",
+		"give @a[name=USER_NAME,team=Druid] minecraft:dye 64 15"
 	]
 },
 
@@ -267,28 +261,28 @@
 },
 
 {
-        "name" : "Become fisherman",
-        "delay in seconds" : "10",
+	"name" : "Become fisherman",
+	"delay in seconds" : "10",
 	"response delay" : "1",
 	"selector" : "^say become fisherman",
-        "command list" : [
-                "scoreboard players set USER_NAME generalcounter 0 ",
-                "execute USER_NAME ~ ~-1 ~ detect ~ ~ ~ minecraft:diamond_block 0 scoreboard players set USER_NAME generalcounter 1",
-                "scoreboard players set USER_NAME lookup 0 ",
-                "scoreboard players set @a[name=USER_NAME,rxm=260,rx=280] lookup 1 ",
-                "scoreboard players set @a[name=USER_NAME,score_lookup_min=1,score_generalcounter_min=1,lm=30] generalcounter 2 {SelectedItem:{id:minecraft:fishing_rod} } ",
+	"command list" : [
+		"scoreboard players set USER_NAME generalcounter 0 ",
+		"execute USER_NAME ~ ~-1 ~ detect ~ ~ ~ minecraft:diamond_block 0 scoreboard players set USER_NAME generalcounter 1",
+		"scoreboard players set USER_NAME lookup 0 ",
+		"scoreboard players set @a[name=USER_NAME,rxm=260,rx=280] lookup 1 ",
+		"scoreboard players set @a[name=USER_NAME,score_lookup_min=1,score_generalcounter_min=1,lm=30] generalcounter 2 {SelectedItem:{id:minecraft:fishing_rod} } ",
 
-                "title @a[name=USER_NAME,score_generalcounter_min=2] title \"Becoming a Fisherman...\"",
-                "effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:poison 30 1 true",
-                "effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:hunger 30 5 true",
-                "execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ summon LightningBolt",
+		"title @a[name=USER_NAME,score_generalcounter_min=2] title \"Becoming a Fisherman...\"",
+		"effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:poison 30 1 true",
+		"effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:hunger 30 5 true",
+		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ summon LightningBolt",
 		"scoreboard teams join Fisherman @a[name=USER_NAME,score_generalcounter_min=2]",
-                
+
 		"give @a[name=USER_NAME,score_generalcounter_min=2] minecraft:fishing_rod 1 0 {ench:[{id:61,lvl:6},{id:34,lvl:6}]}",
 
-                "execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-1 ~  ~ ~-1 ~ obsidian",
-                "execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ particle explode ~ ~ ~ 2 2 2 0 200"
-        ]
+		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-1 ~  ~ ~-1 ~ obsidian",
+		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ particle explode ~ ~ ~ 2 2 2 0 200"
+	]
 },
 
 { 
@@ -301,6 +295,114 @@
                 "effect @a[name=USER_NAME,team=Fisherman] minecraft:hunger 10 2 true",
                 "execute @a[name=USER_NAME,team=Fisherman] ~ ~ ~ summon boat"
 	]
+},
+
+
+{ 
+	"name" : "info archer",
+	"delay in seconds" : "1",
+	"response delay" : "1",
+	"selector" : "^say info archer",
+	"command list" : [
+		"tell USER_NAME Become a archer by holding a bow,",
+		"tell USER_NAME stand on a block of diamond,",
+		"tell USER_NAME pray by looking up,",
+		"tell USER_NAME have 30 levels.",
+		"tell USER_NAME and say 'become archer'",
+		"tell USER_NAME Archers are fast and can shoot without being seen.",
+		"tell USER_NAME Beware the lightening which grants you power!",
+		"tell USER_NAME You can turn invisible (say 'hide')",
+		"tell USER_NAME and summon arrows (say 'arrows')."
+	]
+},
+
+{
+	"name" : "Become archer",
+	"delay in seconds" : "10",
+	"response delay" : "1",
+	"selector" : "^say become archer",
+	"command list" : [
+		"scoreboard players set USER_NAME generalcounter 0 ",
+		"execute USER_NAME ~ ~-1 ~ detect ~ ~ ~ minecraft:diamond_block 0 scoreboard players set USER_NAME generalcounter 1",
+		"scoreboard players set USER_NAME lookup 0 ",
+		"scoreboard players set @a[name=USER_NAME,rxm=260,rx=280] lookup 1 ",
+		"scoreboard players set @a[name=USER_NAME,score_lookup_min=1,score_generalcounter_min=1,lm=30] generalcounter 2 {SelectedItem:{id:minecraft:bow} } ",
+
+		"title @a[name=USER_NAME,score_generalcounter_min=2] title \"Becoming an Archer...\"",
+		"effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:poison 30 1 true",
+		"effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:hunger 30 5 true",
+		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ summon LightningBolt",
+		"scoreboard teams join Archer @a[name=USER_NAME,score_generalcounter_min=2]",
+
+		"give @a[name=USER_NAME,score_generalcounter_min=2] minecraft:bow 1 0 {ench:[{id:48,lvl:1},{id:34,lvl:4}]}",
+
+		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-1 ~  ~ ~-1 ~ obsidian",
+		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ particle explode ~ ~ ~ 2 2 2 0 200"
+	]
+},
+
+{ 
+	"name" : "Say hide",
+	"delay in seconds" : "30",
+	"response delay" : "1",
+	"selector" : "^say hide",
+	"command list" : [
+		"title @a[name=USER_NAME,team=!Archer] title \"Become an Archer first\"",
+		"effect @a[name=USER_NAME,team=Archer] minecraft:hunger 30 2 true",
+		"effect @a[name=USER_NAME,team=Archer] minecraft:invisibility 30 1"
+	]
+},
+
+{ 
+	"name" : "Say arrows",
+	"delay in seconds" : "300",
+	"response delay" : "1",
+	"selector" : "^say arrows",
+	"command list" : [
+		"title @a[name=USER_NAME,team=!Archer] title \"Become an Archer first\"",
+		"effect @a[name=USER_NAME,team=Archer] minecraft:hunger 10 2 true",
+		"give @a[name=USER_NAME,team=Archer] minecraft:arrow 64"
+	]
+},
+
+{ 
+	"name" : "info miner",
+	"delay in seconds" : "1",
+	"response delay" : "1",
+	"selector" : "^say info miner",
+	"command list" : [
+		"tell USER_NAME Become a miner by holding a diamond pickaxe,",
+		"tell USER_NAME stand on a block of diamond,",
+		"tell USER_NAME pray by looking up,",
+		"tell USER_NAME have 30 levels.",
+		"tell USER_NAME and say 'become miner'",
+		"tell USER_NAME Miners can mine quickly and see in the dark.",
+		"tell USER_NAME Beware the lightening which grants you power!"
+	]
+},
+
+{
+	"name" : "Become miner",
+	"delay in seconds" : "10",
+	"response delay" : "1",
+	"selector" : "^say become miner",
+	"command list" : [
+		"scoreboard players set USER_NAME generalcounter 0 ",
+		"execute USER_NAME ~ ~-1 ~ detect ~ ~ ~ minecraft:diamond_block 0 scoreboard players set USER_NAME generalcounter 1",
+		"scoreboard players set USER_NAME lookup 0 ",
+		"scoreboard players set @a[name=USER_NAME,rxm=260,rx=280] lookup 1 ",
+		"scoreboard players set @a[name=USER_NAME,score_lookup_min=1,score_generalcounter_min=1,lm=30] generalcounter 2 {SelectedItem:{id:minecraft:diamond_pickaxe} } ",
+
+		"title @a[name=USER_NAME,score_generalcounter_min=2] title \"Becoming an Miner...\"",
+		"effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:poison 30 1 true",
+		"effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:hunger 30 5 true",
+		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ summon LightningBolt",
+		"scoreboard teams join Miner @a[name=USER_NAME,score_generalcounter_min=2]",
+
+		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-1 ~  ~ ~-1 ~ obsidian",
+		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ particle explode ~ ~ ~ 2 2 2 0 200"
+	]
 }
+
 
 ]
