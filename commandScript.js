@@ -23,7 +23,7 @@ var executeCommand = function(command,user,out,nextExecute,action) {
 
 	delayHandler( function() {
 		for( var index in list ) {
-			out.write( list[index].replace("USER_NAME",user) + "\n" )
+			out.write( list[index].replace(/USER_NAME/g,user) + "\n" )
 		}
 	})
 	return true;
