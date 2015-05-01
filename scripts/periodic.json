@@ -68,9 +68,9 @@
 	"name" : "Dangerous long living pets",
 	"delay in seconds" : "600",
 	"command list" : [
-                "execute @a[team=!Druid] ~ ~ ~ execute @e[type=Chicken,c=1,r=5] ~ ~ ~ summon Witch ~ ~15 ~ {riding:{id:Bat,ActiveEffects:[0:{Id:14,Duration:10000,Ambient:1}] }}",
-                "execute @a[team=!Druid] ~ ~ ~ execute @e[type=Cow,c=1,r=5] ~ ~ ~ summon Witch ~ ~5 ~ {riding:{id:Bat,ActiveEffects:[0:{Id:14,Duration:10000,Ambient:1}] }}",
-                "execute @a[team=!Druid] ~ ~ ~ execute @e[type=Sheep,c=1,r=5] ~ ~ ~ summon Witch ~ ~5 ~ {riding:{id:Bat,ActiveEffects:[0:{Id:14,Duration:10000,Ambient:1}] }}"
+                "execute @a[team=!Druid] ~ ~ ~ execute @e[type=Chicken,c=1,r=5] ~ ~ ~ summon Witch ~ ~15 ~ {Riding:{id:Bat,ActiveEffects:[0:{Id:14,Duration:10000,Ambient:1}] }}",
+                "execute @a[team=!Druid] ~ ~ ~ execute @e[type=Cow,c=1,r=5] ~ ~ ~ summon Witch ~ ~5 ~ {Riding:{id:Bat,ActiveEffects:[0:{Id:14,Duration:10000,Ambient:1}] }}",
+                "execute @a[team=!Druid] ~ ~ ~ execute @e[type=Sheep,c=1,r=5] ~ ~ ~ summon Witch ~ ~5 ~ {Riding:{id:Bat,ActiveEffects:[0:{Id:14,Duration:10000,Ambient:1}] }}"
 	]
 },
 
@@ -102,7 +102,7 @@
 		"tp @a[score_apparate_min=1,ry=210,rym=150] ~ ~100 ~-5000",
 		"tp @a[score_apparate_min=1,ry=300,rym=240] ~5000 ~100 ~",
 		"tp @a[score_apparate_min=1,ry=30,rym=330] ~ ~100 ~5000",
-		"execute @a[score_apparate_min=1] ~ ~5 ~ summon Witch ~ ~5 ~ {riding:{id:Bat,ActiveEffects:[0:{Id:14,Duration:10000,Ambient:1}] }}", 
+		"execute @a[score_apparate_min=1] ~ ~5 ~ summon Witch ~ ~5 ~ {Riding:{id:Bat,ActiveEffects:[0:{Id:14,Duration:10000,Ambient:1}] }}", 
 		"execute @a[score_apparate_min=1] ~ ~ ~ particle explode ~ ~ ~ 2 2 2 0 200"
 	]
 },
