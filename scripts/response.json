@@ -90,7 +90,7 @@
 		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ summon LightningBolt",
 		"scoreboard teams join Wizard @a[name=USER_NAME,score_generalcounter_min=2]",
 
-		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-1 ~  ~ ~-1 ~ obsidian",
+		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-1 ~  ~ ~-1 ~ minecraft:obsidian",
 		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ particle explode ~ ~ ~ 2 2 2 0 200"
 	]
 },
@@ -148,7 +148,7 @@
 		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ summon LightningBolt",
 		"scoreboard teams join Warrior @a[name=USER_NAME,score_generalcounter_min=2]",
 
-		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-1 ~  ~ ~-1 ~ obsidian",
+		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-1 ~  ~ ~-1 ~ minecraft:obsidian",
 		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ particle explode ~ ~ ~ 2 2 2 0 200"
 	]
 },
@@ -194,7 +194,7 @@
 		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ summon LightningBolt",
 		"scoreboard teams join Druid @a[name=USER_NAME,score_generalcounter_min=2]",
 
-		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-1 ~  ~ ~-1 ~ obsidian",
+		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-1 ~  ~ ~-1 ~ minecraft:obsidian",
 		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ particle explode ~ ~ ~ 2 2 2 0 200"
 	]
 },
@@ -242,7 +242,7 @@
 
 		"give @a[name=USER_NAME,score_generalcounter_min=2] minecraft:fishing_rod 1 0 {ench:[{id:61,lvl:6},{id:34,lvl:6}]}",
 
-		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-1 ~  ~ ~-1 ~ obsidian",
+		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-1 ~  ~ ~-1 ~ minecraft:obsidian",
 		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ particle explode ~ ~ ~ 2 2 2 0 200"
 	]
 },
@@ -291,7 +291,7 @@
 
 		"give @a[name=USER_NAME,score_generalcounter_min=2] minecraft:bow 1 0 {ench:[{id:48,lvl:1},{id:34,lvl:4}]}",
 
-		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-1 ~  ~ ~-1 ~ obsidian",
+		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-1 ~  ~ ~-1 ~ minecraft:obsidian",
 		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ particle explode ~ ~ ~ 2 2 2 0 200"
 	]
 },
@@ -349,7 +349,7 @@
 		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ summon LightningBolt",
 		"scoreboard teams join Miner @a[name=USER_NAME,score_generalcounter_min=2]",
 
-		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-1 ~  ~ ~-1 ~ obsidian",
+		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-1 ~  ~ ~-1 ~ minecraft:obsidian",
 		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ particle explode ~ ~ ~ 2 2 2 0 200"
 	]
 }
