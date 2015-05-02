@@ -78,7 +78,7 @@
 	"selector" : "^say become wizard",
 	"command list" : [
 		"scoreboard players set USER_NAME generalcounter 0 ",
-		"execute USER_NAME ~ ~-1 ~ detect ~ ~ ~ minecraft:diamond_block 0 scoreboard players set @e[type=Player,r=2,c=1] generalcounter 1",
+		"execute USER_NAME ~ ~-1 ~ detect ~ ~ ~ minecraft:diamond_block 0 scoreboard players set USER_NAME generalcounter 1",
 		"scoreboard players set USER_NAME lookup 0 ",
 		"scoreboard players set @a[name=USER_NAME,rxm=260,rx=280] lookup 1 ",
 		"scoreboard players set @a[name=USER_NAME,score_lookup_min=1,score_generalcounter_min=1,lm=20] generalcounter 2 {SelectedItem:{id:minecraft:blaze_rod} } ",
@@ -136,7 +136,7 @@
 	"selector" : "^say become warrior",
 	"command list" : [
 		"scoreboard players set USER_NAME generalcounter 0 ",
-		"execute USER_NAME ~ ~-1 ~ detect ~ ~ ~ minecraft:diamond_block 0 scoreboard players set @e[type=Player,r=2,c=1] generalcounter 1",
+		"execute USER_NAME ~ ~-1 ~ detect ~ ~ ~ minecraft:diamond_block 0 scoreboard players set USER_NAME generalcounter 1",
 		"scoreboard players set USER_NAME lookup 0 ",
 		"scoreboard players set @a[name=USER_NAME,rxm=260,rx=280] lookup 1 ",
 		"scoreboard players set @a[name=USER_NAME,score_lookup_min=1,score_generalcounter_min=1,lm=20] generalcounter 2 {SelectedItem:{id:minecraft:diamond_sword} } ",
@@ -182,7 +182,7 @@
 	"selector" : "^say become druid",
 	"command list" : [
 		"scoreboard players set USER_NAME generalcounter 0 ",
-		"execute USER_NAME ~ ~-1 ~ detect ~ ~ ~ minecraft:diamond_block 0 scoreboard players set @e[type=Player,r=2,c=1] generalcounter 1",
+		"execute USER_NAME ~ ~-1 ~ detect ~ ~ ~ minecraft:diamond_block 0 scoreboard players set USER_NAME generalcounter 1",
 		"scoreboard players set USER_NAME lookup 0 ",
 		"scoreboard players set @a[name=USER_NAME,rxm=260,rx=280] lookup 1 ",
 		"scoreboard players set @a[name=USER_NAME,score_lookup_min=1,score_generalcounter_min=1,lm=20] generalcounter 2 {SelectedItem:{id:minecraft:golden_apple} } ",
@@ -228,7 +228,7 @@
 	"selector" : "^say become fisherman",
 	"command list" : [
 		"scoreboard players set USER_NAME generalcounter 0 ",
-		"execute USER_NAME ~ ~-1 ~ detect ~ ~ ~ minecraft:diamond_block 0 scoreboard players set @e[type=Player,r=2,c=1] generalcounter 1",
+		"execute USER_NAME ~ ~-1 ~ detect ~ ~ ~ minecraft:diamond_block 0 scoreboard players set USER_NAME generalcounter 1",
 		"scoreboard players set USER_NAME lookup 0 ",
 		"scoreboard players set @a[name=USER_NAME,rxm=260,rx=280] lookup 1 ",
 		"scoreboard players set @a[name=USER_NAME,score_lookup_min=1,score_generalcounter_min=1,lm=20] generalcounter 2 {SelectedItem:{id:minecraft:fishing_rod} } ",
@@ -337,7 +337,7 @@
 	"selector" : "^say become miner",
 	"command list" : [
 		"scoreboard players set USER_NAME generalcounter 0 ",
-		"execute USER_NAME ~ ~-1 ~ detect ~ ~ ~ minecraft:diamond_block 0 scoreboard players set @e[type=Player,r=2,c=1] generalcounter 1",
+		"execute USER_NAME ~ ~-1 ~ detect ~ ~ ~ minecraft:diamond_block 0 scoreboard players set USER_NAME generalcounter 1",
 		"scoreboard players set USER_NAME lookup 0 ",
 		"scoreboard players set @a[name=USER_NAME,rxm=260,rx=280] lookup 1 ",
 		"scoreboard players set @a[name=USER_NAME,score_lookup_min=1,score_generalcounter_min=1,lm=20] generalcounter 2 {SelectedItem:{id:minecraft:diamond_pickaxe} } ",
