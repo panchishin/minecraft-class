@@ -16,7 +16,7 @@
 		"scoreboard teams add Miner",
 		"scoreboard objectives add generalcounter dummy",
 		"scoreboard objectives add Health health",
-		"gamerule naturalRegeneration false"
+		"gamerule naturalRegeneration true"
 	]
 },
 
@@ -28,7 +28,7 @@
 		"effect @a[team=Wizard] minecraft:weakness 120 0 true",
 		"effect @a[team=Warrior] minecraft:health_boost 120 4 true",
 		"effect @a[team=Warrior] minecraft:strength 120 0 true",
-		"effect @a[team=Warrior] minecraft:regeneration 2 1 true",
+		"effect @a[team=Warrior] minecraft:regeneration 9 1 true",
 		"execute @a[team=Druid] ~ ~ ~ effect @a[r=5,c=3] minecraft:saturation 2 1 true",
 		"execute @a[team=Druid] ~ ~ ~ effect @a[r=5,c=3,score_Health_max=10] minecraft:regeneration 2 1 true",
 		"execute @a[team=Druid] ~ ~ ~ entitydata @e[type=Sheep,r=15,c=2] { Age : 0 , InLove : 100 }",
