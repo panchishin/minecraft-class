@@ -34,11 +34,25 @@
 
 { 
 	"name" : "Welcome",
-	"delay in seconds" : "4000",
+	"delay in seconds" : "1000",
 	"response delay" : "5",
 	"selector" : "^joined the game",
 	"command list" : [
-		"title USER_NAME title \"Welcome\""
+		[[
+			"title USER_NAME title \"Welcome USER_NAME\""
+		],[
+			"title USER_NAME title \"Random greeting...\""
+		],[
+			"title USER_NAME title \"USER_NAME USER_NAME USER_NAME\""
+		],[
+			"title USER_NAME title \"USER_NAME is my hero\""
+		],[
+			"title USER_NAME title \"durp durp durp\""
+		],[
+			"title USER_NAME title \"USER_NAME is cool\""
+		],[
+			"title USER_NAME title \"Yo USER_NAME\""
+		]]
 	]
 },
 
