@@ -1,14 +1,32 @@
 [
 
 { 
-	"name" : "Daily Bonus",
+	"name" : "Daily Bonuses",
 	"delay in seconds" : "64800",
 	"response delay" : "15",
 	"selector" : "^joined the game",
 	"command list" : [
 		"title USER_NAME title \"Daily Bonus!\"",
-		"tellraw USER_NAME { text : \"Daily Bonus! 5 levels and a golden apple\" }",
-		"give USER_NAME minecraft:golden_apple",
+		[[
+			"tellraw USER_NAME { text : \"Daily Bonus!  Check your inventory, you just received a golden apple.\" }",
+			"give USER_NAME minecraft:golden_apple"
+		],[
+			"tellraw USER_NAME { text : \"Daily Bonus!  Check your inventory, you just received a diamond.\" }",
+			"give USER_NAME minecraft:diamond"
+		],[
+			"tellraw USER_NAME { text : \"Daily Bonus!  Check your inventory, you just received an emerald.\" }",
+			"give USER_NAME minecraft:emerald"
+		],[
+			"tellraw USER_NAME { text : \"Daily Bonus!  Check your inventory, you just received 3 gold.\" }",
+			"give USER_NAME minecraft:gold_ingot 3"
+		],[
+			"tellraw USER_NAME { text : \"Daily Bonus!  Check your inventory, you just received 3 iron.\" }",
+			"give USER_NAME minecraft:iron_ingot 3"
+		],[
+			"tellraw USER_NAME { text : \"Daily Bonus!  Check your inventory, you just received 3 apples.\" }",
+			"give USER_NAME minecraft:apple 3"
+		]],
+		"tellraw USER_NAME { text : \"And you just received 5 levels of experience.\" }",
 		"xp 5L USER_NAME"
 	]
 },

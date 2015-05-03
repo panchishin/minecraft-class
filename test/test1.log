@@ -1,0 +1,4 @@
+[18:30:33] [Server thread/INFO]: user_A_name[/24.235.186.197:61324] logged in with entity id 304 at (324.2701187406926, 65.0, -1901.8008317129702)
+[18:30:33] [Server thread/INFO]: user_A_name joined the game
+[18:31:26] [Server thread/INFO]: user_A_name lost connection: TextComponent{text='Disconnected', siblings=[], style=Style{hasParent=false, color=null, bold=null, italic=null, underlined=null, obfuscated=null, clickEvent=null, hoverEvent=null, insertion=null}}
+[18:31:26] [Server thread/INFO]: user_A_name left the game

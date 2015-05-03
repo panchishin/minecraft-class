@@ -28,7 +28,16 @@ var executeCommand = function(command,user,out,nextExecute,action) {
 
 	delayHandler( function() {
 		for( var index in list ) {
-			out.write( list[index].replace(/USER_NAME/g,user) + "\n" )
+			var output = list[index]
+			if ( typeof(output) == "object" ) {
+				output = output[Math.floor( Math.random() * output.length )]
+			}
+			if ( typeof(output) == "string" ) {
+				output = [ output ]
+			}
+			for ( var outputIndex in output ) {
+				out.write( output[outputIndex].replace(/USER_NAME/g,user) + "\n" )
+			}
 		}
 	})
 	return true;
