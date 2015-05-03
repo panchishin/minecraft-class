@@ -78,7 +78,7 @@
 	"response delay" : "1",
 	"selector" : "^say info wizard",
 	"command list" : [
-		"tellraw USER_NAME { text : \"Become a wizard by holding a blaze rod, stand on a block of diamond, pray by looking up, have 20 levels, and say 'become wizard' Wizards are weak but fire resistant. Beware the lightening which grants you power! You can create Fireballs (say 'fireball') regularly. You can gain Jump Boost (say 'jump') every 2 minutes.\" } "
+		"tellraw USER_NAME { text : \"Become a wizard by holding a blaze rod, stand on a block of diamond, pray by looking up, have 20 levels, and say 'become wizard' Wizards are weak but fire resistant. Beware the lightening which grants you power! You can create Fireballs (say 'fireball') regularly. You can gain Jump Boost (say 'jump'). You can create water even in the nether (say 'water')\" } "
 	]
 },
 
@@ -113,7 +113,7 @@
 	"selector" : "^say fireball",
 	"command list" : [
 		"title @a[name=USER_NAME,team=!Wizard] title \"Become a wizard first\"",
-		"effect @a[name=USER_NAME,team=Wizard] minecraft:hunger 2 20 true",
+		"effect @a[name=USER_NAME,team=Wizard] minecraft:hunger 20 2 true",
 		"execute @a[name=USER_NAME,team=Wizard] ~ ~ ~ summon Fireball ~ ~1 ~ {direction:[0.0,0.0,0.0]}"
 	]
 },
@@ -125,8 +125,20 @@
 	"selector" : "^say jump",
 	"command list" : [
 		"title @a[name=USER_NAME,team=!Wizard] title \"Become a wizard first\"",
-		"effect @a[name=USER_NAME,team=Wizard] minecraft:hunger 20 2 true",
+		"effect @a[name=USER_NAME,team=Wizard] minecraft:hunger 20 0 true",
 		"effect @a[name=USER_NAME,team=Wizard] minecraft:jump_boost 10 10 true"
+	]
+},
+
+{ 
+	"name" : "Say water",
+	"delay in seconds" : "60",
+	"response delay" : "1",
+	"selector" : "^say water",
+	"command list" : [
+		"title @a[name=USER_NAME,team=!Wizard] title \"Become a wizard first\"",
+		"effect @a[name=USER_NAME,team=Wizard] minecraft:hunger 20 0 true",
+		"execute @a[name=USER_NAME,team=Wizard] ~ ~ ~ fill ~ ~ ~ ~ ~ ~ minecraft:water 1 keep"
 	]
 },
 
