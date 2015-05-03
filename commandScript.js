@@ -17,7 +17,12 @@ var executeCommand = function(command,user,out,nextExecute,action) {
 
 	if ( selector && action && !action.match(selector) ) { return false }
 
-	if ( nextExecute[name + " - " + user] > time() ) { return false }
+	if ( nextExecute[name + " - " + user] > time() ) { 
+		if ( user && selector.match(/^.?say /) ) {
+			out.write( "tellraw " + user + " \"wait another " + ( nextExecute[name + " - " + user] - time() ) + " seconds to " + action + "\"\n" )
+		}
+		return false 
+	}
 
 	nextExecute[name + " - " + user] = time() + delay
 
