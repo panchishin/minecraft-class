@@ -6,7 +6,22 @@
 	"response delay" : "5",
 	"selector" : "^joined the game",
 	"command list" : [
-		"title USER_NAME title \"Welcome\""
+		"title USER_NAME title \"Welcome USER_NAME\""
+	]
+},
+
+{ 
+	"name" : "Class reminder",
+	"delay in seconds" : "1",
+	"response delay" : "15",
+	"selector" : "^joined the game",
+	"command list" : [
+		"title @a[name=USER_NAME,team=Wizard] title \"You are a Wizard\"",
+		"title @a[name=USER_NAME,team=Warrior] title \"You are a Warrior\"",
+		"title @a[name=USER_NAME,team=Archer] title \"You are an Archer\"",
+		"title @a[name=USER_NAME,team=Druid] title \"You are a Druid\"",
+		"title @a[name=USER_NAME,team=Fisherman] title \"You are a Fisherman\"",
+		"title @a[name=USER_NAME,team=Miner] title \"You are a Miner\""
 	]
 },
 
@@ -50,6 +65,21 @@
 	]
 },
 
+{ 
+	"name" : "Punishment",
+	"delay in seconds" : "1",
+	"response delay" : "1",
+	"selector" : "^say punishme",
+	"command list" : [
+		"xp -20L @a[name=USER_NAME]",
+		"effect @a[name=USER_NAME] minecraft:poison 30 1 true",
+		"effect @a[name=USER_NAME] minecraft:hunger 30 5 true",
+		"execute @a[name=USER_NAME] ~ ~ ~ summon LightningBolt",
+		"execute @a[name=USER_NAME] ~ ~ ~ fill ~ ~-1 ~  ~ ~-1 ~ minecraft:obsidian",
+		"execute @a[name=USER_NAME] ~ ~ ~ particle explode ~ ~ ~ 2 2 2 0 200"
+	]
+},
+
 {
 	"name" : "Become Wizard",
 	"delay in seconds" : "10",
@@ -63,16 +93,12 @@
 		"scoreboard players set @a[name=USER_NAME,score_lookup_min=1,score_generalcounter_min=1,lm=20] generalcounter 2 {SelectedItem:{id:minecraft:blaze_rod} } ",
 
 		"title @a[name=USER_NAME,score_generalcounter_min=2] title \"Becoming a Wizard...\"",
-		"xp -20L @a[name=USER_NAME,score_generalcounter_min=2]",
-		"effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:poison 30 1 true",
-		"effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:hunger 30 5 true",
-		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ summon LightningBolt",
 		"scoreboard teams join Wizard @a[name=USER_NAME,score_generalcounter_min=2]",
-
-		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-1 ~  ~ ~-1 ~ minecraft:obsidian",
-		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ particle explode ~ ~ ~ 2 2 2 0 200"
+		"execute @a[name=USER_NAME,score_generalcounter_min=2] say punishme"
 	]
 },
+
+
 
 { 
 	"name" : "Say fireball",
