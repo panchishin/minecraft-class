@@ -120,7 +120,7 @@
 
 { 
 	"name" : "Say jump",
-	"delay in seconds" : "120",
+	"delay in seconds" : "60",
 	"response delay" : "1",
 	"selector" : "^say jump",
 	"command list" : [
@@ -132,7 +132,7 @@
 
 { 
 	"name" : "Say water",
-	"delay in seconds" : "60",
+	"delay in seconds" : "10",
 	"response delay" : "1",
 	"selector" : "^say water",
 	"command list" : [
