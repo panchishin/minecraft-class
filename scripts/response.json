@@ -1,6 +1,20 @@
 [
 
 { 
+	"name" : "Daily Bonus",
+	"delay in seconds" : "64800",
+	"response delay" : "15",
+	"selector" : "^joined the game",
+	"command list" : [
+		"title USER_NAME title \"Daily Bonus!\"",
+		"tellraw USER_NAME { text : \"Daily Bonus! 5 levels and a golden apple\" }",
+		"give USER_NAME minecraft:golden_apple",
+		"xp 5L USER_NAME"
+	]
+},
+
+
+{ 
 	"name" : "Welcome",
 	"delay in seconds" : "4000",
 	"response delay" : "5",
