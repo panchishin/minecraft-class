@@ -1,7 +1,17 @@
 var SCRIPT_FILE_NAME = "scripts/"
 var HISTORY_FILE_NAME = "scripts/history/"
+
 var time = function(){
 	return Math.floor( new Date().getTime() / 1000 ) 
+}
+
+var tellTime = function( seconds ) {
+	if ( seconds <= 1 ) { return "a second" }
+	if ( seconds < 60 ) { return seconds + " seconds" }
+	var minutes = Math.round( seconds / 60 )
+	if ( minutes == 1 ) { return "a minute" }
+	if ( minutes < 60 ) { return minutes + " minutes" }
+	return "a long time"
 }
 
 var executeCommand = function(command,user,out,nextExecute,action) {
@@ -19,7 +29,7 @@ var executeCommand = function(command,user,out,nextExecute,action) {
 
 	if ( nextExecute[name + " - " + user] > time() ) { 
 		if ( user && selector.match(/^.?say /) ) {
-			out.write( "tellraw " + user + " \"wait another " + ( nextExecute[name + " - " + user] - time() ) + " seconds to " + action + "\"\n" )
+			out.write( "tellraw " + user + " \"wait " + tellTime( ( nextExecute[name + " - " + user] - time() ) ) + " to " + action + " again.\"\n" )
 		}
 		return false 
 	}
@@ -65,10 +75,7 @@ var getFile = function(commandFile,defaultValue) {
 }
 
 var writeFile = function(commandFile,content) {
-//	if ( commandFileCache[commandFile].lastWrite < time() ) {
-//		commandFileCache[commandFile].lastWrite = time() + 10
-		require("fs").writeFile( commandFile , JSON.stringify(content) )
-//	}
+	require("fs").writeFile( commandFile , JSON.stringify(content) )
 }
 
 var updateCommands = function(commandFile, user, out, action) {
