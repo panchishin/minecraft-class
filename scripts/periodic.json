@@ -32,7 +32,7 @@
 	"name" : "Update bonuses",
 	"delay in seconds" : "60",
 	"command list" : [
-		"xp 1 @a",
+		"xp 5 @a",
 		"effect @a[team=Wizard] minecraft:fire_resistance 120 1 true",
 		"effect @a[team=Wizard] minecraft:weakness 120 0 true",
 		"effect @a[team=Warrior] minecraft:strength 120 0 true",
