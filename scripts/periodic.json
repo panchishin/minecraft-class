@@ -26,7 +26,7 @@
 	"delay in seconds" : "300",
 	"command list" : [
 		"effect @a[team=Warrior] minecraft:absorption 400 4 true"
-	}
+	]
 },
 
 { 
