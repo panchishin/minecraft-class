@@ -24,7 +24,8 @@
 [18:33:18] [Server thread/INFO]: user_C_name joined the game
 [18:33:26] [Server thread/INFO]: <user_C_name> fireball 
 [18:33:26] [Server thread/INFO]: <user_C_name> fireball
-[18:33:26] [Server thread/INFO]: <user_C_name> was gud
+[18:33:26] [Server thread/INFO]: <user_C_name> become transmuter
+[18:33:26] [Server thread/INFO]: <user_C_name> transmute
 [18:33:39] [Server thread/INFO]: user_C_name lost connection: TextComponent{text='Disconnected', siblings=[], style=Style{hasParent=false, color=null, bold=null, italic=null, underlined=null, obfuscated=null, clickEvent=null, hoverEvent=null, insertion=null}}
 [18:33:39] [Server thread/INFO]: user_C_name left the game
 [18:33:56] [User Authenticator #4/INFO]: UUID of player user_C_name is 7221d0a2-9f97-4708-bfc8-fae1187e1569
