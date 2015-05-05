@@ -25,6 +25,9 @@
 		],[
 			"tellraw USER_NAME { text : \"Daily Bonus!  Check your inventory, you just received 3 apples.\" }",
 			"give USER_NAME minecraft:apple 3"
+		],[
+			"tellraw USER_NAME { text : \"Daily Bonus!  Check your inventory, you just received a bottle o' enchanting.\" }",
+			"give USER_NAME minecraft:experience_bottle"
 		]],
 		"tellraw USER_NAME { text : \"And you just received 5 levels of experience.\" }",
 		"xp 5L USER_NAME"
@@ -62,7 +65,7 @@
 	"response delay" : "1",
 	"selector" : "^(joined the game|say help)",
 	"command list" : [
-		"tellraw USER_NAME { text : \"You can do some amazing things now. For example you can teleport long distances and become a wizard. Type 'info teleport', 'info bedrock','info wizard', 'info warrior', 'info druid','info fisherman', 'info archer', or 'info miner' for more info.\" } "
+		"tellraw USER_NAME { text : \"You can do some amazing things now. For example you can teleport long distances and become a wizard. Type 'info teleport', 'info bedrock','info wizard', 'info warrior', 'info druid','info fisherman', 'info archer', 'info miner', or 'info transmuter' for more info.\" } "
 	]
 },
 
@@ -115,7 +118,7 @@
 		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ summon LightningBolt",
 		"scoreboard teams join Wizard @a[name=USER_NAME,score_generalcounter_min=2]",
 
-		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-1 ~  ~ ~-1 ~ minecraft:obsidian",
+		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-2 ~  ~ ~ ~ minecraft:obsidian",
 		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ particle explode ~ ~ ~ 2 2 2 0 200"
 	]
 },
@@ -185,7 +188,7 @@
 		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ summon LightningBolt",
 		"scoreboard teams join Warrior @a[name=USER_NAME,score_generalcounter_min=2]",
 
-		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-1 ~  ~ ~-1 ~ minecraft:obsidian",
+		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-2 ~  ~ ~ ~ minecraft:obsidian",
 		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ particle explode ~ ~ ~ 2 2 2 0 200"
 	]
 },
@@ -231,7 +234,7 @@
 		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ summon LightningBolt",
 		"scoreboard teams join Druid @a[name=USER_NAME,score_generalcounter_min=2]",
 
-		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-1 ~  ~ ~-1 ~ minecraft:obsidian",
+		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-2 ~  ~ ~ ~ minecraft:obsidian",
 		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ particle explode ~ ~ ~ 2 2 2 0 200"
 	]
 },
@@ -279,7 +282,7 @@
 
 		"give @a[name=USER_NAME,score_generalcounter_min=2] minecraft:fishing_rod 1 0 {ench:[{id:61,lvl:6},{id:34,lvl:6}]}",
 
-		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-1 ~  ~ ~-1 ~ minecraft:obsidian",
+		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-2 ~  ~ ~ ~ minecraft:obsidian",
 		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ particle explode ~ ~ ~ 2 2 2 0 200"
 	]
 },
@@ -328,7 +331,7 @@
 
 		"give @a[name=USER_NAME,score_generalcounter_min=2] minecraft:bow 1 0 {ench:[{id:48,lvl:1},{id:34,lvl:4}]}",
 
-		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-1 ~  ~ ~-1 ~ minecraft:obsidian",
+		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-2 ~  ~ ~ ~ minecraft:obsidian",
 		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ particle explode ~ ~ ~ 2 2 2 0 200"
 	]
 },
@@ -386,8 +389,88 @@
 		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ summon LightningBolt",
 		"scoreboard teams join Miner @a[name=USER_NAME,score_generalcounter_min=2]",
 
-		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-1 ~  ~ ~-1 ~ minecraft:obsidian",
+		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-2 ~  ~ ~ ~ minecraft:obsidian",
 		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ particle explode ~ ~ ~ 2 2 2 0 200"
+	]
+},
+
+{ 
+	"name" : "info transmuter",
+	"delay in seconds" : "1",
+	"response delay" : "1",
+	"selector" : "^say info transmuter",
+	"command list" : [
+		"tellraw USER_NAME { text : \"Become a transmuter by holding netherwart, stand on a block of emerald, pray by looking up, have 20 levels, and say 'become transmuter'. transmuter can turn iron to gold, diamond to emerald, stone to obsidian, and water bucket to lava bucket by holding it and saying 'transmute'.  Say 'transmute' around pigs, cows, sheep, and rabbits to turn them into their egg form.  Say 'transmute' when right beside a witch to turn it into a villager.  Beware the lightening which grants you power!\" } "
+	]
+},
+
+{
+	"name" : "Become transmuter",
+	"delay in seconds" : "10",
+	"response delay" : "1",
+	"selector" : "^say become transmuter",
+	"command list" : [
+		"scoreboard players set USER_NAME generalcounter 0 ",
+		"execute USER_NAME ~ ~-1 ~ detect ~ ~ ~ minecraft:emerald_block 0 scoreboard players set USER_NAME generalcounter 1",
+		"scoreboard players set USER_NAME lookup 0 ",
+		"scoreboard players set @a[name=USER_NAME,rxm=260,rx=280] lookup 1 ",
+		"scoreboard players set @a[name=USER_NAME,score_lookup_min=1,score_generalcounter_min=1,lm=20] generalcounter 2 {SelectedItem:{id:minecraft:netherwart} } ",
+
+		"title @a[name=USER_NAME,score_generalcounter_min=2] title \"Becoming an Transmuter...\"",
+		"xp -20L @a[name=USER_NAME,score_generalcounter_min=2]",
+		"effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:poison 30 1 true",
+		"effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:hunger 30 5 true",
+		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ summon LightningBolt",
+		"scoreboard teams join Transmuter @a[name=USER_NAME,score_generalcounter_min=2]",
+
+		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-2 ~  ~ ~ ~ minecraft:obsidian",
+		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ particle explode ~ ~ ~ 2 2 2 0 200"
+	]
+},
+
+{
+	"name" : "Say transmute",
+	"delay in seconds" : "1",
+	"response delay" : "1",
+	"selector" : "^say transmute",
+	"command list" : [
+
+		"scoreboard players set USER_NAME generalcounter 0 ",
+		"scoreboard players set @a[name=USER_NAME,team=Transmuter] generalcounter 1 {SelectedItem:{id:minecraft:iron_ingot} } ",
+		"clear @a[name=USER_NAME,team=Transmuter,score_generalcounter_min=1] minecraft:iron_ingot 0 1",
+		"give @a[name=USER_NAME,team=Transmuter,score_generalcounter_min=1] minecraft:gold_ingot",
+
+		"scoreboard players set @a[name=USER_NAME,team=Transmuter] generalcounter 2 {SelectedItem:{id:minecraft:diamond} } ",
+		"clear @a[name=USER_NAME,team=Transmuter,score_generalcounter_min=2] minecraft:diamond 0 1",
+		"give @a[name=USER_NAME,team=Transmuter,score_generalcounter_min=2] minecraft:emerald",
+
+		"scoreboard players set @a[name=USER_NAME,team=Transmuter] generalcounter 3 {SelectedItem:{id:minecraft:stone} } ",
+		"clear @a[name=USER_NAME,team=Transmuter,score_generalcounter_min=3] minecraft:stone 0 1",
+		"give @a[name=USER_NAME,team=Transmuter,score_generalcounter_min=3] minecraft:obsidian",
+
+		"scoreboard players set @a[name=USER_NAME,team=Transmuter] generalcounter 4 {SelectedItem:{id:minecraft:water_bucket} } ",
+		"clear @a[name=USER_NAME,team=Transmuter,score_generalcounter_min=4] minecraft:water_bucket 0 1",
+		"give @a[name=USER_NAME,team=Transmuter,score_generalcounter_min=4] minecraft:lava_bucket",
+		
+		"command @a[name=USER_NAME,team=Transmuter] ~ ~ ~ command @e[type=Pig,r=5,c=1] ~ ~ ~ summon Item ~ ~ ~ { Item:{id:spawn_egg , Damage:90 , Count:1} }",
+		"command @a[name=USER_NAME,team=Transmuter] ~ ~ ~ tp @e[type=Pig,r=5,c=2] ~ -1 ~",
+
+		"command @a[name=USER_NAME,team=Transmuter] ~ ~ ~ command @e[type=Sheep,r=5,c=1] ~ ~ ~ summon Item ~ ~ ~ { Item:{id:spawn_egg , Damage:91 , Count:1} }",
+		"command @a[name=USER_NAME,team=Transmuter] ~ ~ ~ tp @e[type=Sheep,r=5,c=2] ~ -1 ~",
+
+		"command @a[name=USER_NAME,team=Transmuter] ~ ~ ~ command @e[type=Cow,r=5,c=1] ~ ~ ~ summon Item ~ ~ ~ { Item:{id:spawn_egg , Damage:92 , Count:1} }",
+		"command @a[name=USER_NAME,team=Transmuter] ~ ~ ~ tp @e[type=Cow,r=5,c=2] ~ -1 ~",
+
+		"command @a[name=USER_NAME,team=Transmuter] ~ ~ ~ command @e[type=Rabbit,r=5,c=1] ~ ~ ~ summon Item ~ ~ ~ { Item:{id:spawn_egg , Damage:101 , Count:1} }",
+		"command @a[name=USER_NAME,team=Transmuter] ~ ~ ~ tp @e[type=Rabbit,r=5,c=2] ~ -1 ~",
+
+		"command @a[name=USER_NAME,team=Transmuter] ~ ~ ~ command @e[type=Witch,r=1,c=1] ~ ~ ~ summon Item ~ ~ ~ { Item:{id:spawn_egg , Damage:120 , Count:1} }",
+		"command @a[name=USER_NAME,team=Transmuter] ~ ~ ~ tp @e[type=Witch,r=1,c=1] ~ -1 ~",
+
+		"effect @a[name=USER_NAME,team=Transmuter] minecraft:poison 3 0",
+		"title @a[name=USER_NAME,team=Transmuter] title \"It hurts!\"",
+
+		"title @a[name=USER_NAME,team=!Transmuter] title \"Become an Transmuter first\""
 	]
 }
 
