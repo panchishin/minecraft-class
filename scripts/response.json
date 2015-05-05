@@ -65,8 +65,8 @@
 	"response delay" : "1",
 	"selector" : "^(joined the game|say help)",
 	"command list" : [
-		"tellraw USER_NAME { text : \" !!!! NEWLY ADDED - Transmuters and Barbarians - !!!!\" , bold:true , color:gold } ",
-		"tellraw USER_NAME { text : \"You can do some amazing things now. For example you can teleport long distances and become a wizard. Type 'info teleport', 'info bedrock','info wizard', 'info warrior', 'info druid','info fisherman', 'info archer', 'info miner', 'info transmuter', or 'info barbarian' for more info.\" } "
+		"tellraw USER_NAME { text : \" !!!! NEWLY ADDED - Transmuters, Barbarians, and Summoners - !!!!\" , bold:true , color:gold } ",
+		"tellraw USER_NAME { text : \"You can do some amazing things now. For example you can teleport long distances and become a wizard. Type 'info teleport', 'info bedrock','info wizard', 'info warrior', 'info druid','info fisherman', 'info archer', 'info miner', 'info transmuter', 'info barbarian', or 'info summoner' for more info.\" } "
 	]
 },
 
@@ -553,6 +553,87 @@
     	
         "effect @a[name=USER_NAME,team=Barbarian] minecraft:regenerate 60 0"
 	]
+},
+
+{ 
+	"name" : "info summoner",
+	"delay in seconds" : "1",
+	"response delay" : "1",
+	"selector" : "^say info summoner",
+	"command list" : [
+		"tellraw USER_NAME { text : \"Become a summoner by holding a book, stand on a block of diamond, pray by looking up, have 20 levels, and say 'become summoner'.  Beware the lightening which grants you power! Summoner can enchant a book (say 'bookmark' while holding a book) so that they can teleport back to it whenever they enchanted it.  They can also share those enchanted books with others.  This makes them essential to a group of explores.\" } "
+	]
+},
+
+{
+	"name" : "Become summoner",
+	"delay in seconds" : "30",
+	"response delay" : "1",
+	"selector" : "^say become summoner",
+	"command list" : [
+		"scoreboard players set USER_NAME generalcounter 0 ",
+		"execute USER_NAME ~ ~-1 ~ detect ~ ~ ~ minecraft:diamond_block 0 scoreboard players set USER_NAME generalcounter 1",
+		"scoreboard players set USER_NAME lookup 0 ",
+		"scoreboard players set @a[name=USER_NAME,rxm=260,rx=280] lookup 1 ",
+		"scoreboard players set @a[name=USER_NAME,score_lookup_min=1,score_generalcounter_min=1,lm=20] generalcounter 2 {SelectedItem:{id:minecraft:book} } ",
+
+		"title @a[name=USER_NAME,score_generalcounter_min=2] title \"Becoming a Summoner...\"",
+		"xp -20L @a[name=USER_NAME,score_generalcounter_min=2]",
+		"effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:poison 30 1 true",
+		"effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:hunger 30 5 true",
+		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ summon LightningBolt",
+		"scoreboard teams join Summoner @a[name=USER_NAME,score_generalcounter_min=2]",
+
+		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-2 ~  ~ ~ ~ minecraft:obsidian",
+		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ particle explode ~ ~ ~ 2 2 2 0 200"
+	]
+},
+
+
+{
+	"name" : "Say bookmark",
+	"delay in seconds" : "1",
+	"response delay" : "0",
+	"selector" : "^say bookmark",
+	"command list" : [
+		"title @a[name=USER_NAME,team=!Summoner] title \"Become a summoner first\"",
+		"tellraw @a[name=USER_NAME,team=Summoner,l=4] { text : \"You need at least 5 levels of experience\" }",
+		"scoreboard players set @a[name=USER_NAME,team=Summoner,lm=5] generalcounter 1 {SelectedItem:{id:minecraft:book} } ",
+		"scoreboard players set USER_NAME generalcounter 1 ",
+		"clear @a[name=USER_NAME,team=Summoner,lm=5,score_generalcounter_min=1] minecraft:book 0 1",
+		"execute @a[name=USER_NAME,team=Summoner,lm=5,score_generalcounter_min=1] ~ ~ ~ tp USER_NAME ~ ~ ~",
+		"xp -4L @a[name=USER_NAME,team=Summoner,lm=5,score_generalcounter_min=1]"
+	]
+
+},
+
+
+{
+	"name" : "Catch teleporting user",
+	"delay in seconds" : "0",
+	"response delay" : "0",
+	"selector" : "^Teleport",
+	"command list" : [
+		"xp -5L @a[name=USER_NAME,team=!Summoner,score_generalcounter=0]",
+		"xp -1L @a[name=USER_NAME,team=Summoner,score_generalcounter=0]",
+		"effect @a[name=USER_NAME,team=!Summoner,score_generalcounter=0] minecraft:mining_fatigue 60 1",
+		"effect @a[name=USER_NAME,team=!Summoner,score_generalcounter=0] minecraft:poison 9",
+		"effect @a[name=USER_NAME,team=Summoner,score_generalcounter=0] minecraft:poison 2"
+	]
+
+},
+
+
+{
+	"name" : "Catch teleport and give book",
+	"delay in seconds" : "0",
+	"response delay" : "0",
+	"selector" : "^Teleport",
+	"command list" : [
+		"give @a[name=USER_NAME,team=Summoner,score_generalcounter_min=1] minecraft:written_book 1 0 { title:\"USER_NAMEs magic book\", author:\"USER_NAME\", pages:[ \"{ text:\\\"USER_NAMEs Magic Teleporting Book\\\", bold:true, color:red, clickEvent:{ action:run_command, value:\\\"/tp @a[lm=5,r=1,c=1] COORDINATES\\\" } }\" ] }",
+		"scoreboard players set @a[name=USER_NAME,team=Summoner,score_generalcounter_min=1] generalcounter 0 "
+	]
+
 }
 
 

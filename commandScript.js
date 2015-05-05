@@ -19,6 +19,7 @@ var executeCommand = function(command,user,out,nextExecute,action) {
 	var delay = +command["delay in seconds"]
 	var list = command["command list"]
 	var selector = command["selector"]
+	var coordinates = action ? action.replace(/^.* to /,"").replace(/,/g,"").replace(/\]/,"") : ""
 	var responseDelay = command["response delay"]
 	var delayHandler = responseDelay ?
 		function( handler ) { setTimeout( function() { handler() } , responseDelay * 1000 ) } :
@@ -46,7 +47,7 @@ var executeCommand = function(command,user,out,nextExecute,action) {
 				output = [ output ]
 			}
 			for ( var outputIndex in output ) {
-				out.write( output[outputIndex].replace(/USER_NAME/g,user) + "\n" )
+				out.write( output[outputIndex].replace(/USER_NAME/g,user).replace(/ACTION/g,action).replace(/COORDINATES/g,coordinates) + "\n" )
 			}
 		}
 	})

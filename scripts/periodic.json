@@ -1,7 +1,7 @@
 [
 
 { 
-	"name" : "Setup 3",
+	"name" : "Setup 4",
 	"delay in seconds" : "10000000",
 	"command list" : [
 		"scoreboard objectives add lookdown dummy",
@@ -16,6 +16,7 @@
 		"scoreboard teams add Miner",
 		"scoreboard teams add Transmuter",
 		"scoreboard teams add Barbarian",
+		"scoreboard teams add Summoner",
 		"scoreboard objectives add generalcounter dummy",
 		"scoreboard objectives add Health health",
 		"gamerule sendCommandFeedback false"

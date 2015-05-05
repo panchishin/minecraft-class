@@ -5,7 +5,7 @@ var commandScript = require("./commandScript.js")
 var onlyInfoNoChat = require('through').through(
 	function write( buffer ) {
 		if ( buffer.toString().match(/^\[..:..:..\] \[Server thread\/INFO\]: ([^<].*)$/) ) {
-			this.queue( buffer.toString().replace(/^.*INFO.: /,"") + "\n" )
+			this.queue( buffer.toString().replace(/^.*INFO.: \[?/,"").replace(/[:\]]/g,"") + "\n" )
 		} else if ( buffer.toString().match(/^\[..:..:..\] \[Server thread\/INFO\]: <[^>]+> .*$/) ) {
 			this.queue( buffer.toString().replace(/^.*INFO.: </,"").replace(/> /," say ") + "\n" )
 		}
