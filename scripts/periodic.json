@@ -1,7 +1,7 @@
 [
 
 { 
-	"name" : "Setup 5",
+	"name" : "Setup 6",
 	"delay in seconds" : "10000000",
 	"command list" : [
 		"scoreboard objectives add lookdown dummy",
@@ -23,7 +23,7 @@
 		"gamerule commandBlockOutput false",
 		"gamerule reducedDebugInfo false",
 		"gamerule logAdminCommands true",
-		"gamerule sendCommandFeedback false",
+		"gamerule sendCommandFeedback false"
 	]
 },
 
