@@ -1,7 +1,7 @@
 [
 
 { 
-	"name" : "Setup 4",
+	"name" : "Setup 5",
 	"delay in seconds" : "10000000",
 	"command list" : [
 		"scoreboard objectives add lookdown dummy",
@@ -19,7 +19,11 @@
 		"scoreboard teams add Summoner",
 		"scoreboard objectives add generalcounter dummy",
 		"scoreboard objectives add Health health",
-		"gamerule sendCommandFeedback false"
+		"gamerule randomTickSpeed 0",
+		"gamerule commandBlockOutput false",
+		"gamerule reducedDebugInfo false",
+		"gamerule logAdminCommands true",
+		"gamerule sendCommandFeedback false",
 	]
 },
 
