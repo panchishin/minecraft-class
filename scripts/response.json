@@ -116,10 +116,10 @@
 		"xp -20L @a[name=USER_NAME,score_generalcounter_min=2]",
 		"effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:poison 30 1 true",
 		"effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:hunger 30 5 true",
+		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-2 ~ ~ ~-1 ~ minecraft:obsidian",
 		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ summon LightningBolt",
 		"scoreboard teams join Wizard @a[name=USER_NAME,score_generalcounter_min=2]",
 
-		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-2 ~  ~ ~ ~ minecraft:obsidian",
 		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ particle explode ~ ~ ~ 2 2 2 0 200"
 	]
 },
@@ -186,10 +186,10 @@
 		"xp -20L @a[name=USER_NAME,score_generalcounter_min=2]",
 		"effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:poison 30 1 true",
 		"effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:hunger 30 5 true",
+		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-2 ~ ~ ~-1 ~ minecraft:obsidian",
 		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ summon LightningBolt",
 		"scoreboard teams join Warrior @a[name=USER_NAME,score_generalcounter_min=2]",
 
-		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-2 ~  ~ ~ ~ minecraft:obsidian",
 		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ particle explode ~ ~ ~ 2 2 2 0 200"
 	]
 },
@@ -232,10 +232,10 @@
 		"xp -20L @a[name=USER_NAME,score_generalcounter_min=2]",
 		"effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:poison 30 1 true",
 		"effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:hunger 30 5 true",
+		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-2 ~ ~ ~-1 ~ minecraft:obsidian",
 		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ summon LightningBolt",
 		"scoreboard teams join Druid @a[name=USER_NAME,score_generalcounter_min=2]",
 
-		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-2 ~  ~ ~ ~ minecraft:obsidian",
 		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ particle explode ~ ~ ~ 2 2 2 0 200"
 	]
 },
@@ -278,12 +278,12 @@
 		"xp -20L @a[name=USER_NAME,score_generalcounter_min=2]",
 		"effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:poison 30 1 true",
 		"effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:hunger 30 5 true",
+		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-2 ~ ~ ~-1 ~ minecraft:obsidian",
 		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ summon LightningBolt",
 		"scoreboard teams join Fisherman @a[name=USER_NAME,score_generalcounter_min=2]",
 
 		"give @a[name=USER_NAME,score_generalcounter_min=2] minecraft:fishing_rod 1 0 {ench:[{id:61,lvl:6},{id:34,lvl:6}]}",
 
-		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-2 ~  ~ ~ ~ minecraft:obsidian",
 		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ particle explode ~ ~ ~ 2 2 2 0 200"
 	]
 },
@@ -327,12 +327,12 @@
 		"xp -20L @a[name=USER_NAME,score_generalcounter_min=2]",
 		"effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:poison 30 1 true",
 		"effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:hunger 30 5 true",
+		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-2 ~ ~ ~-1 ~ minecraft:obsidian",
 		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ summon LightningBolt",
 		"scoreboard teams join Archer @a[name=USER_NAME,score_generalcounter_min=2]",
 
 		"give @a[name=USER_NAME,score_generalcounter_min=2] minecraft:bow 1 0 {ench:[{id:48,lvl:1},{id:34,lvl:4}]}",
 
-		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-2 ~  ~ ~ ~ minecraft:obsidian",
 		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ particle explode ~ ~ ~ 2 2 2 0 200"
 	]
 },
@@ -387,10 +387,10 @@
 		"xp -20L @a[name=USER_NAME,score_generalcounter_min=2]",
 		"effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:poison 30 1 true",
 		"effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:hunger 30 5 true",
+		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-2 ~ ~ ~-1 ~ minecraft:obsidian",
 		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ summon LightningBolt",
 		"scoreboard teams join Miner @a[name=USER_NAME,score_generalcounter_min=2]",
 
-		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-2 ~  ~ ~ ~ minecraft:obsidian",
 		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ particle explode ~ ~ ~ 2 2 2 0 200"
 	]
 },
@@ -421,10 +421,10 @@
 		"xp -20L @a[name=USER_NAME,score_generalcounter_min=2]",
 		"effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:poison 30 1 true",
 		"effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:hunger 30 5 true",
+		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-2 ~ ~ ~-1 ~ minecraft:obsidian",
 		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ summon LightningBolt",
 		"scoreboard teams join Transmuter @a[name=USER_NAME,score_generalcounter_min=2]",
 
-		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-2 ~  ~ ~ ~ minecraft:obsidian",
 		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ particle explode ~ ~ ~ 2 2 2 0 200"
 	]
 },
@@ -501,10 +501,10 @@
 		"xp -20L @a[name=USER_NAME,score_generalcounter_min=2]",
 		"effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:poison 30 1 true",
 		"effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:hunger 30 5 true",
+		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-2 ~ ~ ~-1 ~ minecraft:obsidian",
 		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ summon LightningBolt",
 		"scoreboard teams join Barbarian @a[name=USER_NAME,score_generalcounter_min=2]",
 
-		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-2 ~  ~ ~ ~ minecraft:obsidian",
 		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ particle explode ~ ~ ~ 2 2 2 0 200"
 	]
 },
@@ -581,10 +581,10 @@
 		"xp -20L @a[name=USER_NAME,score_generalcounter_min=2]",
 		"effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:poison 30 1 true",
 		"effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:hunger 30 5 true",
+		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-2 ~ ~ ~-1 ~ minecraft:obsidian",
 		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ summon LightningBolt",
 		"scoreboard teams join Summoner @a[name=USER_NAME,score_generalcounter_min=2]",
 
-		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-2 ~  ~ ~ ~ minecraft:obsidian",
 		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ particle explode ~ ~ ~ 2 2 2 0 200"
 	]
 },
