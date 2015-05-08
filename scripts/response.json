@@ -607,6 +607,18 @@
 
 },
 
+{
+	"name" : "invoke a teleport",
+	"delay in seconds" : "0",
+	"response delay" : "0",
+	"selector" : "^say invoke",
+	"command list" : [
+		"scoreboard players set USER_NAME generalcounter 0",
+		"scoreboard players set USER_NAME generalcounter 1 {SelectedItem:{tag:{author:\"ACTION\"}} }",
+		"tp @a[name=USER_NAME,score_generalcounter_min=1] ARGUMENT"
+	]
+},
+
 
 {
 	"name" : "Catch teleporting user",
@@ -630,7 +642,7 @@
 	"response delay" : "0",
 	"selector" : "^Teleport",
 	"command list" : [
-		"give @a[name=USER_NAME,team=Summoner,score_generalcounter_min=1] minecraft:written_book 1 0 { title:\"USER_NAMEs magic book\", author:\"USER_NAME\", pages:[ \"{ text:\\\"USER_NAMEs Magic Teleporting Book\\\", bold:true, color:red, clickEvent:{ action:run_command, value:\\\"/tp @a[lm=5,r=1,c=1] COORDINATES\\\" } }\" ] }",
+		"give @a[name=USER_NAME,team=Summoner,score_generalcounter_min=1] minecraft:written_book 1 0 { title:\"magic book COORDINATES\", author:\"invoke COORDINATES\", pages:[ \"{ text:\\\"USER_NAMEs Magic Teleporting Book COORDINATES\\\", bold:true, color:red, clickEvent:{ action:run_command, value:\\\"invoke COORDINATES\\\" } }\" ] }",
 		"scoreboard players set @a[name=USER_NAME,team=Summoner,score_generalcounter_min=1] generalcounter 0 "
 	]
 

@@ -14,12 +14,21 @@ var tellTime = function( seconds ) {
 	return "a long time"
 }
 
+
+var encodeNumber = function( num ) { if (num == "-" ) { num = 10 } if (num == " ") { num = 11 }  num = 1.0 * num; if (num > 11 || num < 0) { return "" } return String.fromCharCode( 97 + num ) }
+var decodeChar = function( char ) { var num = char.charCodeAt(0) - 97; if (num == 10 ) { return "-" } if ( num == 11 ) { return " " } if ( num < 0 || num > 11 ) { return "" }  return num; }
+
+var encodeNumbers = function( numbers ) {  var output = "" ; for( var i = 0 ; i < numbers.length ; i++ ) { output += encodeNumber(numbers[i]) } return (output) }
+var decodeChars = function( chars ) {  var output = "" ; for( var i = 0 ; i < chars.length ; i++ ) { output += decodeChar(chars[i]) } return (output) }
+
+
 var executeCommand = function(command,user,out,nextExecute,action) {
 	var name = command["name"]
 	var delay = +command["delay in seconds"]
 	var list = command["command list"]
 	var selector = command["selector"]
-	var coordinates = action ? action.replace(/^.* to /,"").replace(/,/g,"").replace(/\]/,"") : ""
+	var coordinates = action ? encodeNumbers( action.replace(/^.* to /,"").replace(/,/g,"").replace(/\]/,"").replace(/\.[0-9]*/g,"") ) : ""
+	var argument = action ? decodeChars( action.replace(/^say [^ ]+ /,"") ) : ""
 	var responseDelay = command["response delay"]
 	var delayHandler = responseDelay ?
 		function( handler ) { setTimeout( function() { handler() } , responseDelay * 1000 ) } :
@@ -37,6 +46,8 @@ var executeCommand = function(command,user,out,nextExecute,action) {
 
 	nextExecute[name + " - " + user] = time() + delay
 
+	action = action ? action.replace(/^say /,"") : ""
+
 	delayHandler( function() {
 		for( var index in list ) {
 			var output = list[index]
@@ -47,7 +58,7 @@ var executeCommand = function(command,user,out,nextExecute,action) {
 				output = [ output ]
 			}
 			for ( var outputIndex in output ) {
-				out.write( output[outputIndex].replace(/USER_NAME/g,user).replace(/ACTION/g,action).replace(/COORDINATES/g,coordinates) + "\n" )
+				out.write( output[outputIndex].replace(/USER_NAME/g,user).replace(/ACTION/g,action).replace(/ARGUMENT/g,argument).replace(/COORDINATES/g,coordinates) + "\n" )
 			}
 		}
 	})
