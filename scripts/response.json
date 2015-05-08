@@ -615,7 +615,13 @@
 	"command list" : [
 		"scoreboard players set USER_NAME generalcounter 0",
 		"scoreboard players set USER_NAME generalcounter 1 {SelectedItem:{tag:{author:\"ACTION\"}} }",
-		"tp @a[name=USER_NAME,score_generalcounter_min=1] ARGUMENT"
+		"tp @a[name=USER_NAME,score_generalcounter_min=1] ARGUMENT",
+		"scoreboard players set USER_NAME generalcounter 0",
+		"xp -5L @a[name=USER_NAME,team=!Summoner,score_generalcounter=0]",
+		"xp -1L @a[name=USER_NAME,team=Summoner,score_generalcounter=0]",
+		"effect @a[name=USER_NAME,team=!Summoner,score_generalcounter=0] minecraft:mining_fatigue 60 1",
+		"effect @a[name=USER_NAME,team=!Summoner,score_generalcounter=0] minecraft:poison 9",
+		"effect @a[name=USER_NAME,team=Summoner,score_generalcounter=0] minecraft:poison 2"
 	]
 },
 
