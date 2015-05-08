@@ -4,6 +4,7 @@
 	"name" : "Setup 6",
 	"delay in seconds" : "10000000",
 	"command list" : [
+		"setworldspawn 9000 1 9000",
 		"scoreboard objectives add lookdown dummy",
 		"scoreboard objectives add lookup dummy",
 		"scoreboard objectives add onquartz dummy",
