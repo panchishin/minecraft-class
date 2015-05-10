@@ -66,7 +66,7 @@
 	"selector" : "^(joined the game|say help)",
 	"command list" : [
 		"tellraw USER_NAME { text : \" !!!! NEWLY ADDED - Transmuters, Barbarians, and Summoners - !!!!\" , bold:true , color:gold } ",
-		"tellraw USER_NAME { text : \"You can do some amazing things on this server.  It's survival with some additions.  You can convert bedrock into obsidian.  Type 'info bedrock' for more info. You can become one of the following classes: wizard, warrior, druid, fisherman, archer, miner, transmuter, barbarian, or summoner.  Type 'info wizard' for more info on wizards and so on.  Be careful around livestock or zombie pigmen, bad things happen when staying close to them for too long.  Hostile mobs will drop tnt once in a while, making mob farming nearly impossible.  Tnt is removed from your inventory automatically, so don't waste your resources making it.  Have fun!\" } "
+		"tellraw USER_NAME { text : \"You can do some amazing things on this server.  It's survival with some additions.  You can convert bedrock into obsidian.  Type 'info bedrock' for more info. You can become one of the following classes: wizard, warrior, druid, fisherman, archer, miner, transmuter, barbarian, or summoner.  Type 'info wizard' for more info on wizards and so on.  Be careful around livestock or zombie pigmen, bad things happen when staying close to them for too long.  Hostile mobs will drop tnt once in a while, making mob farming nearly impossible.  Tnt is removed from your inventory automatically, so don't waste your resources making it.  Have fun!  Say 'help' to repeat this message.\" } "
 	]
 },
 
