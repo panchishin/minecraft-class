@@ -66,8 +66,25 @@
 	"selector" : "^(joined the game|say help)",
 	"command list" : [
 		"tellraw USER_NAME { text : \" !!!! NEWLY ADDED - Transmuters, Barbarians, and Summoners - !!!!\" , bold:true , color:gold } ",
-		"tellraw USER_NAME { text : \"You can do some amazing things now. For example you can teleport long distances and become a wizard. Type 'info teleport', 'info bedrock','info wizard', 'info warrior', 'info druid','info fisherman', 'info archer', 'info miner', 'info transmuter', 'info barbarian', or 'info summoner' for more info.\" } "
+		"tellraw USER_NAME { text : \"You can do some amazing things on this server.  It's survival with some additions.  You can convert bedrock into obsidian.  Type 'info bedrock' for more info. You can become one of the following classes: wizard, warrior, druid, fisherman, archer, miner, transmuter, barbarian, or summoner.  Type 'info wizard' for more info on wizards and so on.  Be careful around livestock or zombie pigmen, bad things happen when staying close to them for too long.  Hostile mobs will drop tnt once in a while, making mob farming nearly impossible.  Tnt is removed from your inventory automatically, so don't waste your resources making it.  Have fun!\" } "
 	]
+},
+
+{ 
+	"name" : "Bedrock",
+	"delay in seconds" : "60",
+	"response delay" : "5",
+	"selector" : "^say bedrock",
+	"command list" : [
+		"execute @a[name=USER_NAME] ~ ~2 ~ detect ~ ~ ~ minecraft:bedrock 0 summon Silverfish ~ ~-2 ~ {ActiveEffects:[0:{Id:5,Duration:10000,Ambient:1}]}",
+		"execute @a[name=USER_NAME] ~ ~2 ~ detect ~ ~ ~ minecraft:bedrock 0 particle explode ~ ~-2 ~ 2 2 2 0 200",
+		"execute @a[name=USER_NAME] ~ ~2 ~ detect ~ ~ ~ minecraft:bedrock 0 fill ~ ~ ~ ~ ~ ~ minecraft:obsidian",
+		
+		"execute @a[name=USER_NAME] ~ ~-1 ~ detect ~ ~ ~ minecraft:bedrock 0 summon Silverfish ~ ~1 ~ {ActiveEffects:[0:{Id:5,Duration:10000,Ambient:1}]}",
+		"execute @a[name=USER_NAME] ~ ~-1 ~ detect ~ ~ ~ minecraft:bedrock 0 particle explode ~ ~1 ~ 2 2 2 0 200",
+		"execute @a[name=USER_NAME] ~ ~-1 ~ detect ~ ~ ~ minecraft:bedrock 0 fill ~ ~ ~ ~ ~ ~ minecraft:obsidian"
+	]
+
 },
 
 { 
@@ -76,17 +93,7 @@
 	"response delay" : "1",
 	"selector" : "^say info bedrock",
 	"command list" : [
-		"tellraw USER_NAME { text : \"stand directly on or below bedrock, look at it directly, wait a few seconds, and it will turn to obsidian. Beware the guardians of bedrock!\" } "
-	]
-},
-
-{ 
-	"name" : "info teleport",
-	"delay in seconds" : "1",
-	"response delay" : "1",
-	"selector" : "^say info teleport",
-	"command list" : [
-		"tellraw USER_NAME { text : \"Hold a compass, stand on a block of quartz, face exactly north, south, east, or west, pray by looking down and wait. Beware of the witch who punishes teleporters!\" } "
+		"tellraw USER_NAME { text : \"stand directly on or below bedrock, say 'bedrock', and it will turn to obsidian. Beware the guardians of bedrock!\" } "
 	]
 },
 
@@ -96,7 +103,7 @@
 	"response delay" : "1",
 	"selector" : "^say info wizard",
 	"command list" : [
-		"tellraw USER_NAME { text : \"Become a wizard by holding a blaze rod, stand on a block of diamond, pray by looking up, have 20 levels, and say 'become wizard' Wizards are weak but fire resistant. Beware the lightening which grants you power! You can create Fireballs (say 'fireball') regularly. You can gain Jump Boost (say 'jump'). You can create water even in the nether (say 'water')\" } "
+		"tellraw USER_NAME { text : \"Become a wizard by holding a blaze rod, stand on a block of diamond, pray by looking up, have 20 levels, and say 'become wizard' Wizards are weak but fire resistant. Beware the lightening which grants you power! While you are holding a blaze rod you can create Fireballs (say 'fireball'), gain Jump Boost (say 'jump'), create water even in the nether (say 'water'), and ignite all nearby mobs (say 'blast')\" } "
 	]
 },
 
@@ -131,8 +138,12 @@
 	"selector" : "^say fireball",
 	"command list" : [
 		"title @a[name=USER_NAME,team=!Wizard] title \"Become a wizard first\"",
-		"effect @a[name=USER_NAME,team=Wizard] minecraft:hunger 20 2 true",
-		"execute @a[name=USER_NAME,team=Wizard] ~ ~ ~ summon Fireball ~ ~1 ~ {direction:[0.0,0.0,0.0]}"
+		"scoreboard players set @a[name=USER_NAME,team=Wizard] generalcounter 0",
+		"scoreboard players set @a[name=USER_NAME,team=Wizard] generalcounter 1 {SelectedItem:{id:minecraft:blaze_rod} } ",
+		"title @a[name=USER_NAME,team=Wizard,score_generalcounter=0] title \"Hold a blaze rod\"",
+
+		"effect @a[name=USER_NAME,team=Wizard,score_generalcounter_min=1] minecraft:hunger 20 2 true",
+		"execute @a[name=USER_NAME,team=Wizard,score_generalcounter_min=1] ~ ~ ~ summon Fireball ~ ~1 ~ {direction:[0.0,0.0,0.0]}"
 	]
 },
 
@@ -143,8 +154,12 @@
 	"selector" : "^say jump",
 	"command list" : [
 		"title @a[name=USER_NAME,team=!Wizard] title \"Become a wizard first\"",
-		"effect @a[name=USER_NAME,team=Wizard] minecraft:hunger 20 0 true",
-		"effect @a[name=USER_NAME,team=Wizard] minecraft:jump_boost 10 10 true"
+		"scoreboard players set @a[name=USER_NAME,team=Wizard] generalcounter 0",
+		"scoreboard players set @a[name=USER_NAME,team=Wizard] generalcounter 1 {SelectedItem:{id:minecraft:blaze_rod} } ",
+		"title @a[name=USER_NAME,team=Wizard,score_generalcounter=0] title \"Hold a blaze rod\"",
+
+		"effect @a[name=USER_NAME,team=Wizard,score_generalcounter_min=1] minecraft:hunger 20 0 true",
+		"effect @a[name=USER_NAME,team=Wizard,score_generalcounter_min=1] minecraft:jump_boost 10 10 true"
 	]
 },
 
@@ -155,8 +170,28 @@
 	"selector" : "^say water",
 	"command list" : [
 		"title @a[name=USER_NAME,team=!Wizard] title \"Become a wizard first\"",
-		"effect @a[name=USER_NAME,team=Wizard] minecraft:hunger 20 0 true",
-		"execute @a[name=USER_NAME,team=Wizard] ~ ~ ~ fill ~ ~ ~ ~ ~ ~ minecraft:water 1 keep"
+		"scoreboard players set @a[name=USER_NAME,team=Wizard] generalcounter 0",
+		"scoreboard players set @a[name=USER_NAME,team=Wizard] generalcounter 1 {SelectedItem:{id:minecraft:blaze_rod} } ",
+		"title @a[name=USER_NAME,team=Wizard,score_generalcounter=0] title \"Hold a blaze rod\"",
+
+		"effect @a[name=USER_NAME,team=Wizard,score_generalcounter_min=1] minecraft:hunger 20 0 true",
+		"execute @a[name=USER_NAME,team=Wizard,score_generalcounter_min=1] ~ ~ ~ fill ~ ~ ~ ~ ~ ~ minecraft:water 1 keep"
+	]
+},
+
+{ 
+	"name" : "Say blast",
+	"delay in seconds" : "10",
+	"response delay" : "1",
+	"selector" : "^say blast",
+	"command list" : [
+		"title @a[name=USER_NAME,team=!Wizard] title \"Become a wizard first\"",
+		"scoreboard players set @a[name=USER_NAME,team=Wizard] generalcounter 0",
+		"scoreboard players set @a[name=USER_NAME,team=Wizard] generalcounter 1 {SelectedItem:{id:minecraft:blaze_rod} } ",
+		"title @a[name=USER_NAME,team=Wizard,score_generalcounter=0] title \"Hold a blaze rod\"",
+
+		"effect @a[name=USER_NAME,team=Wizard,score_generalcounter_min=1] minecraft:hunger 20 0 true",
+		"execute @a[name=USER_NAME,team=Wizard,score_generalcounter_min=1] ~ ~ ~ entitydata @e[r=15,c=10,type=!Player] { Fire:600 }"
 	]
 },
 

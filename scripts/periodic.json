@@ -1,14 +1,11 @@
 [
 
 { 
-	"name" : "Setup 6",
+	"name" : "Setup 7",
 	"delay in seconds" : "10000000",
 	"command list" : [
 		"setworldspawn 9000 1 9000",
-		"scoreboard objectives add lookdown dummy",
 		"scoreboard objectives add lookup dummy",
-		"scoreboard objectives add onquartz dummy",
-		"scoreboard objectives add apparate dummy",
 		"scoreboard teams add Wizard",
 		"scoreboard teams add Warrior",
 		"scoreboard teams add Druid",
@@ -19,8 +16,7 @@
 		"scoreboard teams add Barbarian",
 		"scoreboard teams add Summoner",
 		"scoreboard objectives add generalcounter dummy",
-		"scoreboard objectives add Health health",
-		"gamerule randomTickSpeed 0",
+		"gamerule randomTickSpeed 4",
 		"gamerule commandBlockOutput false",
 		"gamerule reducedDebugInfo false",
 		"gamerule logAdminCommands true",
@@ -38,25 +34,25 @@
 
 { 
 	"name" : "Update bonuses",
-	"delay in seconds" : "60",
+	"delay in seconds" : "120",
 	"command list" : [
 		"xp 5 @a",
-		"effect @a[team=Wizard] minecraft:fire_resistance 120 1 true",
-		"effect @a[team=Wizard] minecraft:weakness 120 0 true",
-		"effect @a[team=Warrior] minecraft:strength 120 0 true",
-		"execute @a[team=Druid] ~ ~ ~ effect @a[r=5,c=3] minecraft:saturation 2 1 true",
-		"execute @a[team=Druid] ~ ~ ~ effect @a[r=5,c=3,score_Health_max=10] minecraft:regeneration 2 1 true",
-		"execute @a[team=Druid] ~ ~ ~ entitydata @e[type=Sheep,r=15,c=2] { Age : 0 , InLove : 100 }",
-		"execute @a[team=Druid] ~ ~ ~ entitydata @e[type=Pig,r=15,c=2] { Age : 0 , InLove : 100 }",
-		"execute @a[team=Druid] ~ ~ ~ entitydata @e[type=Cow,r=15,c=2] { Age : 0 , InLove : 100 }",
-		"execute @a[team=Druid] ~ ~ ~ entitydata @e[type=Chicken,r=15,c=2] { Age : 0 , InLove : 100 }",
-		"effect @a[team=Fisherman] minecraft:weakness 120 0 true",
-		"effect @a[team=Fisherman] minecraft:absorption 120 0 true",
+		"effect @a[team=Wizard] minecraft:fire_resistance 130 1 true",
+		"effect @a[team=Wizard] minecraft:weakness 130 0 true",
+		"effect @a[team=Warrior] minecraft:strength 130 0 true",
+		"execute @a[team=Druid] ~ ~ ~ effect @a[r=5,c=4] minecraft:saturation 4 2 true",
+		"execute @a[team=Druid] ~ ~ ~ effect @a[r=5,c=4] minecraft:regeneration 4 2 true",
+		"execute @a[team=Druid] ~ ~ ~ entitydata @e[type=Sheep,r=15,c=4] { Age : 0 , InLove : 100 }",
+		"execute @a[team=Druid] ~ ~ ~ entitydata @e[type=Pig,r=15,c=4] { Age : 0 , InLove : 100 }",
+		"execute @a[team=Druid] ~ ~ ~ entitydata @e[type=Cow,r=15,c=4] { Age : 0 , InLove : 100 }",
+		"execute @a[team=Druid] ~ ~ ~ entitydata @e[type=Chicken,r=15,c=4] { Age : 0 , InLove : 100 }",
+		"effect @a[team=Fisherman] minecraft:weakness 130 0 true",
+		"effect @a[team=Fisherman] minecraft:absorption 130 0 true",
 		"effect @a[team=Fisherman] minecraft:regeneration 20 0 true",
 		"effect @a[team=Fisherman] minecraft:saturation 20 0 true",
-		"effect @a[team=Archer] minecraft:speed 120 1 true",
-		"effect @a[team=Miner] minecraft:night_vision 120 0 true",
-		"effect @a[team=Miner] minecraft:haste 120 2 true"
+		"effect @a[team=Archer] minecraft:speed 130 1 true",
+		"effect @a[team=Miner] minecraft:night_vision 130 0 true",
+		"effect @a[team=Miner] minecraft:haste 130 2 true"
 	]
 },
 
@@ -64,9 +60,20 @@
 	"name" : "Angry pigman",
 	"delay in seconds" : "60",
 	"command list" : [
-                "execute @a ~ ~ ~ entitydata @e[type=PigZombie,r=5] { Anger:30 }"
+                "execute @a ~ ~ ~ entitydata @e[type=PigZombie,r=5] { Anger:200 , Attributes:[{Name:\"generic.followRange\",Base:100}] }"
 	]
 },
+
+{ 
+	"name" : "Difficult mobs",
+	"delay in seconds" : "60",
+	"command list" : [
+                "execute @a ~ ~ ~ entitydata @e[type=Zombie,r=30] { AbsorptionAmount:1.0f , Attributes:[{Name:\"generic.followRange\",Base:100}] }",
+                "execute @a ~ ~ ~ entitydata @e[type=Skeleton,r=30] { AbsorptionAmount:1.0f , Attributes:[{Name:\"generic.followRange\",Base:100}] }",
+                "execute @a ~ ~ ~ entitydata @e[type=Blaze,r=30] { AbsorptionAmount:1.0f , Attributes:[{Name:\"generic.followRange\",Base:100}] }"
+	]
+},
+
 
 { 
 	"name" : "Dangerous long living mobs",
@@ -89,53 +96,11 @@
 },
 
 { 
-	"name" : "Set scoreboard selectors",
+	"name" : "get rid of tnt",
 	"delay in seconds" : "10",
 	"command list" : [
-		"clear @a minecraft:tnt",
-		"scoreboard players set @a lookdown 0 ",
-		"scoreboard players set @a[rxm=80,rx=100] lookdown 1 ",
-		"scoreboard players set @a lookup 0 ",
-		"scoreboard players set @a[rxm=260,rx=280] lookup 1 ",
-		"scoreboard players set @a onquartz 0 ",
-		"execute @a ~ ~-1 ~ detect ~ ~ ~ minecraft:quartz_block 0 scoreboard players set @a[r=1] onquartz 1"
+		"clear @a minecraft:tnt"
 	]
-},
-
-
-{ 
-	"name" : "Teleport",
-	"delay in seconds" : "10",
-	"command list" : [
-		"scoreboard players set @a apparate 0 ",
-		"scoreboard players set @a[score_lookdown_min=1,score_onquartz_min=1] apparate 1 {SelectedItem:{id:minecraft:compass} } ",
-		"title @a[score_apparate_min=1] title \"Teleport attempt...\"",
-		"effect @a[score_apparate_min=1] minecraft:hunger 10 3",
-		"effect @a[score_apparate_min=1] minecraft:resistance 5 5",
-		"tp @a[score_apparate_min=1,ry=120,rym=60] ~-5000 ~100 ~",
-		"tp @a[score_apparate_min=1,ry=210,rym=150] ~ ~100 ~-5000",
-		"tp @a[score_apparate_min=1,ry=300,rym=240] ~5000 ~100 ~",
-		"tp @a[score_apparate_min=1,ry=30,rym=330] ~ ~100 ~5000",
-		"execute @a[score_apparate_min=1] ~ ~5 ~ summon Witch ~ ~5 ~ {Riding:{id:Bat,ActiveEffects:[0:{Id:14,Duration:10000,Ambient:1}] }}", 
-		"execute @a[score_apparate_min=1] ~ ~ ~ particle explode ~ ~ ~ 2 2 2 0 200"
-	]
-},
-
-
-{ 
-	"name" : "Bedrock",
-	"delay in seconds" : "10",
-	"command list" : [
-		"execute @a[score_lookup_min=1] ~ ~2 ~ detect ~ ~ ~ minecraft:bedrock 0 summon Silverfish ~ ~-2 ~ {ActiveEffects:[0:{Id:5,Duration:10000,Ambient:1}]}",
-		"execute @a[score_lookup_min=1] ~ ~2 ~ detect ~ ~ ~ minecraft:bedrock 0 particle explode ~ ~-2 ~ 2 2 2 0 200",
-		"execute @a[score_lookup_min=1] ~ ~2 ~ detect ~ ~ ~ minecraft:bedrock 0 fill ~ ~ ~ ~ ~ ~ minecraft:obsidian",
-		
-		"execute @a[score_lookdown_min=1] ~ ~-1 ~ detect ~ ~ ~ minecraft:bedrock 0 summon Silverfish ~ ~1 ~ {ActiveEffects:[0:{Id:5,Duration:10000,Ambient:1}]}",
-		"execute @a[score_lookdown_min=1] ~ ~-1 ~ detect ~ ~ ~ minecraft:bedrock 0 particle explode ~ ~1 ~ 2 2 2 0 200",
-		"execute @a[score_lookdown_min=1] ~ ~-1 ~ detect ~ ~ ~ minecraft:bedrock 0 fill ~ ~ ~ ~ ~ ~ minecraft:obsidian"
-	]
-
 }
-
 
 ]
