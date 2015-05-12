@@ -4,7 +4,7 @@
 	"name" : "Setup 7",
 	"delay in seconds" : "10000000",
 	"command list" : [
-		"setworldspawn 9000 1 9000",
+		"setworldspawn 8984 102 8990",
 		"scoreboard objectives add lookup dummy",
 		"scoreboard teams add Wizard",
 		"scoreboard teams add Warrior",
