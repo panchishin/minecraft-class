@@ -37,19 +37,10 @@
 	"delay in seconds" : "120",
 	"command list" : [
 		"xp 5 @a",
-		"effect @a[team=Wizard] minecraft:fire_resistance 130 1 true",
-		"effect @a[team=Wizard] minecraft:weakness 130 0 true",
 		"effect @a[team=Warrior] minecraft:strength 130 0 true",
-		"execute @a[team=Druid] ~ ~ ~ effect @a[r=5,c=4] minecraft:saturation 4 2 true",
-		"execute @a[team=Druid] ~ ~ ~ effect @a[r=5,c=4] minecraft:regeneration 4 2 true",
-		"execute @a[team=Druid] ~ ~ ~ entitydata @e[type=Sheep,r=15,c=4] { Age : 0 , InLove : 100 }",
-		"execute @a[team=Druid] ~ ~ ~ entitydata @e[type=Pig,r=15,c=4] { Age : 0 , InLove : 100 }",
-		"execute @a[team=Druid] ~ ~ ~ entitydata @e[type=Cow,r=15,c=4] { Age : 0 , InLove : 100 }",
-		"execute @a[team=Druid] ~ ~ ~ entitydata @e[type=Chicken,r=15,c=4] { Age : 0 , InLove : 100 }",
-		"effect @a[team=Fisherman] minecraft:weakness 130 0 true",
 		"effect @a[team=Fisherman] minecraft:absorption 130 0 true",
-		"effect @a[team=Fisherman] minecraft:regeneration 20 0 true",
-		"effect @a[team=Fisherman] minecraft:saturation 20 0 true",
+		"effect @a[team=Fisherman] minecraft:regeneration 10 0 true",
+		"effect @a[team=Fisherman] minecraft:saturation 10 0 true",
 		"effect @a[team=Archer] minecraft:speed 130 1 true",
 		"effect @a[team=Miner] minecraft:night_vision 130 0 true",
 		"effect @a[team=Miner] minecraft:haste 130 2 true"
@@ -57,10 +48,23 @@
 },
 
 { 
+	"name" : "Druid bonuses",
+	"delay in seconds" : "30",
+	"command list" : [
+		"execute @a[team=Druid] ~ ~ ~ effect @a[r=5] minecraft:saturation 5 0 true",
+		"execute @a[team=Druid] ~ ~ ~ effect @a[r=5] minecraft:regeneration 5 0 true",
+		"execute @a[team=Druid] ~ ~ ~ entitydata @e[type=Sheep,r=5,c=2] { Age : 0 , InLove : 100 , Attributes:[{Name:\"generic.followRange\",Base:100}] }",
+		"execute @a[team=Druid] ~ ~ ~ entitydata @e[type=Pig,r=5,c=2] { Age : 0 , InLove : 100 , Attributes:[{Name:\"generic.followRange\",Base:100}] }",
+		"execute @a[team=Druid] ~ ~ ~ entitydata @e[type=Cow,r=5,c=2] { Age : 0 , InLove : 100 , Attributes:[{Name:\"generic.followRange\",Base:100}] }",
+		"execute @a[team=Druid] ~ ~ ~ entitydata @e[type=Chicken,r=5,c=2] { Age : 0 , InLove : 100 , Attributes:[{Name:\"generic.followRange\",Base:100}] }"
+	]
+},
+
+{ 
 	"name" : "Angry pigman",
 	"delay in seconds" : "60",
 	"command list" : [
-                "execute @a ~ ~ ~ entitydata @e[type=PigZombie,r=5] { Anger:200 , Attributes:[{Name:\"generic.followRange\",Base:100}] }"
+                "execute @a ~ ~ ~ entitydata @e[type=PigZombie,c=-1,r=50] { Anger:200 , Attributes:[{Name:\"generic.followRange\",Base:100}] }"
 	]
 },
 
@@ -68,9 +72,9 @@
 	"name" : "Difficult mobs",
 	"delay in seconds" : "60",
 	"command list" : [
-                "execute @a ~ ~ ~ entitydata @e[type=Zombie,r=30] { AbsorptionAmount:1.0f , Attributes:[{Name:\"generic.followRange\",Base:100}] }",
-                "execute @a ~ ~ ~ entitydata @e[type=Skeleton,r=30] { AbsorptionAmount:1.0f , Attributes:[{Name:\"generic.followRange\",Base:100}] }",
-                "execute @a ~ ~ ~ entitydata @e[type=Blaze,r=30] { AbsorptionAmount:1.0f , Attributes:[{Name:\"generic.followRange\",Base:100}] }"
+                "execute @a ~ ~ ~ entitydata @e[type=Zombie,c=-1,r=50] { AbsorptionAmount:1.0f , Attributes:[{Name:\"generic.followRange\",Base:100}] , Equipment:[{id:\"minecraft:iron_axe\",Count:1b}] }",
+                "execute @a ~ ~ ~ entitydata @e[type=Skeleton,c=-1,r=50] { AbsorptionAmount:1.0f , Attributes:[{Name:\"generic.followRange\",Base:100}] }",
+                "execute @a ~ ~ ~ entitydata @e[type=Blaze,c=-1,r=50] { AbsorptionAmount:1.0f , Attributes:[{Name:\"generic.followRange\",Base:100}] }"
 	]
 },
 

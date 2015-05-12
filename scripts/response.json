@@ -117,7 +117,7 @@
 	"response delay" : "1",
 	"selector" : "^say info wizard",
 	"command list" : [
-		"tellraw USER_NAME { text : \"Become a wizard by holding a blaze rod, stand on a block of diamond, pray by looking up, have 20 levels, and say 'become wizard' Wizards are weak but fire resistant. Beware the lightening which grants you power! While you are holding a blaze rod you can create Fireballs (say 'fireball'), gain Jump Boost (say 'jump'), create water even in the nether (say 'water'), and ignite all nearby mobs (say 'blast')\" } "
+		"tellraw USER_NAME { text : \"Become a wizard by holding a blaze rod, stand on a block of diamond, pray by looking up, have 20 levels, and say 'become wizard'. Beware the lightening which grants you power! While you are holding a blaze rod you can cast Protection on yourself (say 'protect'), create Fireballs (say 'fireball'), gain Jump Boost (say 'jump'), create water even in the nether (say 'water'), and ignite several nearby mobs at once (say 'blast')\" } "
 	]
 },
 
@@ -146,6 +146,25 @@
 },
 
 { 
+	"name" : "Say Protection",
+	"delay in seconds" : "30",
+	"response delay" : "1",
+	"selector" : "^say protect",
+	"command list" : [
+		"title @a[name=USER_NAME,team=!Wizard] title \"Become a wizard first\"",
+		"scoreboard players set @a[name=USER_NAME,team=Wizard] generalcounter 0",
+		"scoreboard players set @a[name=USER_NAME,team=Wizard] generalcounter 1 {SelectedItem:{id:minecraft:blaze_rod} } ",
+		"title @a[name=USER_NAME,team=Wizard,score_generalcounter=0] title \"Hold a blaze rod\"",
+
+		"effect @a[name=USER_NAME,team=Wizard,score_generalcounter_min=1] minecraft:weakness 120 0 true",
+		"effect @a[name=USER_NAME,team=Wizard,score_generalcounter_min=1] minecraft:fire_resistance 120 1 true",
+    	"effect @a[name=USER_NAME,team=Wizard,score_generalcounter_min=1] minecraft:resistance 120 0",
+		"scoreboard players set @a[name=USER_NAME,team=Wizard] generalcounter 0"
+
+	]
+},
+
+{ 
 	"name" : "Say fireball",
 	"delay in seconds" : "10",
 	"response delay" : "1",
@@ -157,7 +176,8 @@
 		"title @a[name=USER_NAME,team=Wizard,score_generalcounter=0] title \"Hold a blaze rod\"",
 
 		"effect @a[name=USER_NAME,team=Wizard,score_generalcounter_min=1] minecraft:hunger 20 2 true",
-		"execute @a[name=USER_NAME,team=Wizard,score_generalcounter_min=1] ~ ~ ~ summon Fireball ~ ~1 ~ {direction:[0.0,0.0,0.0]}"
+		"execute @a[name=USER_NAME,team=Wizard,score_generalcounter_min=1] ~ ~ ~ summon Fireball ~ ~1 ~ {direction:[0.0,0.0,0.0]}",
+		"scoreboard players set @a[name=USER_NAME,team=Wizard] generalcounter 0"
 	]
 },
 
@@ -173,7 +193,9 @@
 		"title @a[name=USER_NAME,team=Wizard,score_generalcounter=0] title \"Hold a blaze rod\"",
 
 		"effect @a[name=USER_NAME,team=Wizard,score_generalcounter_min=1] minecraft:hunger 20 0 true",
-		"effect @a[name=USER_NAME,team=Wizard,score_generalcounter_min=1] minecraft:jump_boost 10 10 true"
+		"effect @a[name=USER_NAME,team=Wizard,score_generalcounter_min=1] minecraft:jump_boost 10 10 true",
+		"scoreboard players set @a[name=USER_NAME,team=Wizard] generalcounter 0"
+
 	]
 },
 
@@ -189,7 +211,8 @@
 		"title @a[name=USER_NAME,team=Wizard,score_generalcounter=0] title \"Hold a blaze rod\"",
 
 		"effect @a[name=USER_NAME,team=Wizard,score_generalcounter_min=1] minecraft:hunger 20 0 true",
-		"execute @a[name=USER_NAME,team=Wizard,score_generalcounter_min=1] ~ ~ ~ fill ~ ~ ~ ~ ~ ~ minecraft:water 1 keep"
+		"execute @a[name=USER_NAME,team=Wizard,score_generalcounter_min=1] ~ ~ ~ fill ~ ~ ~ ~ ~ ~ minecraft:water 1 keep",
+		"scoreboard players set @a[name=USER_NAME,team=Wizard] generalcounter 0"
 	]
 },
 
@@ -205,7 +228,8 @@
 		"title @a[name=USER_NAME,team=Wizard,score_generalcounter=0] title \"Hold a blaze rod\"",
 
 		"effect @a[name=USER_NAME,team=Wizard,score_generalcounter_min=1] minecraft:hunger 20 0 true",
-		"execute @a[name=USER_NAME,team=Wizard,score_generalcounter_min=1] ~ ~ ~ entitydata @e[r=15,c=10,type=!Player] { Fire:600 }"
+		"execute @a[name=USER_NAME,team=Wizard,score_generalcounter_min=1] ~ ~ ~ entitydata @e[r=10,c=5,type=!Player] { Fire:600 }",
+		"scoreboard players set @a[name=USER_NAME,team=Wizard] generalcounter 0"
 	]
 },
 
@@ -261,7 +285,7 @@
 	"response delay" : "1",
 	"selector" : "^say info druid",
 	"command list" : [
-		"tellraw USER_NAME { text : \"Become a druid by holding a golden apple, stand on a block of diamond, pray by looking up, have 20 levels. and say 'become druid' Druids heal others who are close. Beware the lightening which grants you power! You can summon bonemeal (say 'grow') every 10 minutes and some animals breed just by you being around for a while.\" } "
+		"tellraw USER_NAME { text : \"Become a druid by holding a golden apple, stand on grass, pray by looking up, have 20 levels, and say 'become druid'.  Druids heal others who are close.  You can summon bonemeal (say 'grow') every 10 minutes and some animals breed just by you being around for a while.\" } "
 	]
 },
 
@@ -272,17 +296,13 @@
 	"selector" : "^say become druid",
 	"command list" : [
 		"scoreboard players set USER_NAME generalcounter 0 ",
-		"execute USER_NAME ~ ~-1 ~ detect ~ ~ ~ minecraft:diamond_block 0 scoreboard players set USER_NAME generalcounter 1",
+		"execute USER_NAME ~ ~-1 ~ detect ~ ~ ~ minecraft:grass 0 scoreboard players set USER_NAME generalcounter 1",
 		"scoreboard players set USER_NAME lookup 0 ",
 		"scoreboard players set @a[name=USER_NAME,rxm=260,rx=280] lookup 1 ",
 		"scoreboard players set @a[name=USER_NAME,score_lookup_min=1,score_generalcounter_min=1,lm=20] generalcounter 2 {SelectedItem:{id:minecraft:golden_apple} } ",
 
 		"title @a[name=USER_NAME,score_generalcounter_min=2] title \"Becoming a Druid...\"",
 		"xp -20L @a[name=USER_NAME,score_generalcounter_min=2]",
-		"effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:poison 30 1 true",
-		"effect @a[name=USER_NAME,score_generalcounter_min=2] minecraft:hunger 30 5 true",
-		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ fill ~ ~-2 ~ ~ ~-1 ~ minecraft:obsidian",
-		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ summon LightningBolt",
 		"scoreboard teams join Druid @a[name=USER_NAME,score_generalcounter_min=2]",
 
 		"execute @a[name=USER_NAME,score_generalcounter_min=2] ~ ~ ~ particle explode ~ ~ ~ 2 2 2 0 200"
@@ -307,7 +327,7 @@
 	"response delay" : "1",
 	"selector" : "^say info fisherman",
 	"command list" : [
-		"tellraw USER_NAME { text : \"Become a fisherman by holding a fishing rod, stand on a block of diamond, pray by looking up, have 20 levels. and say 'become fisherman' Fishermen get a good fishing rod. Beware the lightening which grants you power! You can summon a boat (say 'boat').\" } "
+		"tellraw USER_NAME { text : \"Become a fisherman by holding a fishing rod, stand on a block of diamond, pray by looking up, have 20 levels. and say 'become fisherman' Fishermen can take a beating and get a fantastic fishing rod. Beware the lightening which grants you power! Fisherman can also summon a boat (say 'boat').\" } "
 	]
 },
 
@@ -344,11 +364,10 @@
 	"selector" : "^say boat",
 	"command list" : [
 		"title @a[name=USER_NAME,team=!Fisherman] title \"Become a Fisherman first\"",
-                "effect @a[name=USER_NAME,team=Fisherman] minecraft:hunger 10 2 true",
-                "execute @a[name=USER_NAME,team=Fisherman] ~ ~ ~ summon boat"
+        "effect @a[name=USER_NAME,team=Fisherman] minecraft:hunger 10 0 true",
+		"execute @a[name=USER_NAME,team=Fisherman] ~ ~ ~ summon boat"
 	]
 },
-
 
 { 
 	"name" : "info archer",
@@ -610,7 +629,7 @@
 	"response delay" : "1",
 	"selector" : "^say info summoner",
 	"command list" : [
-		"tellraw USER_NAME { text : \"Become a summoner by holding a book, stand on a block of diamond, pray by looking up, have 20 levels, and say 'become summoner'.  Beware the lightening which grants you power! Summoner can enchant a book (say 'bookmark' while holding a book) so that they can teleport back to it whenever they enchanted it.  They can also share those enchanted books with others.  This makes them essential to a group of explores.\" } "
+		"tellraw USER_NAME { text : \"Become a summoner by holding a book, stand on a block of diamond, pray by looking up, have 20 levels, and say 'become summoner'.  Beware the lightening which grants you power! Summoner can enchant a book (say 'bookmark' while holding a book) so that they can teleport back to it whenever they enchanted it.  They can also share those enchanted books with others.  When a magic book is used, it not only transports the user but also all entities in the same space.  Additionally, Summoners only suffer minor side effects from teleporting whereas all others have some serious nausea.  This teleporting ability makes them essential to a group of explores.\" } "
 	]
 },
 
@@ -664,7 +683,7 @@
 	"command list" : [
 		"scoreboard players set USER_NAME generalcounter 0",
 		"scoreboard players set USER_NAME generalcounter 1 {SelectedItem:{tag:{author:\"ACTION\"}} }",
-		"tp @a[name=USER_NAME,score_generalcounter_min=1] ARGUMENT",
+		"execute @a[name=USER_NAME,score_generalcounter_min=1] ~ ~ ~ tp @e[r=1] ARGUMENT",
 		"scoreboard players set USER_NAME generalcounter 0",
 		"xp -5L @a[name=USER_NAME,team=!Summoner,score_generalcounter=0]",
 		"xp -1L @a[name=USER_NAME,team=Summoner,score_generalcounter=0]",
