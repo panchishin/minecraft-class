@@ -37,11 +37,9 @@
 	"delay in seconds" : "120",
 	"command list" : [
 		"xp 5 @a",
-		"effect @a[team=Wizard] minecraft:fire_resistance 130 1 true",
-		"effect @a[team=Wizard] minecraft:weakness 130 0 true",
 		"effect @a[team=Warrior] minecraft:strength 130 0 true",
-		"execute @a[team=Druid] ~ ~ ~ effect @a[r=5,c=4] minecraft:saturation 4 2 true",
-		"execute @a[team=Druid] ~ ~ ~ effect @a[r=5,c=4] minecraft:regeneration 4 2 true",
+		"execute @a[team=Druid] ~ ~ ~ effect @a[r=5,c=4] minecraft:saturation 20 0 true",
+		"execute @a[team=Druid] ~ ~ ~ effect @a[r=5,c=4] minecraft:regeneration 20 0 true",
 		"execute @a[team=Druid] ~ ~ ~ entitydata @e[type=Sheep,r=15,c=4] { Age : 0 , InLove : 100 }",
 		"execute @a[team=Druid] ~ ~ ~ entitydata @e[type=Pig,r=15,c=4] { Age : 0 , InLove : 100 }",
 		"execute @a[team=Druid] ~ ~ ~ entitydata @e[type=Cow,r=15,c=4] { Age : 0 , InLove : 100 }",
@@ -60,7 +58,7 @@
 	"name" : "Angry pigman",
 	"delay in seconds" : "60",
 	"command list" : [
-                "execute @a ~ ~ ~ entitydata @e[type=PigZombie,r=5] { Anger:200 , Attributes:[{Name:\"generic.followRange\",Base:100}] }"
+                "execute @a ~ ~ ~ entitydata @e[type=PigZombie,c=-1,r=50] { Anger:200 , Attributes:[{Name:\"generic.followRange\",Base:100}] }"
 	]
 },
 
@@ -68,9 +66,9 @@
 	"name" : "Difficult mobs",
 	"delay in seconds" : "60",
 	"command list" : [
-                "execute @a ~ ~ ~ entitydata @e[type=Zombie,r=30] { AbsorptionAmount:1.0f , Attributes:[{Name:\"generic.followRange\",Base:100}] }",
-                "execute @a ~ ~ ~ entitydata @e[type=Skeleton,r=30] { AbsorptionAmount:1.0f , Attributes:[{Name:\"generic.followRange\",Base:100}] }",
-                "execute @a ~ ~ ~ entitydata @e[type=Blaze,r=30] { AbsorptionAmount:1.0f , Attributes:[{Name:\"generic.followRange\",Base:100}] }"
+                "execute @a ~ ~ ~ entitydata @e[type=Zombie,c=-1,r=50] { AbsorptionAmount:1.0f , Attributes:[{Name:\"generic.followRange\",Base:100}] , Equipment:[{id:\"minecraft:iron_axe\",Count:1b}] }",
+                "execute @a ~ ~ ~ entitydata @e[type=Skeleton,c=-1,r=50] { AbsorptionAmount:1.0f , Attributes:[{Name:\"generic.followRange\",Base:100}] }",
+                "execute @a ~ ~ ~ entitydata @e[type=Blaze,c=-1,r=50] { AbsorptionAmount:1.0f , Attributes:[{Name:\"generic.followRange\",Base:100}] }"
 	]
 },
 
