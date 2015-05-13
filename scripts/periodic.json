@@ -72,6 +72,8 @@
 	"name" : "Difficult mobs",
 	"delay in seconds" : "60",
 	"command list" : [
+                "tp @e[type=Creeper,x=8984,y=102,z=8990,r=100] 8984 -1 8990",
+
                 "execute @a ~ ~ ~ entitydata @e[type=Zombie,c=-1,r=50] { AbsorptionAmount:1.0f , Attributes:[{Name:\"generic.followRange\",Base:100}] , Equipment:[{id:\"minecraft:iron_axe\",Count:1b}] }",
                 "execute @a ~ ~ ~ entitydata @e[type=Skeleton,c=-1,r=50] { AbsorptionAmount:1.0f , Attributes:[{Name:\"generic.followRange\",Base:100}] }",
                 "execute @a ~ ~ ~ entitydata @e[type=Blaze,c=-1,r=50] { AbsorptionAmount:1.0f , Attributes:[{Name:\"generic.followRange\",Base:100}] }"
@@ -83,6 +85,10 @@
 	"name" : "Dangerous long living mobs",
 	"delay in seconds" : "300",
 	"command list" : [
+                "tp @e[type=Zombie,x=8984,y=102,z=8990,r=100] 8984 -1 8990",
+                "tp @e[type=Skeleton,x=8984,y=102,z=8990,r=100] 8984 -1 8990",
+                "tp @e[type=Creeper,x=8984,y=102,z=8990,r=100] 8984 -1 8990",
+
                 "execute @a ~ ~ ~ execute @e[type=Zombie,c=1,r=10] ~ ~ ~ summon PrimedTnt",
                 "execute @a ~ ~ ~ execute @e[type=Skeleton,c=1,r=10] ~ ~ ~ summon PrimedTnt",
                 "execute @a ~ ~ ~ execute @e[type=Blaze,c=1,r=10] ~ ~ ~ summon PrimedTnt"
