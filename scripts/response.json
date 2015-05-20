@@ -66,7 +66,7 @@
 	"response delay" : "1",
 	"selector" : "^(joined the game|say welcome)",
 	"command list" : [
-		"tellraw USER_NAME { text : \"\\n          -=-*-=- \u00A7dWELCOME\u00A7f -=-*-=- \\n\\n  For information on special commands type '\u00A76help\u00A7f'.\\n\"}"
+		"tellraw USER_NAME { text : \"\\n          -=-*-=- \\u00A7dWELCOME\\u00A7f -=-*-=- \\n\\n  For information on special commands type '\\u00A76help\\u00A7f'.\\n\"}"
 	]
 },
 
@@ -76,7 +76,7 @@
 	"response delay" : "1",
 	"selector" : "^say (help|info)$",
 	"command list" : [
-		"tellraw USER_NAME { text : \"\\n \\n You can become one of the following classes: \u00A76wizard\u00A7f, \u00A76warrior\u00A7f, \u00A76druid\u00A7f, \u00A76fisherman\u00A7f, \u00A76archer\u00A7f, \u00A76miner\u00A7f, \u00A76transmuter\u00A7f, \u00A76barbarian\u00A7f, or \u00A76summoner\u00A7f. Type '\u00A76info wizard\u00A7f' for more info on wizards and so on.\\n \\n You can convert bedrock into obsidian.  Type '\u00A76info bedrock\u00A7f' for more info.\\n \\n Be careful around livestock or zombie pigmen, bad things happen when staying close to them for too long.  Hostile mobs will drop tnt once in a while, making mob farming nearly impossible.  Tnt is removed from your inventory automatically, so don't waste your resources making it.\\n \\n Type '\u00A76worldspawn\u00A7f' to return to the world spawn point.\\n \\n Say '\u00A76help\u00A7f' to repeat this message.  Say '\u00A76classes\u00A7f' for a list of classes.\" } "
+		"tellraw USER_NAME { text : \"\\n \\n You can become one of the following classes: \\u00A76wizard\\u00A7f, \\u00A76warrior\\u00A7f, \\u00A76druid\\u00A7f, \\u00A76fisherman\\u00A7f, \\u00A76archer\\u00A7f, \\u00A76miner\\u00A7f, \\u00A76transmuter\\u00A7f, \\u00A76barbarian\\u00A7f, or \\u00A76summoner\\u00A7f. Type '\\u00A76info wizard\\u00A7f' for more info on wizards and so on.\\n \\n You can convert bedrock into obsidian.  Type '\\u00A76info bedrock\\u00A7f' for more info.\\n \\n Be careful around livestock or zombie pigmen, bad things happen when staying close to them for too long.  Hostile mobs will drop tnt once in a while, making mob farming nearly impossible.  Tnt is removed from your inventory automatically, so don't waste your resources making it.\\n \\n Type '\\u00A76worldspawn\\u00A7f' to return to the world spawn point.\\n \\n Say '\\u00A76help\\u00A7f' to repeat this message.  Say '\\u00A76classes\\u00A7f' for a list of classes.\" } "
 	]
 },
 
@@ -87,7 +87,7 @@
 	"response delay" : "1",
 	"selector" : "^say classes",
 	"command list" : [
-		"tellraw USER_NAME { text : \"\\n The classes are : \u00A76wizard\u00A7f , \u00A76warrior\u00A7f , \u00A76druid\u00A7f , \u00A76fisherman\u00A7f , \u00A76archer\u00A7f , \u00A76miner\u00A7f , \u00A76transmuter\u00A7f , \u00A76barbarian\u00A7f , and \u00A76summoner\u00A7f.\" } "
+		"tellraw USER_NAME { text : \"\\n The classes are : \\u00A76wizard\\u00A7f , \\u00A76warrior\\u00A7f , \\u00A76druid\\u00A7f , \\u00A76fisherman\\u00A7f , \\u00A76archer\\u00A7f , \\u00A76miner\\u00A7f , \\u00A76transmuter\\u00A7f , \\u00A76barbarian\\u00A7f , and \\u00A76summoner\\u00A7f.\" } "
 	]
 },
 
@@ -128,7 +128,7 @@
 	"response delay" : "1",
 	"selector" : "^say info bedrock",
 	"command list" : [
-		"tellraw USER_NAME { text : \"stand directly on or below bedrock, say '\u00A76bedrock\u00A7f', and it will turn to obsidian. Beware the guardians of bedrock!\" } "
+		"tellraw USER_NAME { text : \"stand directly on or below bedrock, say '\\u00A76bedrock\\u00A7f', and it will turn to obsidian. Beware the guardians of bedrock!\" } "
 	]
 },
 
@@ -138,7 +138,7 @@
 	"response delay" : "1",
 	"selector" : "^say info wizard",
 	"command list" : [
-		"tellraw USER_NAME { text : \"\\n Become a wizard by holding a \u00A7dblaze rod\u00A7f,\\n stand on a block of \u00A7ddiamond\u00A7f,\\n pray by looking up, have 20 levels,\\n and say '\u00A76become wizard\u00A7f'.\\n\\n While you are holding a blaze rod you can cast Protection on yourself (say '\u00A76protect\u00A7f'), create Fireballs (say '\u00A76fireball\u00A7f'), gain Jump Boost (say '\u00A76jump\u00A7f'), create water even in the nether (say '\u00A76water\u00A7f'), and ignite several nearby mobs at once (say '\u00A76blast\u00A7f')\" } "
+		"tellraw USER_NAME { text : \"\\n Become a wizard by holding a \\u00A7dblaze rod\\u00A7f,\\n stand on a block of \\u00A7ddiamond\\u00A7f,\\n pray by looking up, have 20 levels,\\n and say '\\u00A76become wizard\\u00A7f'.\\n\\n While you are holding a blaze rod you can cast Protection on yourself (say '\\u00A76protect\\u00A7f'), create Fireballs (say '\\u00A76fireball\\u00A7f'), gain Jump Boost (say '\\u00A76jump\\u00A7f'), create water even in the nether (say '\\u00A76water\\u00A7f'), and ignite several nearby mobs at once (say '\\u00A76blast\\u00A7f')\" } "
 	]
 },
 
@@ -249,7 +249,9 @@
 		"title @a[name=USER_NAME,team=Wizard,score_generalcounter=0] title \"Hold a blaze rod\"",
 
 		"effect @a[name=USER_NAME,team=Wizard,score_generalcounter_min=1] minecraft:hunger 20 0 true",
-		"execute @a[name=USER_NAME,team=Wizard,score_generalcounter_min=1] ~ ~ ~ entitydata @e[r=10,c=5,type=!Player] { Fire:600 }",
+		"execute @a[name=USER_NAME,team=Wizard,score_generalcounter_min=1] ~ ~ ~ effect @e[r=16,type=Wolf] minecraft:fire_resistance 60 1 true",
+		"execute @a[name=USER_NAME,team=Wizard,score_generalcounter_min=1] ~ ~ ~ effect @e[r=16,type=Villager] minecraft:fire_resistance 60 1 true",
+		"execute @a[name=USER_NAME,team=Wizard,score_generalcounter_min=1] ~ ~ ~ entitydata @e[r=15,c=10,type=!Player] { Fire:600 }",
 		"scoreboard players set @a[name=USER_NAME,team=Wizard] generalcounter 0"
 	]
 },
@@ -260,7 +262,7 @@
 	"response delay" : "1",
 	"selector" : "^say info warrior",
 	"command list" : [
-		"tellraw USER_NAME { text : \"\\n Become a warrior by holding a \u00A7ddiamond sword\u00A7f,\\n stand on a block of \u00A7ddiamond\u00A7f,\\n pray by looking up, have 20 levels,\\n and say '\u00A76become warrior\u00A7f'.\\n \\n Warriors are strong and can heal themselves (say '\u00A76heal\u00A7f').\" } "
+		"tellraw USER_NAME { text : \"\\n Become a warrior by holding a \\u00A7ddiamond sword\\u00A7f,\\n stand on a block of \\u00A7ddiamond\\u00A7f,\\n pray by looking up, have 20 levels,\\n and say '\\u00A76become warrior\\u00A7f'.\\n \\n Warriors are strong and can heal themselves (say '\\u00A76heal\\u00A7f').\" } "
 	]
 },
 
@@ -306,7 +308,7 @@
 	"response delay" : "1",
 	"selector" : "^say info druid",
 	"command list" : [
-		"tellraw USER_NAME { text : \"\\n Become a druid by holding a \u00A7dgolden apple\u00A7f,\\n stand on \u00A7dgrass\u00A7f,\\n pray by looking up, have 20 levels,\\n and say '\u00A76become druid\u00A7f'.\\n \\n Druids heal others who are close.  You can summon bonemeal (say '\u00A76grow\u00A7f') and some animals breed just by you being around for a while.  Druids are safe around animals where as other people can sometimes be haunted by witches when around animals too long.\" }"
+		"tellraw USER_NAME { text : \"\\n Become a druid by holding a \\u00A7dgolden apple\\u00A7f,\\n stand on \\u00A7dgrass\\u00A7f,\\n pray by looking up, have 20 levels,\\n and say '\\u00A76become druid\\u00A7f'.\\n \\n Druids heal others who are close.  You can summon bonemeal (say '\\u00A76grow\\u00A7f') and some animals breed just by you being around for a while.  Druids are safe around animals where as other people can sometimes be haunted by witches when around animals too long.\" }"
 	]
 },
 
@@ -348,7 +350,7 @@
 	"response delay" : "1",
 	"selector" : "^say info fisherman",
 	"command list" : [
-		"tellraw USER_NAME { text : \"\\n Become a fisherman by holding a \u00A7dfishing rod\u00A7f,\\n stand on a block of \u00A7ddiamond\u00A7f,\\n pray by looking up, have 20 levels,\\n and say '\u00A76become fisherman\u00A7f'.\\n\\n Fishermen can take a beating and get a fantastic fishing rod. Fisherman can also summon a boat (say '\u00A6fboat\u00A7f').\" } "
+		"tellraw USER_NAME { text : \"\\n Become a fisherman by holding a \\u00A7dfishing rod\\u00A7f,\\n stand on a block of \\u00A7ddiamond\\u00A7f,\\n pray by looking up, have 20 levels,\\n and say '\\u00A76become fisherman\\u00A7f'.\\n\\n Fishermen can take a beating and get a fantastic fishing rod. Fisherman can also summon a boat (say '\\u00A76boat\\u00A7f').\" } "
 	]
 },
 
@@ -396,7 +398,7 @@
 	"response delay" : "1",
 	"selector" : "^say info archer",
 	"command list" : [
-		"tellraw USER_NAME { text : \"\\n Become a archer by holding a \u00A7dbow\u00A7f,\\n stand on a block of \u00A7ddiamond\u00A7f,\\n pray by looking up, have 20 levels,\\n and say '\u00A76become archer\u00A7f'.\\n \\n Archers are fast and can shoot without being seen and can turn invisible (say '\u00A76hide\u00A7f') and summon arrows (say '\u00A76arrows\u00A7f').\" } "
+		"tellraw USER_NAME { text : \"\\n Become a archer by holding a \\u00A7dbow\\u00A7f,\\n stand on a block of \\u00A7ddiamond\\u00A7f,\\n pray by looking up, have 20 levels,\\n and say '\\u00A76become archer\\u00A7f'.\\n \\n Archers are fast and can shoot without being seen and can turn invisible (say '\\u00A76hide\\u00A7f') and summon arrows (say '\\u00A76arrows\\u00A7f').\" } "
 	]
 },
 
@@ -456,7 +458,7 @@
 	"response delay" : "1",
 	"selector" : "^say info miner",
 	"command list" : [
-		"tellraw USER_NAME { text : \"\\n Become a miner by holding a \u00A7ddiamond pickaxe\u00A7f,\\n stand on a block of \u00A7ddiamond\u00A7f,\\n pray by looking up, have 20 levels,\\n and say '\u00A76become miner\u00A7f'.\\n\\n Miners can mine quickly and see in the dark.\" } "
+		"tellraw USER_NAME { text : \"\\n Become a miner by holding a \\u00A7ddiamond pickaxe\\u00A7f,\\n stand on a block of \\u00A7ddiamond\\u00A7f,\\n pray by looking up, have 20 levels,\\n and say '\\u00A76become miner\\u00A7f'.\\n\\n Miners can mine quickly and see in the dark.\" } "
 	]
 },
 
@@ -490,13 +492,13 @@
 	"response delay" : "1",
 	"selector" : "^say info transmuter",
 	"command list" : [
-		"tellraw USER_NAME { text : \"\\n Become a transmuter by holding \u00A7dnetherwart\u00A7f,\\n stand on a block of \u00A7demerald\u00A7f,\\n pray by looking up, have 20 levels,\\n and say '\u00A76become transmuter\u00A7f'.\\n\\n Transmuter can turn iron to gold, diamond to emerald, stone to obsidian, and water bucket to lava bucket by holding it and saying '\u00A6ftransmute\u00A7f'.  Say '\u00A76transmute\u00A7f' around pigs, cows, sheep, and rabbits to turn them into their egg form.  Separate one animal from the herd for more efficient transmuting.  Say '\u00A76transmute\u00A7f' when right beside a witch to turn it into a villager.\" } "
+		"tellraw USER_NAME { text : \"\\n Become a transmuter by holding \\u00A7dnetherwart\\u00A7f,\\n stand on a block of \\u00A7demerald\\u00A7f,\\n pray by looking up, have 20 levels,\\n and say '\\u00A76become transmuter\\u00A7f'.\\n\\n Transmuter can turn iron to gold, diamond to emerald, stone to obsidian, and water bucket to lava bucket by holding it and saying '\\u00A76transmute\\u00A7f'.  Say '\\u00A76transmute\\u00A7f' around pigs, cows, sheep, and rabbits to turn them into their egg form.  Separate one animal from the herd for more efficient transmuting.  Say '\\u00A76transmute\\u00A7f' when right beside a witch to turn it into a villager.\" } "
 	]
 },
 
 {
 	"name" : "Become transmuter",
-	"delay in seconds" : "30",
+	"delay in seconds" : "3",
 	"response delay" : "1",
 	"selector" : "^say become transmuter",
 	"command list" : [
@@ -504,7 +506,7 @@
 		"execute USER_NAME ~ ~-1 ~ detect ~ ~ ~ minecraft:emerald_block 0 scoreboard players set USER_NAME generalcounter 1",
 		"scoreboard players set USER_NAME lookup 0 ",
 		"scoreboard players set @a[name=USER_NAME,rxm=260,rx=280] lookup 1 ",
-		"scoreboard players set @a[name=USER_NAME,score_lookup_min=1,score_generalcounter_min=1,lm=20] generalcounter 2 {SelectedItem:{id:minecraft:netherwart} } ",
+		"scoreboard players set @a[name=USER_NAME,score_lookup_min=1,score_generalcounter_min=1,lm=20] generalcounter 2 {SelectedItem:{id:minecraft:nether_wart} } ",
 
 		"title @a[name=USER_NAME,score_generalcounter_min=2] title \"Becoming an Transmuter...\"",
 		"xp -20L @a[name=USER_NAME,score_generalcounter_min=2]",
@@ -570,7 +572,7 @@
 	"response delay" : "1",
 	"selector" : "^say info barbarian",
 	"command list" : [
-		"tellraw USER_NAME { text : \"\\n Become a barbarian by holding a \u00A7ddiamond axe\u00A7f,\\n stand on a block of \u00A7ddiamond\u00A7f,\\n pray by looking up, have 20 levels,\\n and say '\u00A76become barbarian\u00A7f'.\\n\\n Barbarian can rage (say '\u00A76rage\u00A7f') which makes them powerful warriors, able to take and give incredible amounts of damage and freeze enemies in fear. Rage takes a second to kick in, so using it in the middle of combat may not be wise.\\n\\n \u00A7dBE WARNED\u00A7f, Barbarians can't wear or hold diamond or iron armour or swords.  An axe is their preferred weapon.\" } "
+		"tellraw USER_NAME { text : \"\\n Become a barbarian by holding a \\u00A7ddiamond axe\\u00A7f,\\n stand on a block of \\u00A7ddiamond\\u00A7f,\\n pray by looking up, have 20 levels,\\n and say '\\u00A76become barbarian\\u00A7f'.\\n\\n Barbarian can rage (say '\\u00A76rage\\u00A7f') which makes them powerful warriors, able to take and give incredible amounts of damage and freeze enemies in fear. Rage takes a second to kick in, so using it in the middle of combat may not be wise.\\n\\n Because of their powerful rage and freezing enemies in fear, they are an indespensible team member when battling a large hord of mobs, far superior to a Warrior as a team player.\\n\\n \\u00A7dBE WARNED\\u00A7f, Barbarians can't wear or hold diamond or iron armour or swords.  An axe is their preferred weapon.\" } "
 	]
 },
 
@@ -640,7 +642,7 @@
 	"response delay" : "1",
 	"selector" : "^say info summoner",
 	"command list" : [
-		"tellraw USER_NAME { text : \"\\n Become a summoner by holding a \u00A7dbook\u00A7f,\\n stand on a block of \u00A7ddiamond\u00A7f,\\n pray by looking up, have 20 levels,\\n and say '\u00A76become summoner\u00A7f'.\\n\\n Summoner can enchant a book (say '\u00A76bookmark\u00A7f' while holding a \u00A7dbook\u00A7f) so that they can teleport back to it whenever they enchanted the book.  They can also share those enchanted books with others and make copies.  When a magic book is used, it not only transports the user but also all entities in the same space.  Additionally, Summoners only suffer minor side effects from teleporting whereas all others have some serious nausea.  This teleporting ability makes them essential to a group of explores.\" } "
+		"tellraw USER_NAME { text : \"\\n Become a summoner by holding a \\u00A7dbook\\u00A7f,\\n stand on a block of \\u00A7ddiamond\\u00A7f,\\n pray by looking up, have 20 levels,\\n and say '\\u00A76become summoner\\u00A7f'.\\n\\n Summoner can enchant a book (say '\\u00A76bookmark\\u00A7f' while holding a \\u00A7dbook\\u00A7f) so that they can teleport back to it whenever they enchanted the book.  They can also share those enchanted books with others and make copies.  When a magic book is used, it not only transports the user but also all entities in the same space.  Additionally, Summoners only suffer minor side effects from teleporting whereas all others have some serious nausea.  This teleporting ability makes them essential to a group of explores.\" } "
 	]
 },
 
