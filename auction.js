@@ -1,9 +1,11 @@
 
 
 var store = { 
-	basePrice : 10.0,
+	basePrice : 100.0,
 	minUniqueItemsForCalculation : 10,
 	inventory : { },
+	changeFactor : .1,
+	minChange : 1,
 
 	numberOfUniqueItems : function () {
 		var count = 0;
@@ -30,23 +32,29 @@ var store = {
 		if ( ! this.inventory[item] ) { this.inventory[item] = { count : 0 , price : this.basePrice } }
 	},
 
+	calculatePriceChange : function( price ) {
+		return Math.max( price * this.changeFactor , this.minChange )
+	},
+
 	buy : function( item  ) {
 		this.verify(item)
 		var tradePrice = this.inventory[item].price
+		var amount = this.calculatePriceChange( tradePrice )
 		this.inventory[item].count++
-		if ( tradePrice >= 1 ) {
-			this.changeAllPricesExcept(item,1.0)
+		if ( tradePrice >= amount ) {
+			this.changeAllPricesExcept(item,amount)
 		}
-		this.inventory[item].price = Math.max( tradePrice - 1 , 0 )
+		this.inventory[item].price = Math.max( tradePrice - amount , 0 )
 		return tradePrice
 	},
 
 	sell : function( item , price ) {
 		this.verify(item)
-		if ( this.inventory[item].count <= 0 || price < this.inventory[item].price + 2 ) { return false }
+		var amount = this.calculatePriceChange( this.inventory[item].price )
+		if ( this.inventory[item].count <= 0 || price < this.inventory[item].price + 2 * amount  ) { return false }
 		this.inventory[item].count-- 
-		this.changeAllPricesExcept(item,-1.0)
-		this.inventory[item].price++
+		this.changeAllPricesExcept( item , -1.0 * amount )
+		this.inventory[item].price += amount 
 		return true
 	},
 
@@ -69,9 +77,9 @@ var store = {
 		var remainder = this.inventory[itemBuying].price
 		this.buy( itemBuying )
 		var count = 0
-		while ( this.inventory[itemSelling].count > 0 && remainder >= this.inventory[itemSelling].price + 2 ) {
+		while ( this.inventory[itemSelling].count > 0 && remainder >= this.inventory[itemSelling].price + 2 * this.calculatePriceChange(this.inventory[itemSelling].price) ) {
 			count++
-		        remainder -= this.inventory[itemSelling].price + 2
+		        remainder -= this.inventory[itemSelling].price + 2 * this.calculatePriceChange(this.inventory[itemSelling].price)
 			this.sell( itemSelling )
 		}
 		return { trades : count , coin : remainder }
@@ -86,34 +94,34 @@ store.basePrice == 10.0 || process.stderr.write("The base price should be 10.0\n
 store.inventory["stick"].count == 0 || process.stderr.write("incorrect stick inventory of 0\n")
 store.buy("stick") == 10.0 || process.stderr.write("Failure\n")
 var buyvalue = store.buy("grass")
-buyvalue == 10.1 || process.stderr.write("Failure, expecting " + buyvalue + "\n")
+Math.round(10 * buyvalue) == 101 || process.stderr.write("Failure, expecting " + buyvalue + "\n")
 store.sell("grass",12)
-store.basePrice == 10.1 || process.stderr.write("The base price should be 10.1 but is " + store.basePrice + "\n")
+Math.round(100 * store.basePrice) == 1010 || process.stderr.write("The base price should be 10.1 but is " + store.basePrice + "\n")
 store.inventory["stick"].count == 1 || process.stderr.write("incorrect stick inventory 1 != " +store.inventory["stick"].count + "\n")
-store.inventory["stick"].price == 9 || process.stderr.write("incorrect stick price 9 != " +store.inventory["stick"].price + "\n")
-store.sell("stick",11.0) || process.stderr.write("should be able to sell a stick for 11\n")
-!store.sell("stick",11.0) || process.stderr.write("should be able to sell a second stick for 11\n")
+Math.round(100 * store.inventory["stick"].price) == 900 || process.stderr.write("incorrect stick price 9 != " +store.inventory["stick"].price + "\n")
+store.sell("stick",11.01) || process.stderr.write("should be able to sell a stick for 11.01 but was " + store.inventory["stick"].price + "\n")
+!store.sell("stick",11.0) || process.stderr.write("should not be able to sell a second stick for 11\n")
 !store.sell("stick",10) || process.stderr.write("should not be able to sell a stick for 10\n")
 
 var dirtvalue = store.buy("dirt")
-dirtvalue == 10 || process.stderr.write("bad price for dirt, expecting 10 and was " + dirtvalue + "\n")
-store.inventory["stick"].price == 10.1 || process.stderr.write("incorrect stick price 10.1 != " +store.inventory["stick"].price + "\n")
+Math.round( 100 * dirtvalue) == 1000 || process.stderr.write("bad price for dirt, expecting 10 and was " + dirtvalue + "\n")
+Math.round( 100 * store.inventory["stick"].price) == 1010 || process.stderr.write("incorrect stick price 10.1 != " +store.inventory["stick"].price + "\n")
 
 store.inventory["diamond"] = { price : 100 }
 store.inventory["stick"].count = 10
 var traderesult = store.trade("diamond","stick")
-traderesult.trades == 6.0 || process.stderr.write("Incorrect number of trades, 6 != " + JSON.stringify(traderesult) + "\n")
-Math.round(10*traderesult.coin) == 118 || process.stderr.write("Incorrect amount of remainder coin, 11.8 != " + JSON.stringify(traderesult) + "\n")
+traderesult.trades == 5.0 || process.stderr.write("Incorrect number of trades, 5 != " + JSON.stringify(traderesult) + "\n")
+Math.round(10*traderesult.coin) == 187 || process.stderr.write("Incorrect amount of remainder coin, 18.7 != " + JSON.stringify(traderesult) + "\n")
 
 store.inventory["dirt"] = { price : 0 , count : 100 }
 var traderesult = store.trade("diamond","dirt")
-traderesult.trades == 12 || process.stderr.write("Incorrect number of trades\n")
-Math.round(10*traderesult.coin) == 72 || process.stderr.write("Incorrect amount of remainder \n")
+traderesult.trades == 11 || process.stderr.write("Incorrect number of trades, "+ traderesult.trades +"\n")
+Math.round(10*traderesult.coin) == 23 || process.stderr.write("Incorrect amount of remainder " + traderesult.coin + "\n")
 
 
 
 store.inventory = {}
-store.basePrice = 10
+store.basePrice = 100.0
 module.exports = store
 
 
