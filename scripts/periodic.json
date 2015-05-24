@@ -16,6 +16,8 @@
 		"scoreboard teams add Barbarian",
 		"scoreboard teams add Summoner",
 		"scoreboard objectives add generalcounter dummy",
+		"scoreboard objectives add TradeSuccess dummy",
+		"scoreboard objectives add Money dummy",
 		"gamerule randomTickSpeed 4",
 		"gamerule commandBlockOutput false",
 		"gamerule reducedDebugInfo false",

@@ -1,5 +1,8 @@
 var SCRIPT_FILE_NAME = "scripts/"
 var HISTORY_FILE_NAME = "scripts/history/"
+var AUCTON_FILE_NAME = "scripts/history/auction.json"
+
+var auction = require("./auction.js")
 
 var time = function(){
 	return Math.floor( new Date().getTime() / 1000 ) 
@@ -21,8 +24,11 @@ var decodeChar = function( char ) { var num = char.charCodeAt(0) - 97; if (num =
 var encodeNumbers = function( numbers ) {  var output = "" ; for( var i = 0 ; i < numbers.length ; i++ ) { output += encodeNumber(numbers[i]) } return (output) }
 var decodeChars = function( chars ) {  var output = "" ; for( var i = 0 ; i < chars.length ; i++ ) { output += decodeChar(chars[i]) } return (output) }
 
+var auctionAction = {}
+
 
 var executeCommand = function(command,user,out,nextExecute,action) {
+	action = action ? action : ""
 	var name = command["name"]
 	var delay = +command["delay in seconds"]
 	var list = command["command list"]
@@ -34,7 +40,6 @@ var executeCommand = function(command,user,out,nextExecute,action) {
 		function( handler ) { setTimeout( function() { handler() } , responseDelay * 1000 ) } :
 		function( handler ) { handler() }
 	
-
 	if ( selector && action && !action.match(selector) ) { return false }
 
 	if ( nextExecute[name + " - " + user] > time() ) { 
@@ -47,6 +52,37 @@ var executeCommand = function(command,user,out,nextExecute,action) {
 	nextExecute[name + " - " + user] = time() + delay
 
 	action = action ? action.replace(/^say /,"") : ""
+	var param1 = action.replace(/[^ ]* /,"")
+
+	if ( action.match(/score of TradeSuccess for player/) ) {
+
+		var base = action.replace(/.*score of TradeSuccess for player /,"")
+		user = base.replace(/ .*/,"")
+		var transaction = base.replace(/^[^ ]* to /,"")
+		if ( auctionAction[user] ) {
+			if ( transaction == 1 ) {
+				auction.buy( auctionAction[user] )
+			} else {
+				auction.sell( auctionAction[user] )
+			}
+		}
+		writeFile(AUCTON_FILE_NAME,auction)
+		delete auctionAction[user]
+	}
+
+	var price = 0;
+	if ( action.match(/^sell /) ) {
+		price = auction.buyPrice(param1)
+		auctionAction[user] = param1
+	}
+	if ( action.match(/^buy /) ) {
+		price = auction.sellPrice(param1)
+		if ( auction.inventory[param1].count <= 0 ) {
+			price = 2147483647
+			out.write( "tellraw " + user + " \"All out of stock.\\nTry again after someone sells some to the store.\"\n" )
+		}
+		auctionAction[user] = param1
+	}
 
 	delayHandler( function() {
 		for( var index in list ) {
@@ -58,10 +94,11 @@ var executeCommand = function(command,user,out,nextExecute,action) {
 				output = [ output ]
 			}
 			for ( var outputIndex in output ) {
-				out.write( output[outputIndex].replace(/USER_NAME/g,user).replace(/ACTION/g,action).replace(/ARGUMENT/g,argument).replace(/COORDINATES/g,coordinates) + "\n" )
+				out.write( output[outputIndex].replace(/PRICE/g,price).replace(/USER_NAME/g,user).replace(/ACTION/g,action).replace(/PARAM1/g,param1).replace(/ARGUMENT/g,argument).replace(/COORDINATES/g,coordinates) + "\n" )
 			}
 		}
 	})
+
 	return true;
 }
 
@@ -102,6 +139,8 @@ var updateCommands = function(commandFile, user, out, action) {
 	if (updated) { writeFile(HISTORY_FILE_NAME + commandFile , nextExecute ) }
 }
 
+auction.inventory = getFile(AUCTON_FILE_NAME,auction).inventory
+auction.basePrice = getFile(AUCTON_FILE_NAME,auction).basePrice
 
 module.exports = updateCommands;
 
