@@ -7,7 +7,7 @@
 	"selector" : "^say sell ",
 	"command list" : [
 		"scoreboard players set USER_NAME generalcounter 0 ",
-		"scoreboard players set USER_NAME generalcounter 1 {SelectedItem:{id:minecraft:PARAM1} } ",
+		"scoreboard players set USER_NAME generalcounter 1 {SelectedItem:{id:minecraft:PARAM1,Damage:0s} } ",
 		"clear @a[name=USER_NAME,score_generalcounter_min=1] minecraft:PARAM1 0 1 ",
 		"scoreboard players add @a[name=USER_NAME,score_generalcounter_min=1] Money PRICE",
 		"scoreboard players set @a[name=USER_NAME,score_generalcounter_min=1] TradeSuccess 1",
