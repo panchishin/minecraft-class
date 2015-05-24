@@ -75,10 +75,14 @@ var store = {
 		var result = []
 		for ( var index in list ) {
 			if ( list[index].match(search) ) {
-				result.push( { name : list[index] , data : this.inventory[list[index]] } )
+				if ( this.inventory[list[index]].count > 0 ) {
+					result.push( list[index] + " ... buy " + this.buyPrice(list[index]) + " , sell " + this.sellPrice(list[index]) )
+				} else {
+					delete this.inventory[list[index]]
+				}
 			}
 		}
-		result.push( { name : "Anything else" , data : { price : this.basePrice , count : 0 } } )
+		if ( search == "" ) { result.push( "Anything else i'll buy at " + Math.floor(this.basePrice) ) }
 		return result
 
 	},

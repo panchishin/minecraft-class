@@ -83,6 +83,12 @@ var executeCommand = function(command,user,out,nextExecute,action) {
 		}
 		auctionAction[user] = param1
 	}
+	if ( action.match(/^price/) ) {
+		var list = auction.list( param1 != action ? param1 : "" )
+		for ( var index in list ) {
+			out.write( "tellraw " + user + " \"" + list[index] + "\"\n")
+		}
+	}
 
 	delayHandler( function() {
 		for( var index in list ) {

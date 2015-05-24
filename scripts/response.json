@@ -30,6 +30,26 @@
 	"name" : "Trade",
 	"delay in seconds" : "0",
 	"response delay" : "0",
+	"selector" : "^say money",
+	"command list" : [
+		"tellraw USER_NAME {text:\"You have \",extra:[{score:{name:\"USER_NAME\",objective:\"Money\"},color:\"gold\"},{text:\" Coins\"}]} "
+	]
+},
+
+{ 
+	"name" : "Trade",
+	"delay in seconds" : "0",
+	"response delay" : "0",
+	"selector" : "^say price",
+	"command list" : [
+		"tellraw USER_NAME \" \""
+	]
+},
+
+{ 
+	"name" : "Trade",
+	"delay in seconds" : "0",
+	"response delay" : "0",
 	"selector" : "^say buy ",
 	"command list" : [
 		"scoreboard players set USER_NAME generalcounter 0 ",
