@@ -73,7 +73,12 @@ var executeCommand = function(command,user,out,nextExecute,action) {
 	var price = 0;
 	if ( action.match(/^sell /) ) {
 		price = auction.buyPrice(param1)
-		auctionAction[user] = param1
+		if ( price <= 0 ) {
+			param1 = "error"
+			out.write( "tellraw " + user + " \"It's worthless right now.\\nTry again after someone buys some.\"\n" )
+		} else {
+			auctionAction[user] = param1
+		}
 	}
 	if ( action.match(/^buy /) ) {
 		price = auction.sellPrice(param1)
