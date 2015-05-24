@@ -150,7 +150,7 @@
 	"response delay" : "1",
 	"selector" : "^say (help|info) trade",
 	"command list" : [
-		"tellraw USER_NAME { text : \"\\n \\n Say '\\u00A76money\\u00A7f' to see how much money you have.  Say '\\u00A76price\\u00A7f' to see a list of all prices, or '\\u00A76price iron\\u00A7f' to see a list of all items with 'iron' in their name.  Say '\\u00A76buy dirt\\u00A7f' or '\\u00A76sell dirt\\u00A7f' to buy or sell dirt (for example).  When you sell something you need to hold it in your hand.  Only things that have been sold to the store are for sale.\\n \\n \" } "
+		"tellraw USER_NAME { text : \"\\n \\n Say '\\u00A76money\\u00A7f' to see how much money you have.  Say '\\u00A76price\\u00A7f' to see a list of all prices, or '\\u00A76price iron\\u00A7f' to see a list of all items with 'iron' in their name.  Say '\\u00A76buy dirt\\u00A7f' or '\\u00A76sell dirt\\u00A7f' to buy or sell dirt (for example).  When you sell something you need to hold it in your hand.  Only things that have been sold to the store are for sale.  Some things can't be bought or sold, like smooth sand or dammaged swords.  Also, if something is enchanted and you sell it, you'll only get the non-enchanged version.\\n \\n \" } "
 	]
 },
 
