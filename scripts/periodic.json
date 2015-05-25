@@ -1,10 +1,10 @@
 [
 
 { 
-	"name" : "Setup 8",
+	"name" : "Tradequantity setup",
 	"delay in seconds" : "10000000",
 	"command list" : [
-		"scoreboard objectives add TradeQuantity dummy",
+		"scoreboard objectives add TradeQuantity dummy"
 	]
 },
 
