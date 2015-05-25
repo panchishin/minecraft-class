@@ -4,7 +4,33 @@
 	"name" : "Trade",
 	"delay in seconds" : "0",
 	"response delay" : "0",
-	"selector" : "^say sell ",
+	"selector" : "^say quantity$",
+	"command list" : [
+		"scoreboard players add USER_NAME TradeQuantity 1",
+		"tellraw USER_NAME {text:\"Quantity set to \",extra:[{score:{name:\"USER_NAME\",objective:\"TradeQuantity\"},color:\"gold\"},{text:\" items for your next sell\"}]} ",
+		"scoreboard players remove USER_NAME TradeQuantity 1"
+	]
+},
+
+{ 
+	"name" : "Trade",
+	"delay in seconds" : "0",
+	"response delay" : "0",
+	"selector" : "^say quantity ",
+	"command list" : [
+		"scoreboard players set USER_NAME TradeQuantity PARAM1 ",
+		"scoreboard players set @a[name=USER_NAME,score_TradeQuantity_min=100] TradeQuantity 100",
+		"scoreboard players set @a[name=USER_NAME,score_TradeQuantity=1] TradeQuantity 1",
+		"tellraw USER_NAME {text:\"Quantity set to \",extra:[{score:{name:\"USER_NAME\",objective:\"TradeQuantity\"},color:\"gold\"},{text:\" items for your next sell\"}]} ",
+		"scoreboard players remove USER_NAME TradeQuantity 1"
+	]
+},
+
+{ 
+	"name" : "Trade",
+	"delay in seconds" : "0",
+	"response delay" : "1",
+	"selector" : "^(say )?sell ",
 	"command list" : [
 		"scoreboard players set USER_NAME generalcounter 0 ",
 		"scoreboard players set USER_NAME generalcounter 1 {SelectedItem:{id:minecraft:PARAM1,Damage:0s} } ",
@@ -12,6 +38,8 @@
 		"scoreboard players add @a[name=USER_NAME,score_generalcounter_min=1] Money PRICE",
 		"scoreboard players set @a[name=USER_NAME,score_generalcounter_min=1] TradeSuccess 1",
 		"tellraw @a[name=USER_NAME,score_generalcounter_min=1] {text:\"Sold for \\u00A76PRICE\\u00A7f. You now have \",extra:[{score:{name:\"USER_NAME\",objective:\"Money\"},color:\"gold\"},{text:\" Coins\"}]} ",
+		"execute @a[name=USER_NAME,score_generalcounter_min=1,score_TradeQuantity_min=1] ~ ~ ~ say sell PARAM1",
+		"scoreboard players remove @a[name=USER_NAME,score_generalcounter_min=1,score_TradeQuantity_min=1] TradeQuantity 1",
 		"scoreboard players set USER_NAME generalcounter 0 "
 	]
 },
@@ -128,6 +156,7 @@
 	"response delay" : "1",
 	"selector" : "^(joined the game|say welcome)",
 	"command list" : [
+		"scoreboard players set USER_NAME TradeQuantity 0",
 		"tellraw USER_NAME { text : \"\\n          -=-*-=- \\u00A7dWELCOME\\u00A7f -=-*-=- \\n\\n  For information on special commands type '\\u00A76help\\u00A7f'.\\n\"}"
 	]
 },
@@ -150,7 +179,7 @@
 	"response delay" : "1",
 	"selector" : "^say (help|info) trade",
 	"command list" : [
-		"tellraw USER_NAME { text : \"\\n \\n Say '\\u00A76money\\u00A7f' to see how much money you have.  Say '\\u00A76price\\u00A7f' to see a list of all prices, or '\\u00A76price iron\\u00A7f' to see a list of all items with 'iron' in their name.  Say '\\u00A76buy dirt\\u00A7f' or '\\u00A76sell dirt\\u00A7f' to buy or sell dirt (for example).  When you sell something you need to hold it in your hand.  Only things that have been sold to the store are for sale.  Some things can't be bought or sold, like smooth sand or dammaged swords.  Also, if something is enchanted and you sell it, you'll only get the non-enchanged version.\\n \\n \" } "
+		"tellraw USER_NAME { text : \"\\n \\n Say '\\u00A76money\\u00A7f' to see how much money you have.  Say '\\u00A76price\\u00A7f' to see a list of all prices, or '\\u00A76price iron\\u00A7f' to see a list of all items with 'iron' in their name.  Say '\\u00A76buy dirt\\u00A7f' or '\\u00A76sell dirt\\u00A7f' to buy or sell dirt (for example).  When you sell something you need to hold it in your hand.  Only things that have been sold to the store are for sale.  Some things can't be bought or sold, like smooth sand or dammaged swords.  Also, if something is enchanted and you sell it, you'll only get the non-enchanged version.  You can change the quantity you sell on your next trade to a larger number.  For example, if you want to try and trade 10 diamonds say '\\u00A76quantity 10\\u00A7f' then sell your diamonds.  To find out what your trade quantity is set at say '\\u00A76quantity\\u00A7f'.\\n \\n \" } "
 	]
 },
 
