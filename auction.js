@@ -44,7 +44,7 @@ var store = {
 	buy : function( item  ) {
 		var tradePrice = this.buyPrice(item)
 		var amount = this.calculatePriceChange( tradePrice )
-		this.inventory[item].count++
+		this.inventory[item].count += 2
 		if ( tradePrice >= amount ) {
 			this.changeAllPricesExcept(item,amount)
 		}
