@@ -69,14 +69,20 @@ var store = {
 		this.inventory[item].price += amount 
 		return true
 	},
+	formatPrice : function( price ) {
+		price = price + ""
+		while ( price.length < 4 ) { price = "_" + price }
+		return price
+	},
 
 	list : function( search ) {
+
 		var list = Object.keys(this.inventory).sort()
 		var result = []
 		for ( var index in list ) {
 			if ( list[index].match(search) ) {
 				if ( this.inventory[list[index]].count > 0 ) {
-					result.push( list[index] + " ... buy " + this.buyPrice(list[index]) + " , sell " + this.sellPrice(list[index]) )
+					result.push( "buy " + this.formatPrice(this.buyPrice(list[index])) + " , sell " + this.formatPrice(this.sellPrice(list[index])) + " _____ " + list[index] )
 				} else {
 					delete this.inventory[list[index]]
 				}
