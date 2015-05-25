@@ -1,7 +1,7 @@
 [
 
 { 
-	"name" : "Trade",
+	"name" : "Trade quantity query",
 	"delay in seconds" : "0",
 	"response delay" : "0",
 	"selector" : "^say quantity$",
@@ -13,7 +13,7 @@
 },
 
 { 
-	"name" : "Trade",
+	"name" : "Trade quantity",
 	"delay in seconds" : "0",
 	"response delay" : "0",
 	"selector" : "^say quantity ",
@@ -27,7 +27,7 @@
 },
 
 { 
-	"name" : "Trade",
+	"name" : "Trade sell",
 	"delay in seconds" : "0",
 	"response delay" : "1",
 	"selector" : "^(say )?sell ",
@@ -45,7 +45,7 @@
 },
 
 { 
-	"name" : "Trade",
+	"name" : "Trade score of tradeSuccess",
 	"delay in seconds" : "0",
 	"response delay" : "0",
 	"selector" : "score of TradeSuccess for player",
@@ -55,7 +55,7 @@
 },
 
 { 
-	"name" : "Trade",
+	"name" : "Trade money",
 	"delay in seconds" : "0",
 	"response delay" : "0",
 	"selector" : "^say money",
@@ -65,17 +65,17 @@
 },
 
 { 
-	"name" : "Trade",
+	"name" : "Trade price and high",
 	"delay in seconds" : "0",
 	"response delay" : "0",
-	"selector" : "^say price",
+	"selector" : "^say (price|high)",
 	"command list" : [
 		"tellraw USER_NAME \" \""
 	]
 },
 
 { 
-	"name" : "Trade",
+	"name" : "Trade buy",
 	"delay in seconds" : "0",
 	"response delay" : "0",
 	"selector" : "^say buy ",
@@ -174,12 +174,12 @@
 },
 
 { 
-	"name" : "Help",
+	"name" : "Help trade",
 	"delay in seconds" : "1",
 	"response delay" : "1",
 	"selector" : "^say (help|info) trade",
 	"command list" : [
-		"tellraw USER_NAME { text : \"\\n \\n Say '\\u00A76money\\u00A7f' to see how much money you have.  Say '\\u00A76price\\u00A7f' to see a list of all prices, or '\\u00A76price iron\\u00A7f' to see a list of all items with 'iron' in their name.  Say '\\u00A76buy dirt\\u00A7f' or '\\u00A76sell dirt\\u00A7f' to buy or sell dirt (for example).  When you sell something you need to hold it in your hand.  Only things that have been sold to the store are for sale.  Some things can't be bought or sold, like smooth sand or dammaged swords.  Also, if something is enchanted and you sell it, you'll only get the non-enchanged version.  You can change the quantity you sell on your next trade to a larger number.  For example, if you want to try and trade 10 diamonds say '\\u00A76quantity 10\\u00A7f' then sell your diamonds.  To find out what your trade quantity is set at say '\\u00A76quantity\\u00A7f'.\\n \\n \" } "
+		"tellraw USER_NAME { text : \"\\n \\n Say '\\u00A76money\\u00A7f' to see how much money you have.  Say '\\u00A76price\\u00A7f' to see a list of all prices.  You can add a search when using price. For example say '\\u00A76price iron\\u00A7f' to see a list of all items with 'iron' in their name.  Say '\\u00A76high\\u00A7f' to get a list of the highest priced items.  Similarly to '\\u00A76price\\u00A7f', saying '\\u00A76high iron\\u00A7f' will show a list of everything with iron in its name and sorted by price.   Say '\\u00A76buy dirt\\u00A7f' or '\\u00A76sell dirt\\u00A7f' to buy or sell dirt (for example).  When you sell something you need to hold it in your hand.  Only things that have been sold to the store are for sale.  Some things can't be bought or sold, like smooth sand or dammaged swords.  Also, if something is enchanted and you sell it, you'll only get the non-enchanged version.  You can change the quantity you sell on your next trade to a larger number.  For example, if you want to try and trade 10 diamonds say '\\u00A76quantity 10\\u00A7f' then sell your diamonds.  To find out what your trade quantity is set at say '\\u00A76quantity\\u00A7f'.\\n \\n \" } "
 	]
 },
 
