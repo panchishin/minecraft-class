@@ -2,6 +2,7 @@ var SCRIPT_FILE_NAME = "scripts/"
 var HISTORY_FILE_NAME = "scripts/history/"
 var AUCTON_FILE_NAME = "scripts/history/auction.json"
 
+var file = require("./file.js")
 var auction = require("./auction.js")
 
 var time = function(){
@@ -66,7 +67,7 @@ var executeCommand = function(command,user,out,nextExecute,action) {
 				auction.sell( auctionAction[user] )
 			}
 		}
-		writeFile(AUCTON_FILE_NAME,auction)
+		file.write(AUCTON_FILE_NAME,auction)
 		delete auctionAction[user]
 	}
 
@@ -123,45 +124,20 @@ var executeCommand = function(command,user,out,nextExecute,action) {
 	return true;
 }
 
-var commandFileCache = {};
-var getFile = function(commandFile,defaultValue) {
-	if ( !commandFileCache[commandFile] ) {
-		commandFileCache[commandFile] = {
-			content : defaultValue,
-			time : 0,
-			lastWrite : 0
-		}
-	}
-	if ( commandFileCache[commandFile].time < time() ) {
-		var content = defaultValue;
-		try {
-			content = JSON.parse( require("fs").readFileSync(commandFile) )
-		} catch( e ) { }
-			
-		commandFileCache[commandFile].content = content
-		commandFileCache[commandFile].time = time() + 10
-	}
-	return commandFileCache[commandFile].content
-}
-
-var writeFile = function(commandFile,content) {
-	require("fs").writeFile( commandFile , JSON.stringify(content) )
-}
-
 var updateCommands = function(commandFile, user, out, action) {
 
-	var nextExecute = getFile(HISTORY_FILE_NAME + commandFile,{})
+	var nextExecute = file.read(HISTORY_FILE_NAME + commandFile,{})
 	out = ( out ? out : process.stdout )
-	var commands = getFile(SCRIPT_FILE_NAME + commandFile,[])
+	var commands = file.read(SCRIPT_FILE_NAME + commandFile,[])
 	var updated = false
 	for( var index in commands ) {
 		updated = executeCommand(commands[index], (user?user:""), out, nextExecute, action) || updated
 	}
-	if (updated) { writeFile(HISTORY_FILE_NAME + commandFile , nextExecute ) }
+	if (updated) { file.write(HISTORY_FILE_NAME + commandFile , nextExecute ) }
 }
 
-auction.inventory = getFile(AUCTON_FILE_NAME,auction).inventory
-auction.basePrice = getFile(AUCTON_FILE_NAME,auction).basePrice
+auction.inventory = file.read(AUCTON_FILE_NAME,auction).inventory
+auction.basePrice = file.read(AUCTON_FILE_NAME,auction).basePrice
 
 module.exports = updateCommands;
 
