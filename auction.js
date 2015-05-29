@@ -24,6 +24,7 @@ var store = {
 			var key = keys[index]
 			if ( key != item ) {
 				this.inventory[key].price = Math.max( this.inventory[key].price + amount , 0 )
+				this.basePrice = Math.max( this.basePrice , this.inventory[key].price )
 			}
 		}
 	},
@@ -44,7 +45,8 @@ var store = {
 	buy : function( item  ) {
 		var tradePrice = this.buyPrice(item)
 		var amount = this.calculatePriceChange( tradePrice )
-		this.inventory[item].count += 2
+		this.inventory[item].count++
+		this.inventory[item].exists = true
 		if ( tradePrice >= amount ) {
 			this.changeAllPricesExcept(item,amount)
 		}
@@ -65,6 +67,7 @@ var store = {
 		var amount = this.calculatePriceChange( this.inventory[item].price )
 		if ( this.inventory[item].count <= 0 || price < sellprice  ) { return false }
 		this.inventory[item].count-- 
+		this.inventory[item].exists = true
 		this.changeAllPricesExcept( item , -1.0 * amount )
 		this.inventory[item].price += amount 
 		return true
@@ -83,8 +86,8 @@ var store = {
 			if ( list[index].match(search) ) {
 				if ( this.inventory[list[index]].count > 0 ) {
 					result.push( "buy " + this.formatPrice(this.buyPrice(list[index])) + " , sell " + this.formatPrice(this.sellPrice(list[index])) + " _____ " + list[index] )
-				} else {
-					delete this.inventory[list[index]]
+				} else if ( this.inventory[list[index]].exists ) {
+					result.push( "buy " + this.formatPrice(this.buyPrice(list[index])) + " , out of stock \\ \\ _ " + list[index] )
 				}
 			}
 		}
