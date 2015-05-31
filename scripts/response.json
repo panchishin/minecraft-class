@@ -19,7 +19,7 @@
 	"selector" : "^say quantity ",
 	"command list" : [
 		"scoreboard players set USER_NAME TradeQuantity PARAM1 ",
-		"scoreboard players set @a[name=USER_NAME,score_TradeQuantity_min=100] TradeQuantity 100",
+		"scoreboard players set @a[name=USER_NAME,score_TradeQuantity_min=1000] TradeQuantity 1000",
 		"scoreboard players set @a[name=USER_NAME,score_TradeQuantity=1] TradeQuantity 1",
 		"tellraw USER_NAME {text:\"Quantity set to \",extra:[{score:{name:\"USER_NAME\",objective:\"TradeQuantity\"},color:\"gold\"},{text:\" items for your next sell\"}]} ",
 		"scoreboard players remove USER_NAME TradeQuantity 1"
@@ -77,8 +77,8 @@
 { 
 	"name" : "Trade buy",
 	"delay in seconds" : "0",
-	"response delay" : "0",
-	"selector" : "^say buy ",
+	"response delay" : "1",
+	"selector" : "^(say )?buy ",
 	"command list" : [
 		"scoreboard players set USER_NAME generalcounter 0 ",
 		"scoreboard players set @a[name=USER_NAME,score_Money_min=PRICE] generalcounter 1 {} ",
@@ -86,6 +86,8 @@
 		"scoreboard players remove @a[name=USER_NAME,score_generalcounter_min=1] Money PRICE",
 		"scoreboard players set @a[name=USER_NAME,score_generalcounter_min=1] TradeSuccess -1",
 		"tellraw @a[name=USER_NAME,score_generalcounter_min=1] {text:\"Bought for \\u00A76PRICE\\u00A7f. You now have \",extra:[{score:{name:\"USER_NAME\",objective:\"Money\"},color:\"gold\"},{text:\" Coins\"}]} ",
+		"execute @a[name=USER_NAME,score_generalcounter_min=1,score_TradeQuantity_min=1] ~ ~ ~ say buy PARAM1",
+		"scoreboard players remove @a[name=USER_NAME,score_generalcounter_min=1,score_TradeQuantity_min=1] TradeQuantity 1",
 		"scoreboard players set USER_NAME generalcounter 0 "
 	]
 },
