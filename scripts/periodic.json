@@ -44,6 +44,18 @@
 	]
 },
 
+
+{ 
+	"name" : "Worldspawn safety",
+	"delay in seconds" : "30",
+	"command list" : [
+                "tp @e[type=Zombie,x=8984,y=102,z=8990,r=100] 8984 -1 8990",
+                "tp @e[type=Skeleton,x=8984,y=102,z=8990,r=100] 8984 -1 8990",
+                "tp @e[type=Creeper,x=8984,y=102,z=8990,r=100] 8984 -1 8990"
+    ]
+},
+
+
 { 
 	"name" : "Infrequent bonuses",
 	"delay in seconds" : "300",
@@ -92,8 +104,6 @@
 	"name" : "Difficult mobs",
 	"delay in seconds" : "60",
 	"command list" : [
-                "tp @e[type=Creeper,x=8984,y=102,z=8990,r=100] 8984 -1 8990",
-
                 "execute @a ~ ~ ~ entitydata @e[type=Zombie,c=-1,r=50] { AbsorptionAmount:1.0f , Attributes:[{Name:\"generic.followRange\",Base:100}] , Equipment:[{id:\"minecraft:iron_axe\",Count:1b}] }",
                 "execute @a ~ ~ ~ entitydata @e[type=Skeleton,c=-1,r=50] { AbsorptionAmount:1.0f , Attributes:[{Name:\"generic.followRange\",Base:100}] }",
                 "execute @a ~ ~ ~ entitydata @e[type=Blaze,c=-1,r=50] { AbsorptionAmount:1.0f , Attributes:[{Name:\"generic.followRange\",Base:100}] }"
@@ -105,13 +115,23 @@
 	"name" : "Dangerous long living mobs",
 	"delay in seconds" : "300",
 	"command list" : [
-                "tp @e[type=Zombie,x=8984,y=102,z=8990,r=100] 8984 -1 8990",
-                "tp @e[type=Skeleton,x=8984,y=102,z=8990,r=100] 8984 -1 8990",
-                "tp @e[type=Creeper,x=8984,y=102,z=8990,r=100] 8984 -1 8990",
-
-                "execute @a ~ ~ ~ execute @e[type=Zombie,c=1,r=10] ~ ~ ~ summon PrimedTnt",
-                "execute @a ~ ~ ~ execute @e[type=Skeleton,c=1,r=10] ~ ~ ~ summon PrimedTnt",
-                "execute @a ~ ~ ~ execute @e[type=Blaze,c=1,r=10] ~ ~ ~ summon PrimedTnt"
+		[[
+                "execute @a ~ ~ ~ execute @e[type=Zombie,c=1,r=15] ~ ~ ~ summon PrimedTnt",
+                "execute @a ~ ~ ~ execute @e[type=Skeleton,c=1,r=15] ~ ~ ~ summon PrimedTnt",
+                "execute @a ~ ~ ~ execute @e[type=Blaze,c=1,r=15] ~ ~ ~ summon PrimedTnt"
+		],[
+                "execute @a ~ ~ ~ execute @e[type=Zombie,c=1,r=10] ~ ~ ~ summon Rabbit ~ ~ ~ {RabbitType:99}",
+                "execute @a ~ ~ ~ execute @e[type=Skeleton,c=1,r=10] ~ ~ ~ summon Rabbit ~ ~ ~ {RabbitType:99}",
+                "execute @a ~ ~ ~ execute @e[type=Blaze,c=1,r=10] ~ ~ ~ summon Rabbit ~ ~ ~ {RabbitType:99}",
+		],[
+                "execute @a ~ ~ ~ execute @e[type=Zombie,r=15] ~ ~ ~ summon Silverfish",
+                "execute @a ~ ~ ~ execute @e[type=Skeleton,r=15] ~ ~ ~ summon Silverfish",
+                "execute @a ~ ~ ~ execute @e[type=Blaze,r=15] ~ ~ ~ summon Silverfish"
+		],[
+                "execute @a ~ ~ ~ execute @e[type=Zombie,r=15] ~ ~ ~ summon Endermite",
+                "execute @a ~ ~ ~ execute @e[type=Skeleton,r=15] ~ ~ ~ summon Endermite",
+                "execute @a ~ ~ ~ execute @e[type=Blaze,r=15] ~ ~ ~ summon Endermite"
+		]]
 	]
 },
 
@@ -119,7 +139,7 @@
 	"name" : "Dangerous long living pets",
 	"delay in seconds" : "600",
 	"command list" : [
-                "execute @a[team=!Druid] ~ ~ ~ execute @e[type=Chicken,c=1,r=5] ~ ~ ~ summon Witch ~ ~15 ~ {Riding:{id:Bat,ActiveEffects:[0:{Id:14,Duration:10000,Ambient:1}] }}",
+                "execute @a[team=!Druid] ~ ~ ~ execute @e[type=Chicken,c=1,r=5] ~ ~ ~ summon Witch ~ ~5 ~ {Riding:{id:Bat,ActiveEffects:[0:{Id:14,Duration:10000,Ambient:1}] }}",
                 "execute @a[team=!Druid] ~ ~ ~ execute @e[type=Cow,c=1,r=5] ~ ~ ~ summon Witch ~ ~5 ~ {Riding:{id:Bat,ActiveEffects:[0:{Id:14,Duration:10000,Ambient:1}] }}",
                 "execute @a[team=!Druid] ~ ~ ~ execute @e[type=Sheep,c=1,r=5] ~ ~ ~ summon Witch ~ ~5 ~ {Riding:{id:Bat,ActiveEffects:[0:{Id:14,Duration:10000,Ambient:1}] }}"
 	]
