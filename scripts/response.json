@@ -1,6 +1,39 @@
 [
 
 { 
+	"name" : "withdraw coins",
+	"delay in seconds" : "0",
+	"response delay" : "0",
+	"selector" : "^say withdraw ",
+	"command list" : [
+		"scoreboard players set USER_NAME generalcounter PARAM1",
+		"give @a[name=USER_NAME,score_generalcounter_min=100,score_Money_min=PARAM1] minecraft:paper 1 0 {RepairCost:0,display:{Name:\"PARAM1 coins\"}}",
+		"tellraw @a[name=USER_NAME,score_generalcounter_min=100,score_Money_min=PARAM1] {text:\"You now have \",extra:[{score:{name:\"USER_NAME\",objective:\"Money\"},color:\"gold\"},{text:\" Coins\"}]} ",
+		"tellraw @a[name=USER_NAME,score_generalcounter=99] {text:\"You must specify an amount of 100 or more\"}",
+		"tellraw @a[name=USER_NAME,score_Money=PARAM1] {text:\"You don't have that much\"}",
+		"scoreboard players remove @a[name=USER_NAME,score_generalcounter_min=100,score_Money_min=PARAM1] Money PARAM1",
+		"scoreboard players set USER_NAME generalcounter 0"
+	]
+},
+
+{ 
+	"name" : "deposit coins",
+	"delay in seconds" : "0",
+	"response delay" : "0",
+	"selector" : "^say deposit ",
+	"command list" : [
+		"scoreboard players set USER_NAME generalcounter 0 ",
+		"scoreboard players set USER_NAME generalcounter 1 {SelectedItem:{tag:{RepairCost:0,display:{Name:\"PARAM1 coins\"}}}}",
+		"clear @a[name=USER_NAME,score_generalcounter_min=1] minecraft:paper 0 1 {RepairCost:0,display:{Name:\"PARAM1 coins\"}}",
+		"scoreboard players add @a[name=USER_NAME,score_generalcounter_min=1] Money PARAM1",
+		"tellraw @a[name=USER_NAME,score_generalcounter_min=1] {text:\"You now have \",extra:[{score:{name:\"USER_NAME\",objective:\"Money\"},color:\"gold\"},{text:\" Coins\"}]} ",
+		"tellraw @a[name=USER_NAME,score_generalcounter=0] {text:\"You are not holding paper money worth PARAM1\"}",
+		"scoreboard players set USER_NAME generalcounter 0 "
+	]
+},
+
+
+{ 
 	"name" : "Trade quantity query",
 	"delay in seconds" : "0",
 	"response delay" : "0",
@@ -60,7 +93,7 @@
 	"response delay" : "0",
 	"selector" : "^say money",
 	"command list" : [
-		"tellraw USER_NAME {text:\"You have \",extra:[{score:{name:\"USER_NAME\",objective:\"Money\"},color:\"gold\"},{text:\" Coins\"}]} "
+		"tellraw USER_NAME {text:\"\\n You have \",extra:[{score:{name:\"USER_NAME\",objective:\"Money\"},color:\"gold\"},{text:\" Coins.\\n \\n You can \\u00A76withdraw\\u00A7f and \\u00A76deposit\\u00A7f money.  For example, to withdraw or deposit 150 coins, Say '\\u00A76withdraw 150\\u00A7f' or '\\u00A76deposit \\u00A76150\\u00A7f'. Use this to exchange money with other players.\\n\"}]} "
 	]
 },
 
@@ -171,7 +204,7 @@
 	"command list" : [
 		"tellraw USER_NAME { text : \"\\n \\n This is survival, with some bonuses and some challenges.\" }",
 		"tellraw USER_NAME { text : \"\\n \\n Be careful around livestock or zombie pigmen, bad things happen when staying close to them for too long.  Hostile mobs will drop tnt once in a while, making mob farming nearly impossible.  Tnt is removed from your inventory automatically, so don't waste your resources making it.\" }",
-		"tellraw USER_NAME { text : \"\\n \\n You can return to the world spawn at any time by typing '\\u00A76worldspawn\\u00A7f'. There is now a trading system.  Say '\\u00A76info trade\\u00A7f' for more info.  There are classes that you can become for additional benefits. Say '\\u00A76classes\\u00A7f' for a list of classes. For more information on a specific class like Druids, say '\\u00A76info druid\\u00A7f'. You can convert bedrock to obsidian, just stand on or immediately below bedrock and say '\\u00A76bedrock\\u00A7f'.\\n \\n \" } "
+		"tellraw USER_NAME { text : \"\\n \\n You can return to the world spawn at any time by typing '\\u00A76worldspawn\\u00A7f'. There is now a trading system.  Say '\\u00A76info trade\\u00A7f' for more info.  There are classes that you can become for additional benefits. Say '\\u00A76classes\\u00A7f' for a list of classes. For more information on a specific class like Druids, say '\\u00A76info \\u00A76druid\\u00A7f'. You can convert bedrock to obsidian, just stand on or immediately below bedrock and say '\\u00A76bedrock\\u00A7f'.\\n \\n \" } "
 	]
 },
 
@@ -181,7 +214,7 @@
 	"response delay" : "1",
 	"selector" : "^say (help|info) trade",
 	"command list" : [
-		"tellraw USER_NAME { text : \"\\n \\n Say '\\u00A76money\\u00A7f' to see how much money you have.  Say '\\u00A76price\\u00A7f' to see a list of all prices.  You can add a search when using price. For example say '\\u00A76price iron\\u00A7f' to see a list of all items with 'iron' in their name.  Say '\\u00A76high\\u00A7f' to get a list of the highest priced items.  Similarly to '\\u00A76price\\u00A7f', saying '\\u00A76high iron\\u00A7f' will show a list of everything with iron in its name and sorted by price.   Say '\\u00A76buy dirt\\u00A7f' or '\\u00A76sell dirt\\u00A7f' to buy or sell dirt (for example).  When you sell something you need to hold it in your hand.  Only things that have been sold to the store are for sale.  Some things can't be bought or sold, like smooth sand or dammaged swords.  Also, if something is enchanted and you sell it, you'll only get the non-enchanged version.  You can change the quantity you sell on your next trade to a larger number.  For example, if you want to try and trade 10 diamonds say '\\u00A76quantity 10\\u00A7f' then sell your diamonds.  To find out what your trade quantity is set at say '\\u00A76quantity\\u00A7f'.\\n \\n \" } "
+		"tellraw USER_NAME { text : \"\\n \\n Say '\\u00A76money\\u00A7f' to see how much money you have.  Say '\\u00A76price\\u00A7f' to see a list of all prices.  You can add a search when using price. For example say '\\u00A76price iron\\u00A7f' to see a list of all items with 'iron' in their name.  Say '\\u00A76high\\u00A7f' to get a list of the highest priced items.  Similarly to '\\u00A76price\\u00A7f', saying '\\u00A76high iron\\u00A7f' will show a list of everything with iron in its name and sorted by price.   Say '\\u00A76buy dirt\\u00A7f' or '\\u00A76sell dirt\\u00A7f' to buy or sell dirt (for example).  When you sell something you need to hold it in your hand.  Only things that have been sold to the store are for sale.  Some things can't be bought or sold, like smooth sand or damaged swords.  Also, if something is enchanted and you sell it, you'll only get the non-enchanged version.  You can change the quantity you sell on your next trade to a larger number.  For example, if you want to try and trade 10 diamonds say '\\u00A76quantity 10\\u00A7f' then sell your diamonds.  To find out what your trade quantity is set at say '\\u00A76quantity\\u00A7f'.  You can \\u00A76withdraw\\u00A7f and \\u00A76deposit\\u00A7f money.  For example, to withdraw or deposit 150 coins, Say '\\u00A76withdraw 150\\u00A7f' or '\\u00A76deposit 150\\u00A7f'.  Use this to give and receive money between players.\" } "
 	]
 },
 

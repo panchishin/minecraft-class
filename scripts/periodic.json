@@ -1,6 +1,16 @@
 [
 
 { 
+	"name" : "delete fake money",
+	"delay in seconds" : "30",
+	"command list" : [
+		"clear @a minecraft:paper 0 10 {RepairCost:1}",
+		"clear @a minecraft:paper 0 10 {RepairCost:3}",
+		"clear @a minecraft:paper 0 10 {RepairCost:7}"
+	]
+},
+
+{ 
 	"name" : "Tradequantity setup",
 	"delay in seconds" : "10000000",
 	"command list" : [
