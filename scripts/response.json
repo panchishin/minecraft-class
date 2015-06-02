@@ -8,10 +8,10 @@
 	"command list" : [
 		"scoreboard players set USER_NAME generalcounter PARAM1",
 		"give @a[name=USER_NAME,score_generalcounter_min=100,score_Money_min=PARAM1] minecraft:paper 1 0 {RepairCost:0,display:{Name:\"PARAM1 coins\"}}",
-		"tellraw @a[name=USER_NAME,score_generalcounter_min=100,score_Money_min=PARAM1] {text:\"You now have \",extra:[{score:{name:\"USER_NAME\",objective:\"Money\"},color:\"gold\"},{text:\" Coins\"}]} ",
 		"tellraw @a[name=USER_NAME,score_generalcounter=99] {text:\"You must specify an amount of 100 or more\"}",
 		"tellraw @a[name=USER_NAME,score_Money=PARAM1] {text:\"You don't have that much\"}",
 		"scoreboard players remove @a[name=USER_NAME,score_generalcounter_min=100,score_Money_min=PARAM1] Money PARAM1",
+		"tellraw @a[name=USER_NAME,score_generalcounter_min=100] {text:\"You now have \",extra:[{score:{name:\"USER_NAME\",objective:\"Money\"},color:\"gold\"},{text:\" Coins\"}]} ",
 		"scoreboard players set USER_NAME generalcounter 0"
 	]
 },
