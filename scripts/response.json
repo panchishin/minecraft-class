@@ -101,7 +101,7 @@
 	"name" : "Trade price and high",
 	"delay in seconds" : "0",
 	"response delay" : "0",
-	"selector" : "^say (price|high)",
+	"selector" : "^say (price|high|low)",
 	"command list" : [
 		"tellraw USER_NAME \" \""
 	]
