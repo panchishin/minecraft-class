@@ -1,25 +1,7 @@
 [
 
 { 
-	"name" : "delete fake money",
-	"delay in seconds" : "30",
-	"command list" : [
-		"clear @a minecraft:paper 0 10 {RepairCost:1}",
-		"clear @a minecraft:paper 0 10 {RepairCost:3}",
-		"clear @a minecraft:paper 0 10 {RepairCost:7}"
-	]
-},
-
-{ 
-	"name" : "Tradequantity setup",
-	"delay in seconds" : "10000000",
-	"command list" : [
-		"scoreboard objectives add TradeQuantity dummy"
-	]
-},
-
-{ 
-	"name" : "Setup 7",
+	"name" : "Setup",
 	"delay in seconds" : "10000000",
 	"command list" : [
 		"setworldspawn 8984 102 8990",
@@ -36,6 +18,7 @@
 		"scoreboard objectives add generalcounter dummy",
 		"scoreboard objectives add TradeSuccess dummy",
 		"scoreboard objectives add Money dummy",
+		"scoreboard objectives add TradeQuantity dummy",
 		"gamerule randomTickSpeed 4",
 		"gamerule commandBlockOutput false",
 		"gamerule reducedDebugInfo false",
@@ -46,110 +29,85 @@
 
 
 { 
-	"name" : "Worldspawn safety",
-	"delay in seconds" : "30",
+	"name" : "delete items that are not allowed",
+	"delay in seconds" : "58",
 	"command list" : [
-                "tp @e[type=Zombie,x=8984,y=102,z=8990,r=100] 8984 -1 8990",
-                "tp @e[type=Skeleton,x=8984,y=102,z=8990,r=100] 8984 -1 8990",
-                "tp @e[type=Creeper,x=8984,y=102,z=8990,r=100] 8984 -1 8990"
+		"clear @a minecraft:paper 0 10 {RepairCost:1}",
+		"clear @a minecraft:tnt"
+	]
+},
+
+
+{ 
+	"name" : "Worldspawn safety",
+	"delay in seconds" : "33",
+	"command list" : [
+		"tp @e[type=Zombie,x=8984,y=102,z=8990,r=100] 8984 -1 8990",
+		"tp @e[type=Skeleton,x=8984,y=102,z=8990,r=100] 8984 -1 8990",
+		"tp @e[type=Creeper,x=8984,y=102,z=8990,r=100] 8984 -1 8990"
     ]
 },
 
 
 { 
 	"name" : "Infrequent bonuses",
-	"delay in seconds" : "300",
+	"delay in seconds" : "309",
 	"command list" : [
-		"effect @a[team=Warrior] minecraft:absorption 400 4 true"
+		"effect @a[team=Warrior] minecraft:absorption 400 4 true",
+		"effect @a[team=Warrior] minecraft:strength 400 0 true",
+		"effect @a[team=Archer] minecraft:speed 400 1 true",
+		"effect @a[team=Fisherman] minecraft:absorption 400 0 true",
+		"effect @a[team=Miner] minecraft:night_vision 400 0 true",
+		"effect @a[team=Miner] minecraft:haste 400 2 true"
 	]
 },
 
 { 
-	"name" : "Update bonuses",
-	"delay in seconds" : "120",
+	"name" : "Frequent bonuses",
+	"delay in seconds" : "121",
 	"command list" : [
 		"xp 5 @a",
-		"effect @a[team=Warrior] minecraft:strength 130 0 true",
-		"effect @a[team=Fisherman] minecraft:absorption 130 0 true",
 		"effect @a[team=Fisherman] minecraft:regeneration 10 0 true",
 		"effect @a[team=Fisherman] minecraft:saturation 10 0 true",
-		"effect @a[team=Archer] minecraft:speed 130 1 true",
-		"effect @a[team=Miner] minecraft:night_vision 130 0 true",
-		"effect @a[team=Miner] minecraft:haste 130 2 true"
 	]
 },
 
 { 
 	"name" : "Druid bonuses",
-	"delay in seconds" : "30",
+	"delay in seconds" : "63",
 	"command list" : [
-		"execute @a[team=Druid] ~ ~ ~ effect @a[r=5] minecraft:saturation 5 0 true",
-		"execute @a[team=Druid] ~ ~ ~ effect @a[r=5] minecraft:regeneration 5 0 true",
-		"execute @a[team=Druid] ~ ~ ~ entitydata @e[type=Sheep,r=5,c=2] { Age : 0 , InLove : 100 , Attributes:[{Name:\"generic.followRange\",Base:100}] }",
-		"execute @a[team=Druid] ~ ~ ~ entitydata @e[type=Pig,r=5,c=2] { Age : 0 , InLove : 100 , Attributes:[{Name:\"generic.followRange\",Base:100}] }",
-		"execute @a[team=Druid] ~ ~ ~ entitydata @e[type=Cow,r=5,c=2] { Age : 0 , InLove : 100 , Attributes:[{Name:\"generic.followRange\",Base:100}] }",
-		"execute @a[team=Druid] ~ ~ ~ entitydata @e[type=Chicken,r=5,c=2] { Age : 0 , InLove : 100 , Attributes:[{Name:\"generic.followRange\",Base:100}] }"
+		"execute @a[team=Druid] ~ ~ ~ effect @a[r=5] minecraft:saturation 10 0 true",
+		"execute @a[team=Druid] ~ ~ ~ effect @a[r=5] minecraft:regeneration 10 0 true",
+		"execute @a[team=Druid] ~ ~ ~ entitydata @e[type=Sheep,r=5,c=4] { Age : 0 , InLove : 100 , Attributes:[{Name:\"generic.followRange\",Base:100}] }",
+		"execute @a[team=Druid] ~ ~ ~ entitydata @e[type=Pig,r=5,c=4] { Age : 0 , InLove : 100 , Attributes:[{Name:\"generic.followRange\",Base:100}] }",
+		"execute @a[team=Druid] ~ ~ ~ entitydata @e[type=Cow,r=5,c=4] { Age : 0 , InLove : 100 , Attributes:[{Name:\"generic.followRange\",Base:100}] }",
+		"execute @a[team=Druid] ~ ~ ~ entitydata @e[type=Chicken,r=5,c=4] { Age : 0 , InLove : 100 , Attributes:[{Name:\"generic.followRange\",Base:100}] }"
 	]
 },
 
-{ 
-	"name" : "Angry pigman",
-	"delay in seconds" : "60",
-	"command list" : [
-                "execute @a ~ ~ ~ entitydata @e[type=PigZombie,c=-1,r=50] { Anger:200 , Attributes:[{Name:\"generic.followRange\",Base:100}] }"
-	]
-},
 
 { 
 	"name" : "Difficult mobs",
-	"delay in seconds" : "60",
+	"delay in seconds" : "67",
 	"command list" : [
-                "execute @a ~ ~ ~ entitydata @e[type=Zombie,c=-1,r=50] { AbsorptionAmount:1.0f , Attributes:[{Name:\"generic.followRange\",Base:100}] , Equipment:[{id:\"minecraft:iron_axe\",Count:1b}] }",
-                "execute @a ~ ~ ~ entitydata @e[type=Skeleton,c=-1,r=50] { AbsorptionAmount:1.0f , Attributes:[{Name:\"generic.followRange\",Base:100}] }",
-                "execute @a ~ ~ ~ entitydata @e[type=Blaze,c=-1,r=50] { AbsorptionAmount:1.0f , Attributes:[{Name:\"generic.followRange\",Base:100}] }"
+		"execute @a ~ ~ ~ entitydata @e[type=PigZombie,c=1,r=20] { Anger:200 , Attributes:[{Name:\"generic.followRange\",Base:100}] }",
+		"execute @a ~ ~ ~ entitydata @e[type=Zombie,c=1,r=20] { AbsorptionAmount:1.0f , Attributes:[{Name:\"generic.followRange\",Base:100}] , Equipment:[{id:\"minecraft:iron_axe\",Count:1b}] }",
+		"execute @a ~ ~ ~ entitydata @e[type=Skeleton,c=1,r=20] { AbsorptionAmount:1.0f , Attributes:[{Name:\"generic.followRange\",Base:100}] }",
+		"execute @a ~ ~ ~ entitydata @e[type=Blaze,c=1,r=20] { AbsorptionAmount:1.0f , Attributes:[{Name:\"generic.followRange\",Base:100}] }"
 	]
 },
 
 
 { 
-	"name" : "Dangerous long living mobs",
-	"delay in seconds" : "300",
+	"name" : "Dangerous long living entities",
+	"delay in seconds" : "615",
 	"command list" : [
-		[[
-                "execute @a ~ ~ ~ execute @e[type=Zombie,c=1,r=15] ~ ~ ~ summon PrimedTnt",
-                "execute @a ~ ~ ~ execute @e[type=Skeleton,c=1,r=15] ~ ~ ~ summon PrimedTnt",
-                "execute @a ~ ~ ~ execute @e[type=Blaze,c=1,r=15] ~ ~ ~ summon PrimedTnt"
-		],[
-                "execute @a ~ ~ ~ execute @e[type=Zombie,c=1,r=10] ~ ~ ~ summon Rabbit ~ ~ ~ {RabbitType:99}",
-                "execute @a ~ ~ ~ execute @e[type=Skeleton,c=1,r=10] ~ ~ ~ summon Rabbit ~ ~ ~ {RabbitType:99}",
-                "execute @a ~ ~ ~ execute @e[type=Blaze,c=1,r=10] ~ ~ ~ summon Rabbit ~ ~ ~ {RabbitType:99}",
-		],[
-                "execute @a ~ ~ ~ execute @e[type=Zombie,r=15] ~ ~ ~ summon Silverfish",
-                "execute @a ~ ~ ~ execute @e[type=Skeleton,r=15] ~ ~ ~ summon Silverfish",
-                "execute @a ~ ~ ~ execute @e[type=Blaze,r=15] ~ ~ ~ summon Silverfish"
-		],[
-                "execute @a ~ ~ ~ execute @e[type=Zombie,r=15] ~ ~ ~ summon Endermite",
-                "execute @a ~ ~ ~ execute @e[type=Skeleton,r=15] ~ ~ ~ summon Endermite",
-                "execute @a ~ ~ ~ execute @e[type=Blaze,r=15] ~ ~ ~ summon Endermite"
-		]]
-	]
-},
-
-{ 
-	"name" : "Dangerous long living pets",
-	"delay in seconds" : "600",
-	"command list" : [
-                "execute @a[team=!Druid] ~ ~ ~ execute @e[type=Chicken,c=1,r=5] ~ ~ ~ summon Witch ~ ~5 ~ {Riding:{id:Bat,ActiveEffects:[0:{Id:14,Duration:10000,Ambient:1}] }}",
-                "execute @a[team=!Druid] ~ ~ ~ execute @e[type=Cow,c=1,r=5] ~ ~ ~ summon Witch ~ ~5 ~ {Riding:{id:Bat,ActiveEffects:[0:{Id:14,Duration:10000,Ambient:1}] }}",
-                "execute @a[team=!Druid] ~ ~ ~ execute @e[type=Sheep,c=1,r=5] ~ ~ ~ summon Witch ~ ~5 ~ {Riding:{id:Bat,ActiveEffects:[0:{Id:14,Duration:10000,Ambient:1}] }}"
-	]
-},
-
-{ 
-	"name" : "get rid of tnt",
-	"delay in seconds" : "10",
-	"command list" : [
-		"clear @a minecraft:tnt"
+		"execute @a ~ ~ ~ execute @e[type=Zombie,c=1,r=15] ~ ~ ~ summon PrimedTnt",
+		"execute @a ~ ~ ~ execute @e[type=Skeleton,c=1,r=15] ~ ~ ~ summon PrimedTnt",
+		"execute @a ~ ~ ~ execute @e[type=Blaze,c=1,r=15] ~ ~ ~ summon PrimedTnt",
+		"execute @a[team=!Druid] ~ ~ ~ execute @e[type=Chicken,c=1,r=5] ~ ~ ~ summon Witch ~ ~5 ~ {Riding:{id:Bat,ActiveEffects:[0:{Id:14,Duration:10000,Ambient:1}] }}",
+		"execute @a[team=!Druid] ~ ~ ~ execute @e[type=Cow,c=1,r=5] ~ ~ ~ summon Witch ~ ~5 ~ {Riding:{id:Bat,ActiveEffects:[0:{Id:14,Duration:10000,Ambient:1}] }}",
+		"execute @a[team=!Druid] ~ ~ ~ execute @e[type=Sheep,c=1,r=5] ~ ~ ~ summon Witch ~ ~5 ~ {Riding:{id:Bat,ActiveEffects:[0:{Id:14,Duration:10000,Ambient:1}] }}"
 	]
 }
 
