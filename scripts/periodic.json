@@ -19,7 +19,7 @@
 		"scoreboard objectives add TradeSuccess dummy",
 		"scoreboard objectives add Money dummy",
 		"scoreboard objectives add TradeQuantity dummy",
-		"gamerule randomTickSpeed 4",
+		"gamerule randomTickSpeed 2",
 		"gamerule commandBlockOutput false",
 		"gamerule reducedDebugInfo false",
 		"gamerule logAdminCommands true",
