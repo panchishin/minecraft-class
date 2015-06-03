@@ -68,7 +68,7 @@
 	"command list" : [
 		"xp 5 @a",
 		"effect @a[team=Fisherman] minecraft:regeneration 10 0 true",
-		"effect @a[team=Fisherman] minecraft:saturation 10 0 true",
+		"effect @a[team=Fisherman] minecraft:saturation 10 0 true"
 	]
 },
 
