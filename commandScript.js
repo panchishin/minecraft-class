@@ -105,6 +105,16 @@ var executeCommand = function(command,user,out,nextExecute,action) {
 			out.write( "tellraw " + user + " \"" + list[index] + "\"\n")
 		}
 	}
+	if ( action.match(/^low/) ) {
+		var list = auction.list( param1 != action ? param1 : "." ).sort( function( a , b ) {
+			var nb = b.replace(/^[^0-9]+([0-9]+).*/g,"$1")
+			var na = a.replace(/^[^0-9]+([0-9]+).*/g,"$1")
+			return (nb - na)
+		})
+		for ( var index in list ) {
+			out.write( "tellraw " + user + " \"" + list[index] + "\"\n")
+		}
+	}
 
 	delayHandler( function() {
 		for( var index in list ) {
