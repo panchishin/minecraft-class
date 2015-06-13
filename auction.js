@@ -12,7 +12,7 @@ var store = {
 		var keys = Object.keys(this.inventory)
 		for ( var index in keys ) {
 			if ( this.inventory[keys[index]].count > 0 ) { count++ }
-                        if ( this.inventory[keys[index]].count == 0 ) { this.inventory[keys[index]].price = this.basePrice }
+                        if ( this.inventory[keys[index]].count <= 0 ) { delete this.inventory[keys[index]] }
 		}
 		return Math.max( this.minUniqueItemsForCalculation , count )
 	},
