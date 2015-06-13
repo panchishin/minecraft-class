@@ -113,37 +113,6 @@ var store = {
 
 }
 
-store.basePrice = 10
-
-store.basePrice == 10.0 || process.stderr.write("The base price should be 10.0\n")
-!store.sell("stick",10.0) || process.stderr.write("Should not be able to sell a stick\n")
-store.inventory["stick"].count == 0 || process.stderr.write("incorrect stick inventory of 0\n")
-store.buy("stick") == 10.0 || process.stderr.write("Failure\n")
-var buyvalue = store.buy("grass")
-Math.round(10 * buyvalue) == 100 || process.stderr.write("Failure, expecting " + buyvalue + "\n")
-store.sell("grass",12)
-Math.round(100 * store.basePrice) == 1010 || process.stderr.write("The base price should be 10.1 but is " + store.basePrice + "\n")
-store.inventory["stick"].count == 1 || process.stderr.write("incorrect stick inventory 1 != " +store.inventory["stick"].count + "\n")
-Math.round(100 * store.inventory["stick"].price) == 900 || process.stderr.write("incorrect stick price 9 != " +store.inventory["stick"].price + "\n")
-store.sell("stick",11.01) || process.stderr.write("should be able to sell a stick for 11.01 but was " + store.inventory["stick"].price + "\n")
-!store.sell("stick",11.0) || process.stderr.write("should not be able to sell a second stick for 11\n")
-!store.sell("stick",10) || process.stderr.write("should not be able to sell a stick for 10\n")
-
-var dirtvalue = store.buy("dirt")
-Math.round( 100 * dirtvalue) == 1000 || process.stderr.write("bad price for dirt, expecting 10 and was " + dirtvalue + "\n")
-Math.round( 100 * store.inventory["stick"].price) == 1010 || process.stderr.write("incorrect stick price 10.1 != " +store.inventory["stick"].price + "\n")
-
-store.inventory["diamond"] = { price : 100 }
-store.inventory["stick"].count = 10
-var traderesult = store.trade("diamond","stick")
-traderesult.trades == 5.0 || process.stderr.write("Incorrect number of trades, 5 != " + JSON.stringify(traderesult) + "\n")
-Math.round(10*traderesult.coin) == 187 || process.stderr.write("Incorrect amount of remainder coin, 18.7 != " + JSON.stringify(traderesult) + "\n")
-
-store.inventory["dirt"] = { price : 0 , count : 100 }
-var traderesult = store.trade("diamond","dirt")
-traderesult.trades == 11 || process.stderr.write("Incorrect number of trades, "+ traderesult.trades +"\n")
-Math.round(10*traderesult.coin) == 24 || process.stderr.write("Incorrect amount of remainder " + traderesult.coin + "\n")
-
 
 store.inventory = {}
 store.basePrice = 100.0
