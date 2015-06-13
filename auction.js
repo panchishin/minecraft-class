@@ -19,17 +19,13 @@ var store = {
 
 	changeAllPricesExcept : function( item , amount ) {
 		amount = amount / this.numberOfUniqueItems()
-		for ( var index in keys ) {
-			var key = keys[index]
-			this.basePrice = Math.max( this.basePrice , this.inventory[key].price )
-		}
-		amount = 1 + amount / this.basePrice
-		this.basePrice *= amount
+		this.basePrice += amount
 		var keys = Object.keys(this.inventory)
 		for ( var index in keys ) {
 			var key = keys[index]
 			if ( key != item ) {
-				this.inventory[key].price = Math.max( this.inventory[key].price *= amount , 0 )
+				this.inventory[key].price = Math.max( this.inventory[key].price + amount , 0 )
+				this.basePrice = Math.max( this.basePrice , this.inventory[key].price )
 			}
 		}
 	},
