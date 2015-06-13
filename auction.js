@@ -80,6 +80,7 @@ var store = {
 	},
 
 	list : function( search ) {
+		this.numberOfUniqueItems()
 
 		var list = Object.keys(this.inventory).sort()
 		var result = []
