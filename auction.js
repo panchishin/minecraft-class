@@ -95,20 +95,6 @@ var store = {
 		if ( search == "" ) { result.push( "Anything else i'll buy at " + Math.floor(this.basePrice) ) }
 		return result
 
-	},
-
-	trade : function( itemBuying , itemSelling ) {
-		this.verify(itemBuying)
-		this.verify(itemSelling)
-		var remainder = this.inventory[itemBuying].price
-		this.buy( itemBuying )
-		var count = 0
-		while ( this.inventory[itemSelling].count > 0 && remainder >= this.inventory[itemSelling].price + 2 * this.calculatePriceChange(this.inventory[itemSelling].price) ) {
-			count++
-		        remainder -= this.inventory[itemSelling].price + 2 * this.calculatePriceChange(this.inventory[itemSelling].price)
-			this.sell( itemSelling )
-		}
-		return { trades : count , coin : remainder }
 	}
 
 }
